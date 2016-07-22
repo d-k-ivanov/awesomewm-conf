@@ -1,0 +1,4 @@
+[submodule "extensions/vicious"]
+	path = extensions/vicious
+	url = http://git.sysphere.org/vicious
+	branch = master
