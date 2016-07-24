@@ -4,21 +4,37 @@ local config_path = awful.util.getdir("config")
 package.path = config_path .. "/?.lua;" .. package.path
 package.path = config_path .. "/?/init.lua;" .. package.path
 package.path = config_path .. "/extensions/?.lua;" .. package.path
+package.path = config_path .. "/extensions/?/?.lua;" .. package.path
 package.path = config_path .. "/extensions/?/init.lua;" .. package.path
 
 local gears = require("gears")
 awful.rules = require("awful.rules")
+awful.menu = require("awful.menu")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 
 -- vicious widgets
 local vicious = require("vicious")
+
+-- bashets
+local bashets = require("bashets")
+
+-- do not use letters, which shadow access key to menu entry
+awful.menu.menu_keys.down = { "Down", ".", ">", "'", "\"", }
+awful.menu.menu_keys.up = {  "Up", ",", "<", ";", ":", }
+awful.menu.menu_keys.enter = { "Right", "]", "}", "=", "+", }
+awful.menu.menu_keys.back = { "Left", "[", "{", "-", "_", }
+awful.menu.menu_keys.exec = { "Return", "Space", }
+awful.menu.menu_keys.close = { "Escape", "BackSpace", }
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -92,7 +108,7 @@ end
 tags = {
   names  = { "main", "www", "comander", "messages",
              "office","pac", "work", "vim", "vim" },
-  layout = { layouts[6], layouts[6], layouts[1], layouts[6],
+  layout = { layouts[7], layouts[6], layouts[1], layouts[6],
              layouts[6], layouts[6], layouts[6], layouts[6], layouts[6]
 }}
 for s = 1, screen.count() do
@@ -104,10 +120,11 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
+   { "manual", terminal .. ' -e "man awesome"' },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "quit", awesome.quit },
+   { "test", editor_cmd }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -122,7 +139,33 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- Keyboard map indicator and changer
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = wibox.widget.textbox()
+kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
+kbdcfg.switch = function ()
+  kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+  local t = kbdcfg.layout[kbdcfg.current]
+  kbdcfg.widget:set_text(" " .. t[3] .. " ")
+  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
+end
+
+ -- Mouse bindings
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
+)
+
 -- {{{ Wibox
+
+--  Network usage widget
+-- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
+-- netwidget = wibox.widget.textbox()
+-- Register widget
+-- vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -205,6 +248,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(kbdcfg.widget)
+    --right_layout:add(netwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -285,7 +330,10 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- Alt + Right Shift switches the current keyboard layout
+    awful.key({ "Mod1" }, "Shift_R", function() kbdcfg.switch() end)
 )
 
 clientkeys = awful.util.table.join(
