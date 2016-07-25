@@ -15,82 +15,26 @@ require("awful.autofocus")
 
 -- Widget and layout library
 local wibox = require("wibox")
+local layout = require("layout")
 
 -- Theme handling library
 local beautiful = require("beautiful")
 
 -- Notification library
 local naughty = require("naughty")
+local handler = require("handler")
+
+-- Menu
 local menubar = require("menubar")
 
 -- vicious widgets
 local vicious = require("vicious")
+local widgets = require("widgets")
+local kb = require("kb")
 
 -- bashets
 local bashets = require("bashets")
 
--- do not use letters, which shadow access key to menu entry
-awful.menu.menu_keys.down = { "Down", ".", ">", "'", "\"", }
-awful.menu.menu_keys.up = {  "Up", ",", "<", ";", ":", }
-awful.menu.menu_keys.enter = { "Right", "]", "}", "=", "+", }
-awful.menu.menu_keys.back = { "Left", "[", "{", "-", "_", }
-awful.menu.menu_keys.exec = { "Return", "Space", }
-awful.menu.menu_keys.close = { "Escape", "BackSpace", }
-
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
-
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
-
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = err })
-        in_error = false
-    end)
-end
--- }}}
-
--- battery warning
--- created by bpdp
-local function trim(s)
-  return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
-end
-
-local function bat_notification()
-  
-  local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
-  local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
-
-  local bat_capacity = tonumber(f_capacity:read("*all"))
-  local bat_status = trim(f_status:read("*all"))
-
-  if (bat_capacity <= 10 and bat_status == "Discharging") then
-    naughty.notify({ title      = "Battery Warning"
-      , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
-      , fg="#ff0000"
-      , bg="#deb887"
-      , timeout    = 15
-      , position   = "bottom_left"
-    })
-  end
-end
-
-battimer = timer({timeout = 120})
-battimer:connect_signal("timeout", bat_notification)
-battimer:start()
--- end here for battery warning
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -108,24 +52,6 @@ editor_cmd = terminal .. " -e " .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
-{
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
-}
--- }}}
-
 -- {{{ Wallpaper
 if beautiful.wallpaper then
     for s = 1, screen.count() do
@@ -134,22 +60,15 @@ if beautiful.wallpaper then
 end
 -- }}}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {
-  names  = { "main", "www", "comander", "messages",
-             "office","pac", "work", "vim", "vim" },
-  layout = { layouts[1], layouts[2], layouts[1], layouts[6],
-             layouts[6], layouts[6], layouts[6], layouts[6], layouts[6]
-}}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table
-    -- tags[s] = awful.tag({1, 2, 3, 4, 5}, s, tags.layout)
-    tags[s] = awful.tag(tags.names, s, tags.layout)
-end
--- }}}
-
 -- {{{ Menu
+-- do not use letters, which shadow access key to menu entry
+awful.menu.menu_keys.down = { "Down", ".", ">", "'", "\"", }
+awful.menu.menu_keys.up = {  "Up", ",", "<", ";", ":", }
+awful.menu.menu_keys.enter = { "Right", "]", "}", "=", "+", }
+awful.menu.menu_keys.back = { "Left", "[", "{", "-", "_", }
+awful.menu.menu_keys.exec = { "Return", "Space", }
+awful.menu.menu_keys.close = { "Escape", "BackSpace", }
+
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. ' -e "source ~/.bashrc; man awesome"' },
@@ -172,33 +91,7 @@ menubar.utils.terminal = terminal  -- Set the terminal for applications that req
 app_folders = { "/usr/share/applications/", "~/.local/share/applications/" }
 -- }}}
 
--- Keyboard map indicator and changer
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
-kbdcfg.current = 1  -- us is our default layout
-kbdcfg.widget = wibox.widget.textbox()
-kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
-kbdcfg.switch = function ()
-  kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-  local t = kbdcfg.layout[kbdcfg.current]
-  kbdcfg.widget:set_text(" " .. t[3] .. " ")
-  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-end
-
- -- Mouse bindings
-kbdcfg.widget:buttons(
- awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
-)
-
 -- {{{ Wibox
-
---  Network usage widget
--- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
--- netwidget = wibox.widget.textbox()
--- Register widget
--- vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
-
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -282,7 +175,23 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(kbdcfg.widget)
-    --right_layout:add(netwidget)
+    
+    right_layout:add(spacer)
+    
+    right_layout:add(baticon)
+    right_layout:add(batpct)
+    
+    right_layout:add(spacer)
+
+    right_layout:add(volicon)
+    right_layout:add(volpct)
+    right_layout:add(volspace)
+
+    right_layout:add(spacer)
+    
+    --right_layout:add(lan_usage)
+    --right_layout:add(spacer)
+    --right_layout:add(wifi_usage)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
