@@ -10,6 +10,7 @@ package.path = config_path .. "/extensions/?/init.lua;" .. package.path
 local gears = require("gears")
 awful.rules = require("awful.rules")
 awful.menu = require("awful.menu")
+xdg_menu = require("archmenu")
 require("awful.autofocus")
 
 -- Widget and layout library
@@ -61,6 +62,36 @@ do
 end
 -- }}}
 
+-- battery warning
+-- created by bpdp
+local function trim(s)
+  return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
+end
+
+local function bat_notification()
+  
+  local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
+  local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
+
+  local bat_capacity = tonumber(f_capacity:read("*all"))
+  local bat_status = trim(f_status:read("*all"))
+
+  if (bat_capacity <= 10 and bat_status == "Discharging") then
+    naughty.notify({ title      = "Battery Warning"
+      , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
+      , fg="#ff0000"
+      , bg="#deb887"
+      , timeout    = 15
+      , position   = "bottom_left"
+    })
+  end
+end
+
+battimer = timer({timeout = 120})
+battimer:connect_signal("timeout", bat_notification)
+battimer:start()
+-- end here for battery warning
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")
@@ -108,26 +139,27 @@ end
 tags = {
   names  = { "main", "www", "comander", "messages",
              "office","pac", "work", "vim", "vim" },
-  layout = { layouts[7], layouts[6], layouts[1], layouts[6],
+  layout = { layouts[1], layouts[2], layouts[1], layouts[6],
              layouts[6], layouts[6], layouts[6], layouts[6], layouts[6]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table
-    tags[s] = awful.tag({1, 2, 3, 4, 5}, s, tags.layout)
+    -- tags[s] = awful.tag({1, 2, 3, 4, 5}, s, tags.layout)
+    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. ' -e "man awesome"' },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "manual", terminal .. ' -e "source ~/.bashrc; man awesome"' },
+   { "edit config", terminal .. ' -e "source ~/.bashrc;' .. editor .. " " .. awesome.conffile .. '"' },
    { "restart", awesome.restart },
-   { "quit", awesome.quit },
-   { "test", editor_cmd }
+   { "quit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Applications", xdgmenu },
                                     { "open terminal", terminal }
                                   }
                         })
@@ -136,7 +168,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+menubar.utils.terminal = terminal  -- Set the terminal for applications that require it
+app_folders = { "/usr/share/applications/", "~/.local/share/applications/" }
 -- }}}
 
 -- Keyboard map indicator and changer
@@ -332,6 +365,9 @@ globalkeys = awful.util.table.join(
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end),
 
+    -- Screenshot
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end),
+
     -- Alt + Right Shift switches the current keyboard layout
     awful.key({ "Mod1" }, "Shift_R", function() kbdcfg.switch() end)
 )
@@ -504,4 +540,5 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
 -- }}}
