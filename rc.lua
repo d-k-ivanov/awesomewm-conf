@@ -92,9 +92,6 @@ app_folders = { "/usr/share/applications/", "~/.local/share/applications/" }
 -- }}}
 
 -- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
-
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -278,7 +275,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end),
 
     -- Alt + Right Shift switches the current keyboard layout
-    awful.key({ "Mod1" }, "Shift_R", function() kbdcfg.switch() end)
+    awful.key({ "Control" }, "Shift_L", function() kbdcfg.switch() end)
 )
 
 clientkeys = awful.util.table.join(

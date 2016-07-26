@@ -52,28 +52,6 @@ theme.fg_end_widget    = "#FF5656"
 theme.bg_widget        = "#494B4F"
 theme.border_widget    = "#3F3F3F"
 
---theme.widget_temp        = "~/.config/awesome/themes/default/icons-color/temp.png"
---theme.widget_uptime      = "~/.config/awesome/themes/default/icons-color/ac.png"
---theme.widget_cpu         = "~/.config/awesome/themes/default/icons-color/cpu.png"
---theme.widget_weather     = "~/.config/awesome/themes/default/icons-color/dish.png"
---theme.widget_fs          = "~/.config/awesome/themes/default/icons-color/fs.png"
---theme.widget_mem         = "~/.config/awesome/themes/default/icons-color/mem.png"
---theme.widget_fs          = "~/.config/awesome/themes/default/icons-color/fs.png"
---theme.widget_note        = "~/.config/awesome/themes/default/icons-color/note.png"
---theme.widget_note_on     = "~/.config/awesome/themes/default/icons-color/note_on.png"
---theme.widget_netdown     = "~/.config/awesome/themes/default/icons-color/net_down.png"
---theme.widget_netup       = "~/.config/awesome/themes/default/icons-color/net_up.png"
---theme.widget_mail        = "~/.config/awesome/themes/default/icons-color/mail.png"
---theme.widget_batt        = "~/.config/awesome/themes/default/icons-color/bat.png"
---theme.widget_clock       = "~/.config/awesome/themes/default/icons-color/clock.png"
---theme.widget_vol         = "~/.config/awesome/themes/default/icons-color/spkr.png"
-
-theme.widget_batfull	= "~/.config/awesome/themes/default/icons/battery/battery-green.png"
-theme.widget_batmed 	= "~/.config/awesome/themes/default/icons/battery/battery-green.png"
-theme.widget_batlow 	= "~/.config/awesome/themes/default/icons/battery/battery-green.png"
-theme.widget_batempty 	= "~/.config/awesome/themes/default/icons/battery/battery-green.png"
-theme.widget_ac 		= "~/.config/awesome/themes/default/icons/battery/battery-green.png"
-
 -- Battery icons:
 theme.battery_missing 			= "~/.config/awesome/themes/default/icons/battery/battery_missing.png"
 theme.battery_empty 			= "~/.config/awesome/themes/default/icons/battery/battery_empty.png"
@@ -95,7 +73,12 @@ theme.battery_charging_4 		= "~/.config/awesome/themes/default/icons/battery/bat
 theme.battery_charging_5 		= "~/.config/awesome/themes/default/icons/battery/battery_charging_5.png"
 -- End of battery icons
 
-theme.widget_volume				= "~/.config/awesome/themes/default/icons/volume/volume-green.png"
+theme.volume_high				= "~/.config/awesome/themes/default/icons/volume/volume-yellow-high.png"
+theme.volume_medium				= "~/.config/awesome/themes/default/icons/volume/volume-yellow-medium.png"
+theme.volume_low				= "~/.config/awesome/themes/default/icons/volume/volume-yellow-low.png"
+theme.volume_muted				= "~/.config/awesome/themes/default/icons/volume/volume-yellow-muted.png"
+theme.volume_off				= "~/.config/awesome/themes/default/icons/volume/volume-yellow-off.png"
+
 
 -- }}}
 
@@ -114,13 +97,13 @@ theme.menu_width  = 100
 
 -- {{{ Icons
 -- {{{ Taglist
-theme.taglist_squares_sel   = "~/.config/awesome/themes/default/taglist/squaref_a-green.png"
-theme.taglist_squares_unsel = "~/.config/awesome/themes/default/taglist/square_a-green.png"
+theme.taglist_squares_sel   = "~/.config/awesome/themes/default/taglist/squaref_a-yellow.png"
+theme.taglist_squares_unsel = "~/.config/awesome/themes/default/taglist/square_a-yellow.png"
 --theme.taglist_squares_resize = "false"
 -- }}}
 
 -- {{{ Misc
-theme.awesome_icon           = "~/.config/awesome/themes/default/icons/arch-green.png"
+theme.awesome_icon           = "~/.config/awesome/themes/default/icons/arch-yellow.png"
 theme.menu_submenu_icon      = "~/.config/awesome/themes/default/icons/submenu.png"
 -- }}}
 
