@@ -3,3 +3,4 @@
 *.bak
 *.desktop
 archmenu.lua
+autostart.lua

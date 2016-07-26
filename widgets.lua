@@ -5,9 +5,6 @@ local beautiful = require("beautiful")
 local vicious = require("vicious")
 local naughty = require("naughty")
 
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.getdir("config") .. "/themes/blue/theme.lua")
-
 -- Main spacer
 spacer       = wibox.widget.textbox()
 spacer:set_text(' | ')
@@ -187,5 +184,16 @@ volspace:buttons(volicon:buttons())
 -- CLOCK WIDGET
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
-
+do
+local started=false
+  mytextclock:connect_signal("button::press",
+    function()
+      if started then
+        awful.util.spawn("pkill -f 'gnome-control-center datetime'")
+      else
+        awful.util.spawn("gnome-control-center datetime")
+      end
+      started=not started
+    end)
+end
 -- END CLOCK

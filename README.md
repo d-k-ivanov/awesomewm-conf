@@ -19,6 +19,8 @@ I'd recommend use ArchLinux with this config, because of arch menu generation, b
 ```
 git clone https://github.com/keepbot/awesome-config.git ~/.config/awesome
 
+touch ~/.config/awesome/autostart.lua
+
 # For arch users
 ~/.config/awesome/archmenu.gen
 # For others
@@ -27,9 +29,65 @@ touch ~/.config/awesome/archmenu.lua
 Modkey4+Control+r to restart awesome
 ```
 
+### Autostart
+
+You need to create file *autostart.lua* and add simple startup records like this:
+```lua
+-- run_once(prg,arg_string,pname,screen)
+-- prg         - program name
+-- arg_string  - startup arguments
+-- pname       - process name
+-- screen      - monitor location (tags [screen][x])
+
+run_once("skype")
+run_once("dropbox")
+run_once("nm-applet")
+run_once("empathy")
+run_once("thunderbird")
+run_once("firefox")
+run_once("doublecmd")
+run_once("pac")
+```
+
+### Rules
+
+In **rc.lua** some rules are defined. You need to redifine them for your need or remove.
+
+**Rules**
+```lua
+awful.rules.rules = {
+    -- All clients will match this rule.
+    { rule = { },
+      properties = { border_width = beautiful.border_width,
+                     border_color = beautiful.border_normal,
+                     focus = awful.client.focus.filter,
+                     raise = true,
+                     keys = clientkeys,
+                     buttons = clientbuttons } },
+    { rule = { class = "Vlc" },
+      properties = { floating = true } },
+    { rule = { class = "Gimp" },
+      properties = { tag = tags[1][5], floating = true } },
+    { rule = { class = "Firefox" },
+    properties = { tag = tags[1][2] } },
+    { rule = { class = "Double" },
+    properties = { tag = tags[1][3] } },
+    { rule = { class = "Thunderbird" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Skype" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Empathy" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Pac" },
+    properties = { tag = tags[1][6] } },
+    { rule = { class = "Sublime" },
+    properties = { tag = tags[1][7] } },
+}
+```
+
 ### Themes
 
-To change theme you need to change path to current theme in 2 files: *rc.lua* and *widgets.lua*
+To change theme you need to change path to current theme in *rc.lua*
 
 *Line to change:*
 ```

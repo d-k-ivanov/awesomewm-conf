@@ -18,6 +18,8 @@ local wibox = require("wibox")
 
 -- Theme handling library
 local beautiful = require("beautiful")
+-- Themes define colours, icons, font and wallpapers.
+beautiful.init(awful.util.getdir("config") .. "/themes/blue/theme.lua")
 
 -- Notification library
 local naughty = require("naughty")
@@ -34,10 +36,7 @@ local kb = require("kb")
 -- bashets
 local bashets = require("bashets")
 
-
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.getdir("config") .. "/themes/blue/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
@@ -396,15 +395,25 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
+    { rule = { class = "Vlc" },
       properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Gimp" },
+      properties = { tag = tags[1][5], floating = true } },
+    { rule = { class = "Firefox" },
+    properties = { tag = tags[1][2] } },
+    { rule = { class = "Double" },
+    properties = { tag = tags[1][3] } },
+    { rule = { class = "Thunderbird" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Skype" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Empathy" },
+    properties = { tag = tags[1][4] } },
+    { rule = { class = "Pac" },
+    properties = { tag = tags[1][6] } },
+    { rule = { class = "Sublime" },
+    properties = { tag = tags[1][7] } },
+
 }
 -- }}}
 
@@ -479,5 +488,23 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+function run_once(prg,arg_string,pname,screen)
+    if not prg then
+        do return nil end
+    end
+
+    if not pname then
+       pname = prg
+    end
+
+    if not arg_string then 
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+    else
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
+    end
+end
+
+require("autostart")
 
 -- }}}
