@@ -105,7 +105,8 @@ awful.menu.menu_keys.close = { "Escape", "BackSpace", }
 myawesomemenu = {
    { "manual", terminal .. ' -e "source ~/.bashrc; man awesome"' },
    { "edit config", terminal .. ' -e "source ~/.bashrc;' .. editor .. " " .. awesome.conffile .. '"' },
-   { "restart", awesome.restart },
+   { "reload", awesome.restart },
+   { "reboot", "sudo reboot" },
    { "quit", awesome.quit }
 }
 
@@ -413,6 +414,8 @@ awful.rules.rules = {
     properties = { tag = tags[1][6] } },
     { rule = { class = "Sublime" },
     properties = { tag = tags[1][7] } },
+    { rule = { class = "libreoffice" },
+      properties = { tag = tags[1][5]} },
 
 }
 -- }}}
