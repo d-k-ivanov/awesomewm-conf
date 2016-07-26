@@ -1,6 +1,6 @@
 # Awesome config
 
-Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his (awesome-wm-configh)[https://github.com/pw4ever/awesome-wm-config]
+Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-configh](https://github.com/pw4ever/awesome-wm-config).
 Maybe in future I'll make all-in-one-ultimate-awesome-config. You can use GutHub issues for feature requests and any other offers. 
 
 ### Dependencies
@@ -31,7 +31,7 @@ Modkey4+Control+r to restart awesome
 
 To change theme you need to change path to current theme in 2 files: *rc.lua* and *widgets.lua*
 
-**Line to change:**
+*Line to change:*
 ```
 beautiful.init(awful.util.getdir("config") .. "/themes/blue/theme.lua")
 ```
