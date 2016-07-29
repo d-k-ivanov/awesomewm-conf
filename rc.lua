@@ -42,6 +42,8 @@ local bashets = require("bashets")
 terminal = "terminator"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+file_manager = "nautilus"
+local file_manager_started = false
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -79,9 +81,9 @@ local layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "main", "www", "comander", "messages",
-             "office","pac", "work", "vim", "vim" },
-  layout = { layouts[1], layouts[2], layouts[1], layouts[6],
+  names  = { "IDE", "www", "comander", "messages",
+             "office","pac", "SQL", "vim", "other" },
+  layout = { layouts[10], layouts[2], layouts[1], layouts[6],
              layouts[6], layouts[6], layouts[6], layouts[6], layouts[6]
 }}
 for s = 1, screen.count() do
@@ -277,6 +279,16 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+
+    awful.key({ modkey,           }, "e", function () 
+                                            if file_manager_started then
+                                              awful.util.spawn("pkill -f '" .. file_manager .. "'")
+                                            else
+                                              awful.util.spawn(file_manager)
+                                            end
+                                            file_manager_started=not file_manager_started
+                                          end),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -402,21 +414,19 @@ awful.rules.rules = {
       properties = { tag = tags[1][5], floating = true } },
     { rule = { class = "Firefox" },
     properties = { tag = tags[1][2] } },
-    { rule = { class = "Double" },
-    properties = { tag = tags[1][3] } },
+    --{ rule = { class = "Double" },
+    --properties = { tag = tags[1][3] } },
     { rule = { class = "Thunderbird" },
     properties = { tag = tags[1][4] } },
     { rule = { class = "Skype" },
     properties = { tag = tags[1][4] } },
-    { rule = { class = "Empathy" },
-    properties = { tag = tags[1][4] } },
-    { rule = { class = "Pac" },
+     { rule = { class = "Pac" },
     properties = { tag = tags[1][6] } },
     { rule = { class = "Sublime" },
-    properties = { tag = tags[1][7] } },
+    properties = { tag = tags[1][1] } },
     { rule = { class = "libreoffice" },
       properties = { tag = tags[1][5]} },
-
+    
 }
 -- }}}
 
