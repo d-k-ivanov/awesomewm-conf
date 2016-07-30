@@ -39,7 +39,7 @@ local bashets = require("bashets")
 -- {{{ Variable definitions
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminator"
+terminal = "sakura"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 file_manager = "nautilus"
@@ -104,13 +104,22 @@ awful.menu.menu_keys.exec = { "Return", "Space", }
 awful.menu.menu_keys.close = { "Escape", "BackSpace", }
 
 -- Create a laucher widget and a main menu
+--myawesomemenu = {
+--   { "manual", terminal .. ' -e "source ~/.bashrc; man awesome"' },
+--   { "edit config", terminal .. ' -e "source ~/.bashrc;' .. editor .. " " .. awesome.conffile .. '"' },
+--   { "reload", awesome.restart },
+--   { "reboot", "sudo reboot" },
+--   { "quit", awesome.quit }
+--}
+-- Sackura
 myawesomemenu = {
-   { "manual", terminal .. ' -e "source ~/.bashrc; man awesome"' },
-   { "edit config", terminal .. ' -e "source ~/.bashrc;' .. editor .. " " .. awesome.conffile .. '"' },
+   { "manual", terminal .. ' -e "man awesome"' },
+   { "edit config", terminal .. ' -e "' .. editor .. " " .. awesome.conffile .. '"' },
    { "reload", awesome.restart },
    { "reboot", "sudo reboot" },
    { "quit", awesome.quit }
 }
+
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Applications", xdgmenu },
