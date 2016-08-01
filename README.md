@@ -6,13 +6,20 @@ Maybe in future I'll make all-in-one-ultimate-awesome-config. You can use GutHub
 ### Dependencies
 
 I'd recommend use ArchLinux with this config, because of arch menu generation, but it isn't necessary.
+Any dependencies you can find in rc.lua and change for something yours.
 
-1. [awesome wm](https://awesome.naquadah.org)                         - =)
-2. [terminator](http://gnometerminator.blogspot.ru)                   - as a default terminal, you can use any, just replace the name of terminal in rc.lua
-3. [vim](http://www.vim.org)                                          - my favorite text editor, so the same just replace the name of it in rc.lua for any you like
-4. [gnome-control-center](https://launchpad.net/gnome-control-center) - for power manipulation
-5. [gnome-alsamixer](https://launchpad.net/gnome-alsamixer)           - for GUI volume manipulation
-6. [alsa-utils](http://www.alsa-project.org/main/index.php/Download)  - for integrated volume manipulation  
+1.    [awesome wm](https://awesome.naquadah.org)                         - =)
+2.    [sakura](http://gnometerminator.blogspot.ru)                       - as a default terminal, you can use any, just replace the name of terminal in rc.lua
+3.    [vim](http://www.vim.org)                                          - my favorite text editor, so the same just replace the name of it in rc.lua for any you like
+4.    [gnome-control-center](https://launchpad.net/gnome-control-center) - for power manipulation
+5.    [gnome-alsamixer](https://launchpad.net/gnome-alsamixer)           - for GUI volume manipulation
+6.    [alsa-utils](http://www.alsa-project.org/main/index.php/Download)  - for integrated volume manipulation  
+7.    [Shutter]
+8.    [spacefm]
+9.    [tmux]
+10.   [nautilus]
+11.   [xfe]
+12.   [firefox]
 
 ### Installation
 
@@ -87,19 +94,15 @@ awful.rules.rules = {
 
 ### Themes
 
-To change theme you need to change path to current theme in *rc.lua*
+To change theme you need to change theme name and main colour in *theme.lua*
 
-*Line to change:*
-```
-beautiful.init(awful.util.getdir("config") .. "/themes/blue/theme.lua")
-```
 
 I created following themes:
-* Red    - 'red'
 * Blue   - 'blue'
-* Green  - 'green'
-* Yellow - 'yellow'
 * Gray   - 'gray'
+* Green  - 'green'
+* Red    - 'red'
+* Yellow - 'yellow'
 * Zen    - 'zen'
 
 *Screenshot:*

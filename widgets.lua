@@ -1,35 +1,35 @@
--- Standard awesome library
-local awful = require("awful")
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local vicious = require("vicious")
-local naughty = require("naughty")
+local awful       = require("awful")
+local wibox       = require("wibox")
+local beautiful   = require("beautiful")
+local vicious     = require("vicious")
+local naughty     = require("naughty")
+local blingbling  = require("blingbling")
 
--- Main spacer
-spacer       = wibox.widget.textbox()
+--{{---| Main spacer  |---------------------------------------------------------------------------
+spacer            = wibox.widget.textbox()
 spacer:set_text(' | ')
 
--- Spacers
-volspace = wibox.widget.textbox()
+--{{---| Voliume spacer  |---------------------------------------------------------------------------
+volspace          = wibox.widget.textbox()
 volspace:set_text(" ")
 
--- {{{ BATTERY
--- Battery attributes
-local bat_state  = ""
-local bat_charge = 0
-local bat_time   = 0
-local blink      = true
+--{{---| Battery  |---------------------------------------------------------------------------
+  -- Battery attributes
+local bat_state   = ""
+local bat_charge  = 0
+local bat_time    = 0
+local blink       = true
 
--- Icon
-baticon = wibox.widget.imagebox()
+  -- Icon
+baticon           = wibox.widget.imagebox()
 baticon:set_image(beautiful.battery_full)
 
--- Charge %
-batpct = wibox.widget.textbox()
+  -- Charge %
+batpct            = wibox.widget.textbox()
 vicious.register(batpct, vicious.widgets.bat, function(widget, args)
-  bat_state  = args[1]
-  bat_charge = args[2]
-  bat_time   = args[3]
+  bat_state       = args[1]
+  bat_charge      = args[2]
+  bat_time        = args[3]
 
   if args[1] == "↯" then
     baticon:set_image(beautiful.battery_charging_full)
@@ -68,7 +68,7 @@ vicious.register(batpct, vicious.widgets.bat, function(widget, args)
   return args[2] .. "%"
 end, nil, "BAT0")
 
--- Buttons
+  -- Buttons
 function popup_bat()
   local state = ""
   if bat_state == "↯" then
@@ -89,10 +89,6 @@ function popup_bat()
     " (" .. bat_time .. ")", timeout = 5, hover_timeout = 0.5 }
 end
 
---function power_menu()
---  local prog="gnome-control-center power"
---  awful.util.spawn(prog)
---end
 do
 local started=false
   batpct:buttons(awful.util.table.join(
@@ -114,27 +110,24 @@ baticon:buttons(batpct:buttons())
 
 batt = wibox.widget.textbox()
 vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
--- End Battery}}}
 
 
--- Network usage widget
--- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
+--{{---| Network usage  |---------------------------------------------------------------------------
+  -- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
 lan_usage = wibox.widget.textbox()
--- Register widget
+  -- Register widget
 vicious.register(lan_usage, vicious.widgets.net, '<span color="#CC9393">${enp6s0 down_kb}</span> <span color="#7F9F7F">${enp6s0 up_kb}</span>', 3)
 
 wifi_usage = wibox.widget.textbox()
--- Register widget
+  -- Register widget
 vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
--- End Network usage}}}
 
-
--- {{{ VOLUME
--- Cache
+--{{---| Volume  |---------------------------------------------------------------------------
+  -- Cache
 vicious.cache(vicious.widgets.volume)
--- Icon
+  -- Icon
 volicon = wibox.widget.imagebox()
--- Volume %
+  -- Volume %
 volpct = wibox.widget.textbox()
 vicious.register(volpct, vicious.widgets.volume, function(widget, args)
   vol_level = args[1]
@@ -157,7 +150,7 @@ vicious.register(volpct, vicious.widgets.volume, function(widget, args)
   return args[1] .. "%"
 end, nil, "Master")
 
--- Buttons
+  -- Buttons
 do
   local started=false
   volicon:buttons(awful.util.table.join(
@@ -178,11 +171,28 @@ end
 
 volpct:buttons(volicon:buttons())
 volspace:buttons(volicon:buttons())
--- End VOLUME }}}
+
+--{{---| Keyboard layout - widget|---------------------------------------------------------------------------
+kbdcfg        = {}
+kbdcfg.cmd      = "setxkbmap"
+kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
+kbdcfg.current  = 1  -- us is our default layout
+kbdcfg.widget     = wibox.widget.textbox()
+kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
+kbdcfg.switch     = function ()
+  kbdcfg.current  = kbdcfg.current % #(kbdcfg.layout) + 1
+  local t = kbdcfg.layout[kbdcfg.current]
+  kbdcfg.widget:set_text(" " .. t[3] .. " ")
+  os.execute( kbdcfg.cmd .. " " .. t[1] .. ",us " .. t[2] )
+end
+
+--{{---| Keyboard layout - mouse |---------------------------------------------------------------------------
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
+)
 
 
--- CLOCK WIDGET
--- Create a textclock widget
+--{{---| Clock  |---------------------------------------------------------------------------
 mytextclock = awful.widget.textclock()
 do
 local started=false
@@ -196,4 +206,3 @@ local started=false
       started=not started
     end)
 end
--- END CLOCK

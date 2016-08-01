@@ -1,34 +1,38 @@
--- Standard awesome library
-local awful = require("awful")
-local naughty = require("naughty")
+local awful     = require("awful")
+local naughty   = require("naughty")
+local beautiful = require("beautiful")
 
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
+--{{---| Naughty theme |----------------------------------------------------------------------------
+naughty.config.presets.normal.font         = beautiful.notify_font
+naughty.config.presets.normal.fg           = beautiful.notify_fg
+naughty.config.presets.normal.bg           = beautiful.notify_bg
+naughty.config.presets.normal.border_color = beautiful.notify_border
+naughty.config.presets.normal.opacity      = 0.8
+naughty.config.presets.low.opacity         = 0.8
+naughty.config.presets.critical.opacity    = 0.8
+
+
+--{{---| Error handling |---------------------------------------------------------------------------
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
                      text = awesome.startup_errors })
 end
---
--- Handle runtime errors after startup
+
 do
     local in_error = false
     awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
-
         naughty.notify({ preset = naughty.config.presets.critical,
                          title = "Oops, an error happened!",
                          text = err })
         in_error = false
     end)
 end
--- }}}
---
--- Battery notification [created by bpdp]
+
+--{{---| Battery notification |---------------------------------------------------------------------------
 local function trim(s)
   return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
 end
@@ -55,5 +59,4 @@ end
 battimer = timer({timeout = 120})
 battimer:connect_signal("timeout", bat_notification)
 battimer:start()
---  }}} END of Battery notofication
---
+
