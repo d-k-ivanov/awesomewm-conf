@@ -206,3 +206,31 @@ local started=false
       started=not started
     end)
 end
+
+--{{---| System Settings |---------------------------------------------------------------------------
+
+setIcon = wibox.widget.imagebox()
+setIcon:set_image(beautiful.system_monitor_icon)
+  -- Buttons
+do
+  local started_1=false
+  local started_2=false
+  setIcon:buttons(awful.util.table.join(
+     awful.button({ }, 1, function() 
+      if started_1 then
+        awful.util.spawn("pkill -f 'lxtask'")
+      else
+        awful.util.spawn("lxtask")
+      end
+      started_1=not started_1
+    end),
+     awful.button({ }, 3, function() 
+      if started_3 then
+        awful.util.spawn("pkill -f 'gnome-control-center'")
+      else
+        awful.util.spawn("gnome-control-center")
+      end
+      started_3=not started_3
+    end)
+  ))
+end 

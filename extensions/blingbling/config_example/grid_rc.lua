@@ -39,8 +39,10 @@ local layouts =
     awful.layout.suit.floating,
 }
 
-for s = 1, screen.count() do
-  gears.wallpaper.maximized("/home/cedlemo/Projets/Lua/blingbling/config_example/tiles_grey.png", s, true)
+if beautiful.wallpaper then
+    for s = 1, screen.count() do
+        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+    end
 end
 
 tags = {}
@@ -417,6 +419,5 @@ grid:add_child(texts[1], 1, 1, 1, 1)
 grid:add_child(texts[2], 2, 1, 1, 1)
 grid:add_child(texts[3], 1, 2, 2, 2)
 grid:add_child(texts[4], 3, 2, 2, 2)
-grid:add_child(texts[5], 3, 1, 2, 1)
 
 grid_box:set_widget(grid)

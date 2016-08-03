@@ -6,56 +6,39 @@ Blingbling is a graphical widget library for Awesome Windows Manager. The goal o
 
 Originally, I have written Blingbling for myself but I share it under the GNU GPL-v2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html). Testers and feedbacks are welcome!
 
-## Versions
-
-The current version is the v2.2 and it works with Awesome WM <= awesome v3.5.8 and Lua <= 5.3. Don't use the master branch of blingbling, this is an advice not an obligation. Some widgets may not work as expected because I am working on them. See the installation part below, in order to install the v2.2 version.
+The current version is the v2.1 and works with Awesome WM <= awesome v3.5.8 and Lua <= 5.3. There are a lot of changes between the v1.0 and the v2.0. Open the doc/index.html file if you want to read an exhaustive documentation.
 
 <img src="https://raw.github.com/cedlemo/blingbling/master/config_example/japanese2_screen.png" width="576" height="324" alt="Screenshot">
 
-<img src="https://raw.github.com/cedlemo/blingbling/master/config_example/graphs_test_screen.png" width="576" height="324" alt="Screenshot">
 
-<img src="https://raw.github.com/cedlemo/blingbling/master/config_example/screenshot_extended_calendar.png" width="576" height="324" alt="Screenshot">
+<img src="https://raw.github.com/cedlemo/blingbling/master/config_example/graphs_test/screenshot.png" width="576" height="324" alt="Screenshot">
 
-### Version: v2.2
+### Version: v2.1
 
-*  [line_graph](#line_graph)
-*  [progress_graph](#progress_graph)
-*  [triangular_progress_graph](#triangular_progress_graph)
-*  [value_text_box](#value_text_box)
-*  [volume](#value_text_box)
-*  [popups](#popups)
-*  [net](#net)
-*  [task_warrior](#task_warrior)
-*  [udisks_glue](#udisks_glue)
-*  [system](#system)
-*  [clock](#clock)
-*  [tagslist](#tagslist)
-*  [text_box](#text_box)
-*  [calendar](#calendar)
-*  [extended_calendar](#calendar)
-*  [grid](#grid)
-*  [transient](#transient)
+*  line_graph
+*  progress_graph
+*  triangular_progress_graph
+*  value_text_box
+*  volume
+*  popups
+*  net
+*  task_warrior
+*  udisks_glue
+*  system
+*  clock
+*  tagslist
+*  text_box
+*  calendar
+*  transient
 
 This part is an adaptation of some of the wlourf awesome stuff : http://wlourf.deviantart.com/art/widgets-for-awesome-wm-v1-3-269061228.
 *  wlourf circle
 
 #### Installation
-with `$XDG_CONFIG_HOME` usually `~/.config`
+($XDG_CONFIG_HOME usually ~/.config)
 
-*    With Git:
-
-        cd $XDG_CONFIG_HOME/awesome/
-        git clone git://github.com/cedlemo/blingbling.git
-        cd blingbling
-        git checkout v2.2
-
-*   Download with command line tools
-
-        cd $XDG_CONFIG_HOME/awesome/
-        wget https://github.com/cedlemo/blingbling/archive/v2.2.zip
-        unzip v2.2.zip blingbling
-
-*   Download with your browser go to : https://github.com/cedlemo/blingbling/tree/v2.2
+    cd $XDG_CONFIG_HOME/awesome/
+    git clone git://github.com/cedlemo/blingbling.git
 
 #### Use:
 In your rc.lua:
@@ -63,7 +46,8 @@ In your rc.lua:
     require("blingbling")
 
 ##### Documentation
-You can find a full documentation for each widgets in the doc directory, just open the index.html file.
+You can find a full documentation on each widgets in the doc directory, just open the index.html file.
+
 
 ##### line_graph
 Create a line graph and fill it with vicious for example (you can configure the widget with a table or with the related methods ):
@@ -202,7 +186,7 @@ This part provides a clock which displays month, day of month and day of week in
 mytextclock = blingbling.clock.japanese(" %m、%d、%w、<span color=\"#999999\">%H<span color=\""..blingbling.helpers.rgb(20,31,82).."\">時</span>%M<span color=\""..blingbling.helpers.rgb(20,31,82).."\">分</span> </span>")
 ```
 
-##### text_box
+##### tex_box
 The blingbling.text_box are widget like Awesome textbox but with more parameters. 
 * background_color the color used to fill the background
 * text_background_color a background color that will be set between the background and the text
@@ -232,72 +216,13 @@ left_layout:add(wibox.layout.margin(mytag[s],0,0,1,1))
 ```
 
 ##### calendar
-This widget is different from the calendar of the v2.2 version. It is just a simple [grid](#grid) displaying days of month, week numbers. There are 3 buttons on the first row of the grid that allow you to displays the previous and next month or to return to the current month. Unlike the previous version, it must be added to a wibox in order to be displayed.
-
-You can test it with the file **config_example/calendar_rc.lua** and the simple theme **config_example/calendar_tests/**. If you want a calendar that offers the same functionnalities than the previous calendar widget, you should use the [extended_calendar](#extended_calendar).
+This widget is a clock widget with a calendar. You can show the calendar for the current month with a mouse click on this widget. In the calendar, there is 3 buttons allowing to show previous, current and next month. You can get events from remind and taskwarrior or add handlers for other task/calendar software.
 
 ```lua
-
-cal_box = wibox({height = 200, width = 240, ontop = true, x = 200, y = 200})
-cal_box.visible = true
-local blingbling = require("blingbling")
-
--- cal = blingbling.calendar({locale = 'fr_FR'})
-cal = blingbling.calendar()
-cal_box:set_widget(cal)
-cal_box.visible = true
+calendar = blingbling.calendar()
+calendar:set_link_to_external_calendar(true)
 ```
 
-##### extended_calendar
-This widget is the new version of the calendar module of blingbling v2.2. While the calendar widget is a grid that displays days of month with some little functionnalities, extended_calendar is a wibox that contains a calendar widget and other text_box widgets. It allow you to register callbacks so that when you hover your cursor on a day cell, it triggers you callback. A working example can be find here config_example/extended_calendar_rc.lua. (it needs the application *remind* and you should adapt the code with your *remind* configuration file)
-
-```lua
--- The arguments of the callback should be vizualized as :
--- calendar_day_widget : the widget that we focus on (it is a blingbling.text_box)
--- month : a number for the month that is displayed by the calendar
--- year  : a number for the year that is displayed by the calendar
--- info_cell : the blingbling.text_box on the right of the extended_calendar grid
-local function print_info_enter(calendar_day_widget, month, year, info_cell)
-  local day = calendar_day_widget._layout.text
-  local month = month
-  local day = day
-  local str = day .."/"..month.."/"..year.." : No events for this day"
-  info_cell:set_text(str)
-end
-
-local function print_info_leave(widget, month, year, info_cell)
-  info_cell:set_text("")
-end
-
-cal = blingbling.extended_calendar({height = 300, width = 500, 
-                                    ontop = true, x = 200, y = 200,
-                                    days_mouse_enter = print_info_enter,
-                                    days_mouse_leave = print_info_leave})
-
-```
-
-##### grid
-It is a layout/container widget. It allows you to add child in the same way of the `GtkGrid`. The best way to see is to try the ***config_example/grid_rc.lua***.
-
-```lua
-texts = {}
-for i=1,5 do 
-  c = tostring(i - 1)
-  texts[i] = blingbling.text_box({text = tostring(i),
-                            background_color = "#"..c..c..c..c..c..c,
-                            rounded_size = 0,
-                            h_margin = 0,
-                            v_margin = 0})
-end
-
-grid:add_child(texts[1], 1, 1, 1, 1) -- child, left, top , width, height
-grid:add_child(texts[2], 2, 1, 1, 1)
-grid:add_child(texts[3], 1, 2, 2, 2)
-grid:add_child(texts[4], 3, 2, 2, 2)
-grid:add_child(texts[5], 3, 1, 2, 1)
-
-grid_box:set_widget(grid)
-```
 ##### transient
 It is a wibox that can be displayed for a short amount of time. ( TODO : usage example)
 
@@ -452,8 +377,13 @@ Check your package manager to see if you can install an already packaged version
 Author:
 -------
 
-Cédric Le Moigne cedlemo contact: cedlemo at gmx dot com
+cedlemo contact: cedlemo at gmx dot com
 
 Contributors
 -------
+
 https://github.com/cedlemo/blingbling/graphs/contributors
+
+quizzmaster
+
+mykhaylo-

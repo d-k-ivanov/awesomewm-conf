@@ -48,6 +48,7 @@ beautiful.init(current_theme .. "/theme.lua")
 terminal = "tortosa"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -86,7 +87,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "一", "二" , "三","四", "五", "六", "七", "八", "九" }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -111,9 +112,69 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
-local blingbling = require('blingbling')
-local calendar = blingbling.calendar()
+local blingbling = require("blingbling")
+local cpu_graph = blingbling.line_graph({height = 30,
+                                        width = 200,
+                                        show_text = true,
+                                        label = "Load: $percent %",
+                                        rounded_size = 0.3,
+                                      })
+local vicious = require("vicious")
+vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
+local tpgraph = blingbling.triangular_progress_graph({height = 30,
+                                        width = 60,
+                                        show_text = true,
+                                        label = "Load: $percent %",
+                                        }
+)
+local  tpgraph_val = 1.0
+tpgraph:buttons(awful.util.table.join(
+  awful.button({ }, 5, function()
+    tpgraph_val = tpgraph_val - 0.02
+    tpgraph:set_value(tpgraph_val)
+  end),
+  awful.button({ }, 4, function()
+    tpgraph_val = tpgraph_val + 0.02
+    tpgraph:set_value(tpgraph_val)
+end)))
 
+local volume = blingbling.volume({height = 30,
+                                        width = 60,
+                                        show_text = true,
+                                        bar = true,
+                                        label = "Vol: $percent %",
+                                        })
+volume:update_master()
+volume:set_master_control()
+
+local v_pgraph = blingbling.progress_graph({height = 30,
+                                        width = 60,
+                                        show_text = true,
+                                        graph_line_color = "#00000000"})
+v_pgraph:set_value(0.6)
+
+local h_pgraph = blingbling.progress_graph({height = 30,
+                                        width = 60,
+                                        horizontal = true,
+                                        rounded_size = 0.3,      
+                                        graph_line_color = "#00000000",
+                                        show_text = true})
+h_pgraph:set_value(0.6)
+
+local circle_graph = blingbling.wlourf_circle_graph({radius = 12,
+                                                     show_text = true,
+                                                     label = "awesome"})
+local circle_val = 1.0
+circle_graph:set_value(circle_val)
+circle_graph:buttons(awful.util.table.join(
+  awful.button({ }, 5, function()
+    circle_val = circle_val - 0.02
+    circle_graph:set_value(circle_val)
+  end),
+  awful.button({ }, 4, function()
+    circle_val = circle_val + 0.02
+    circle_graph:set_value(circle_val)
+end)))
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -180,25 +241,30 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s]=blingbling.tagslist(s,  awful.widget.taglist.filter.all, mytaglist.buttons --[[, { normal = {}, focus ={}, urgent={}, occupied={} }--]])
-    --mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 30 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
+    left_layout:add(cpu_graph)
+    left_layout:add(tpgraph)
+    left_layout:add(volume)
+    left_layout:add(v_pgraph)
+    left_layout:add(h_pgraph)
+    left_layout:add(circle_graph)
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(calendar)
+    right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)

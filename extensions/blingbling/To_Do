@@ -1,10 +1,4 @@
 --hight priority
---> See why a text_box doesn't display its content when the only parameter set 
-  is the text
-
---> Add documentation
-  calendar
-  extended_calendar
 
 --> use load_properties in all widgets
   line_graph.lua                  done
@@ -14,8 +8,8 @@
   progress_graph.lua              done
   net.lua                         done
   text_box.lua                    done
-  calendar.lua                    done
   tagslist.lua
+  calendar.lua
   popups.lua
 
 --> use pango layout instead of cairo text functionnalities
@@ -26,18 +20,13 @@
     triangular_progress_graph.lua done
 
 --> create a grid module
-  see how to deal sparse table (usage of the "-" doesn't seem very pro"
-  check the fit method
-
---> text_box
-  rename background_text_border to text_background_border
-  or remove the property
+  test env                        done
+  module skeleton                 done
 
 simplify value_text_box
 remove border for text background
 
--- clean calendar  almost done
-
+clean calendar 
 clean helpers (some methods with too much parameters)
 try to be consistent with the use of h_margin/v_margin names or h_padding/v_padding
 

@@ -26,7 +26,7 @@ end
 
 --{{---| Menu |----------------------------------------------------------------------------
 awful.menu        = require("awful.menu")
-local xdg_menu          = require("archmenu")
+local xdg_menu    = require("archmenu")
 local menubar     = require("menubar")
 
 --{{---| Widgets |----------------------------------------------------------------------------
@@ -42,15 +42,20 @@ local bashets     = require("bashets")
 --{{---| Variables |--------------------------------------------------------------------------------
 modkey            = "Mod4"
 terminal          = "sakura"
+terminal2         = "terminator"
 editor            = os.getenv("EDITOR") or "vim"
 editor_cmd        = terminal .. " -e " .. editor
-file_manager      = "nautilus"
 browser           = "firefox"
-fm                = "spacefm"
+fme               = "spacefm"
+fms               = "gnome-commander"
+fmx               = "pcmanfm"
 stmux             = terminal .. " -e tmux -2"
 
 --{{---| Session variables |--------------------------------------------------------------------------------
-local file_manager_started = false
+local fme_started = false
+local fms_started = false
+local fmx_started = false
+
 
 --{{---| Table of layouts |-------------------------------------------------------------------------
 local layouts     =
@@ -73,12 +78,12 @@ local layouts     =
 tags              = 
 {
   names           = { 
-                      "IDE", "www", "comander", "messages",
-                      "office","pac", "SQL", "vim", "other" 
+                      "IDE", "Web", "Files", "MSG",
+                      "PAC", "SQL", "Vim", "Office", "Other" 
                     },
   layout          = { 
-                      layouts[10], layouts[10], layouts[1], layouts[6],
-                      layouts[1], layouts[6], layouts[6], layouts[6], layouts[6]
+                      layouts[10], layouts[10], layouts[6], layouts[6],
+                      layouts[10], layouts[10], layouts[10], layouts[1], layouts[6]
                     }
 }
 
@@ -107,20 +112,21 @@ awful.menu.menu_keys.close  = { "Escape", "BackSpace", }
 --}
 -- Sakura
 myawesomemenu = {
-  { "manual",          terminal .. ' -e "man awesome"' },
-  { "edit config",     terminal .. ' -e "' .. editor .. " " .. awesome.conffile .. '"' },
-  { "reload",          awesome.restart },
-  { "quit",            awesome.quit },
-  { "reboot",          "sudo reboot" },
-  { "hibernate",       "sudo pm-hibernate"},
-  { "reboot",          "sudo shutdown -h 0" }
+  { "Read manual",            terminal .. ' -e "man awesome"',                                  beautiful.manual_icon     },
+  { "Edit Awesome config",    terminal .. ' -e "' .. editor .. " " .. awesome.conffile .. '"',  beautiful.edit_icon       },
+  { "Reload",                 awesome.restart,                                                  beautiful.reload_icon     },
+  { "Quit",                   awesome.quit,                                                     beautiful.quit_icon       },
+  { "Hibernate",              "sudo pm-hibernate",                                              beautiful.hibernate_icon  },
+  { "Reboot",                 "sudo reboot",                                                    beautiful.restart_icon    },
+  { "Shutdown",               "sudo shutdown -h 0",                                             beautiful.shutdown_icon   }
 }
 
 
 mymainmenu = awful.menu({ items = { 
-  { "Awesome",          myawesomemenu,  beautiful.awesome_icon  },
-  { "Applications",     xdgmenu,        beautiful.learning_icon },
-  { "Open terminal",    terminal,       beautiful.terminal_icon }
+  { "Awesome",          myawesomemenu,                                                          beautiful.awesome_icon    },
+  { "Applications",     xdgmenu,                                                                beautiful.packages_icon   },
+  { "Open Sakura",      terminal,                                                               beautiful.terminal_icon   },
+  { "Open Terminator",  terminal2,                                                              beautiful.terminator_icon }
 }
 })
 
@@ -208,27 +214,26 @@ for s = 1, screen.count() do
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
+
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(kbdcfg.widget)
-    
     right_layout:add(spacer)
-    
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(spacer)
+    right_layout:add(kbdcfg.widget)
+    right_layout:add(spacer)
     right_layout:add(baticon)
     right_layout:add(batpct)
-    
     right_layout:add(spacer)
-
     right_layout:add(volicon)
     right_layout:add(volpct)
     right_layout:add(volspace)
-
     right_layout:add(spacer)
-    
     --right_layout:add(lan_usage)
     --right_layout:add(spacer)
     --right_layout:add(wifi_usage)
+    right_layout:add(setIcon)
+    right_layout:add(spacer)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -284,28 +289,28 @@ globalkeys = awful.util.table.join(
 
 --{{---| File managers |----------------------------------------------------------------------------------
     awful.key({ modkey,           }, "e",       function () 
-                                                  if file_manager_started then
-                                                    awful.util.spawn("pkill -f '" .. file_manager .. "'")
+                                                  if fme_started then
+                                                    awful.util.spawn("pkill -f '" .. fme .. "'")
                                                   else
-                                                    awful.util.spawn(file_manager)
+                                                    awful.util.spawn(fme)
                                                   end
-                                                  file_manager_started=not file_manager_started
+                                                  fme_started = not fme_started
                                                 end),
     awful.key({ modkey,           }, "s",       function () 
-                                                  if file_manager_started then
-                                                    awful.util.spawn("pkill -f '" .. fm .. "'")
+                                                  if fms_started then
+                                                    awful.util.spawn("pkill -f '" .. fms .. "'")
                                                   else
-                                                    awful.util.spawn(fm)
+                                                    awful.util.spawn(fms)
                                                   end
-                                                  file_manager_started=not file_manager_started
+                                                  fms_started = not fms_started
                                                 end),
     awful.key({ modkey,           }, "x",       function () 
-                                                  if file_manager_started then
-                                                    awful.util.spawn("sudo pkill -f 'xfe'")
+                                                  if fmx_started then
+                                                    awful.util.spawn("pkill -f '" .. fmx .. "'")
                                                   else
-                                                    awful.util.spawn("xfe")
+                                                    awful.util.spawn(fmx)
                                                   end
-                                                  file_manager_started=not file_manager_started
+                                                  fmx_started = not fmx_started
                                                 end),
 
 --{{---| Standard |----------------------------------------------------------------------------------
@@ -321,7 +326,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space",   function () awful.layout.inc(layouts, -1)         end),
     awful.key({ modkey, "Control" }, "n",       awful.client.restore),
 
---{{---| Prompt |----------------------------------------------------------------------------------
+--{{---| Prompt |----------------------------------------------------------------------------------# lpinfo -m
     awful.key({ modkey },            "r",       function () mypromptbox[mouse.screen]:run()       end),
     awful.key({ modkey },            "Menu",    function () awful.util.spawn_with_shell("gmrun")  end),
 
@@ -426,21 +431,25 @@ awful.rules.rules = {
     { rule = { class = "Shutter" },
       properties = { floating = true } },
     { rule = { class = "Gimp" },
-      properties = { tag = tags[1][5], floating = true } },
+      properties = { tag = tags[1][8], floating = true } },
     { rule = { class = "Firefox" },
-    properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "Gnome-commander" },
+      properties = { tag = tags[1][3] } },
     --{ rule = { class = "Double" },
     --properties = { tag = tags[1][3] } },
+
+    
     { rule = { class = "Thunderbird" },
     properties = { tag = tags[1][4] } },
-    { rule = { class = "Skype" },
-    properties = { tag = tags[1][4] } },
-     { rule = { class = "Pac" },
-    properties = { tag = tags[1][6] } },
+    { rule = { class = "skype" },
+      properties = { tag = tags[1][4] } },
+    { rule = { class = "Pac" },
+      properties = { tag = tags[1][5] } },
     { rule = { class = "Sublime" },
-    properties = { tag = tags[1][1] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "libreoffice" },
-      properties = { tag = tags[1][5]} },
+      properties = { tag = tags[1][8]} },
     
 }
 
@@ -517,23 +526,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 --{{--| Autostart |---------------------------------------------------------------------------------
-function run_once(prg,arg_string,pname,screen)
-    if not prg then
-        do return nil end
-    end
-
-    if not pname then
-       pname = prg
-    end
-
-    if not arg_string then 
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
-    else
-        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
-    end
-end
-
-require("autostart")
+--require("autostart")
 
 
 --{{Xx----------------------------------------------------------------------------------------------
