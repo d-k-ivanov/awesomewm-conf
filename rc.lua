@@ -62,16 +62,17 @@ local layouts     =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.max
+    --awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.top,
+    --awful.layout.suit.fair.horizontal,
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max.fullscreen
+    
 }
 
 --{{---| Tags |-------------------------------------------------------------------------------------
@@ -82,8 +83,8 @@ tags              =
                       "PAC", "SQL", "Vim", "Office", "Other" 
                     },
   layout          = { 
-                      layouts[10], layouts[10], layouts[6], layouts[6],
-                      layouts[10], layouts[10], layouts[10], layouts[1], layouts[6]
+                      layouts[5], layouts[5], layouts[3], layouts[3],
+                      layouts[5], layouts[5], layouts[5], layouts[1], layouts[3]
                     }
 }
 
@@ -345,7 +346,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "Print",                     function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end),
 
 --{{---| Keyboard layout |----------------------------------------------------------------------------------
-    awful.key({ "Control" }, "Shift_L",         function() kbdcfg.switch()                        end)
+    awful.key({ "Mod1" }, "space",         function() kbdcfg.switch()                        end)
 )
 
 clientkeys = awful.util.table.join(
