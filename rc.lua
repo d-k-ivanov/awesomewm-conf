@@ -80,11 +80,11 @@ tags              =
 {
   names           = { 
                       "IDE", "Web", "Files", "MSG",
-                      "PAC", "SQL", "Vim", "Office", "Other" 
+                      "PAC", "SQL", "Vim", "Work", "Other" 
                     },
   layout          = { 
                       layouts[5], layouts[5], layouts[3], layouts[3],
-                      layouts[5], layouts[5], layouts[5], layouts[1], layouts[3]
+                      layouts[5], layouts[5], layouts[5], layouts[3], layouts[1]
                     }
 }
 
@@ -431,26 +431,24 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Shutter" },
       properties = { floating = true } },
-    { rule = { class = "Gimp" },
-      properties = { tag = tags[1][8], floating = true } },
+    { rule = { class = "Sublime" },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "Gnome-commander" },
       properties = { tag = tags[1][3] } },
     --{ rule = { class = "Double" },
     --properties = { tag = tags[1][3] } },
-
-    
     { rule = { class = "Thunderbird" },
-    properties = { tag = tags[1][4] } },
+      properties = { tag = tags[1][4] } },
     { rule = { class = "skype" },
       properties = { tag = tags[1][4] } },
     { rule = { class = "Pac" },
       properties = { tag = tags[1][5] } },
-    { rule = { class = "Sublime" },
-      properties = { tag = tags[1][1] } },
     { rule = { class = "libreoffice" },
       properties = { tag = tags[1][8]} },
+    { rule = { class = "Gimp" },
+      properties = { tag = tags[1][9], floating = true } },
     
 }
 
