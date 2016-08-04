@@ -48,12 +48,14 @@ editor_cmd        = terminal .. " -e " .. editor
 browser           = "firefox"
 fme               = "spacefm"
 fms               = "gnome-commander"
+fmd               = "doublecmd"
 fmx               = "pcmanfm"
 stmux             = terminal .. " -e tmux -2"
 
 --{{---| Session variables |--------------------------------------------------------------------------------
 local fme_started = false
 local fms_started = false
+local fmd_started = false
 local fmx_started = false
 
 
@@ -285,8 +287,8 @@ globalkeys = awful.util.table.join(
 --{{---| Hotkeys |----------------------------------------------------------------------------------
 
 --{{---| Terminal |----------------------------------------------------------------------------------
-    awful.key({ modkey,           }, "Return",  function () awful.util.spawn(terminal)          end),
-    awful.key({ modkey, "Control" }, "Return",  function () awful.util.spawn(stmux)             end), 
+    awful.key({ modkey,           }, "Return",  function () awful.util.spawn(terminal)            end),
+    awful.key({ modkey, "Control" }, "Return",  function () awful.util.spawn(stmux)               end), 
 
 --{{---| File managers |----------------------------------------------------------------------------------
     awful.key({ modkey,           }, "e",       function () 
@@ -297,14 +299,8 @@ globalkeys = awful.util.table.join(
                                                   end
                                                   fme_started = not fme_started
                                                 end),
-    awful.key({ modkey,           }, "s",       function () 
-                                                  if fms_started then
-                                                    awful.util.spawn("pkill -f '" .. fms .. "'")
-                                                  else
-                                                    awful.util.spawn(fms)
-                                                  end
-                                                  fms_started = not fms_started
-                                                end),
+    awful.key({ modkey,           }, "s",       function () awful.util.spawn(fms)                 end),
+    awful.key({ modkey,           }, "d",       function () awful.util.spawn(fmd)                 end),
     awful.key({ modkey,           }, "x",       function () 
                                                   if fmx_started then
                                                     awful.util.spawn("pkill -f '" .. fmx .. "'")
@@ -329,7 +325,7 @@ globalkeys = awful.util.table.join(
 
 --{{---| Prompt |----------------------------------------------------------------------------------# lpinfo -m
     awful.key({ modkey },            "r",       function () mypromptbox[mouse.screen]:run()       end),
-    awful.key({ modkey },            "Menu",    function () awful.util.spawn_with_shell("gmrun")  end),
+    awful.key({ modkey, "Shift" },   "r",       function () awful.util.spawn_with_shell("gmrun")  end),
 
     awful.key({ modkey, "Shift"   }, "x",
               function ()
@@ -346,7 +342,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "Print",                     function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end),
 
 --{{---| Keyboard layout |----------------------------------------------------------------------------------
-    awful.key({ "Mod1" }, "space",         function() kbdcfg.switch()                        end)
+    awful.key({ "Mod1" }, "space",              function() kbdcfg.switch()                        end)
 )
 
 clientkeys = awful.util.table.join(
@@ -427,28 +423,17 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "Vlc" },
-      properties = { floating = true } },
-    { rule = { class = "Shutter" },
-      properties = { floating = true } },
-    { rule = { class = "Sublime" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
-    { rule = { class = "Gnome-commander" },
-      properties = { tag = tags[1][3] } },
-    --{ rule = { class = "Double" },
-    --properties = { tag = tags[1][3] } },
-    { rule = { class = "Thunderbird" },
-      properties = { tag = tags[1][4] } },
-    { rule = { class = "skype" },
-      properties = { tag = tags[1][4] } },
-    { rule = { class = "Pac" },
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "libreoffice" },
-      properties = { tag = tags[1][8]} },
-    { rule = { class = "Gimp" },
-      properties = { tag = tags[1][9], floating = true } },
+    { rule = { class = "Vlc"              },  properties = { floating = true                    }},
+    { rule = { class = "Shutter"          },  properties = { floating = true                    }},
+    { rule = { class = "Sublime"          },  properties = { tag = tags[1][1]                   }},
+    { rule = { class = "Firefox"          },  properties = { tag = tags[1][2]                   }},
+    { rule = { class = "Gnome-commander"  },  properties = { tag = tags[1][3]                   }},
+    { rule = { class = "Doublecmd"         },  properties = { tag = tags[1][3]                   }},
+    { rule = { class = "Thunderbird"      },  properties = { tag = tags[1][4]                   }},
+    { rule = { class = "skype"            },  properties = { tag = tags[1][4]                   }},
+    { rule = { class = "Pac"              },  properties = { tag = tags[1][5]                   }},
+    { rule = { class = "libreoffice"      },  properties = { tag = tags[1][8]                   }},
+    { rule = { class = "Gimp"             },  properties = { tag = tags[1][9], floating = true  }},
     
 }
 

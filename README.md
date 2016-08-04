@@ -3,27 +3,14 @@
 Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-configh](https://github.com/pw4ever/awesome-wm-config).
 Maybe in future I'll make all-in-one-ultimate-awesome-config. You can use GutHub issues for feature requests and any other offers. 
 
-### Dependencies
-
+### Installation
 I'd recommend use ArchLinux with this config, because of arch menu generation, but it isn't necessary.
 Any dependencies you can find in rc.lua and change for something yours.
 
-1.    [awesome wm](https://awesome.naquadah.org)                         - =)
-2.    [sakura](http://gnometerminator.blogspot.ru)                       - as a default terminal, you can use any, just replace the name of terminal in rc.lua
-3.    [vim](http://www.vim.org)                                          - my favorite text editor, so the same just replace the name of it in rc.lua for any you like
-4.    [gnome-control-center](https://launchpad.net/gnome-control-center) - for power manipulation
-5.    [gnome-alsamixer](https://launchpad.net/gnome-alsamixer)           - for GUI volume manipulation
-6.    [alsa-utils](http://www.alsa-project.org/main/index.php/Download)  - for integrated volume manipulation  
-7.    [Shutter]
-8.    [spacefm]
-9.    [tmux]
-10.   [nautilus]
-11.   [xfe]
-12.   [firefox]
-
-### Installation
-
 ```
+# Dependencies:
+sudo pacman -S sacura terminator vim firefox spacefm gnome-commander doublecmd pcmanfm tmux gnome-control-center gnome-alsamixer alsa-utils pm-utils gmrun scrot xorg-setxkbmap lxtask
+
 git clone https://github.com/keepbot/awesome-config.git ~/.config/awesome
 
 touch ~/.config/awesome/autostart.lua
