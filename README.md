@@ -9,7 +9,9 @@ Any dependencies you can find in rc.lua and change for something yours.
 
 ```
 # Dependencies:
-sudo pacman -S sacura terminator vim firefox spacefm gnome-commander doublecmd pcmanfm tmux gnome-control-center gnome-alsamixer alsa-utils pm-utils gmrun scrot xorg-setxkbmap lxtask
+sudo pacman -S sacura terminator vim firefox spacefm gnome-commander doublecmd \
+               pcmanfm tmux gnome-control-center gnome-alsamixer alsa-utils    \
+               pm-utils gmrun scrot xorg-setxkbmap lxtask
 
 git clone https://github.com/keepbot/awesome-config.git ~/.config/awesome
 
