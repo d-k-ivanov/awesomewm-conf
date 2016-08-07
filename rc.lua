@@ -39,6 +39,9 @@ local handler     = require("handler")
 --{{---| Bashets |----------------------------------------------------------------------------
 local bashets     = require("bashets")
 
+--{{---| Java GUI's fix |---------------------------------------------------------------------------
+awful.util.spawn_with_shell("wmname LG3D")
+
 --{{---| Variables |--------------------------------------------------------------------------------
 modkey            = "Mod4"
 terminal          = "sakura"
@@ -287,8 +290,8 @@ globalkeys = awful.util.table.join(
 --{{---| Hotkeys |----------------------------------------------------------------------------------
 
 --{{---| Terminal |----------------------------------------------------------------------------------
-    awful.key({ modkey,           }, "Return",  function () awful.util.spawn(terminal)            end),
-    awful.key({ modkey, "Control" }, "Return",  function () awful.util.spawn(stmux)               end), 
+    awful.key({ modkey,           }, "Return",  function () awful.util.spawn(terminal2)            end),
+    awful.key({ modkey, "Control" }, "Return",  function () awful.util.spawn(terminal)               end), 
 
 --{{---| File managers |----------------------------------------------------------------------------------
     awful.key({ modkey,           }, "e",       function () 
@@ -510,7 +513,34 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 --{{--| Autostart |---------------------------------------------------------------------------------
---require("autostart")
+local awful     = require("awful")
+
+-- function run_once(prg,arg_string,pname,screen)
+--   if not prg then
+--     do return nil end
+--   end
+
+--   if not pname then
+--     pname = prg
+--   end
+
+--   if not arg_string then 
+--     awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+--   else
+--     awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
+--   end
+-- end
+
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+    findme = cmd:sub(0, firstspace-1)
+  end
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
+require("autostart")
 
 
 --{{Xx----------------------------------------------------------------------------------------------

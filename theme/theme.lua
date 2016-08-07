@@ -22,6 +22,7 @@ zen															= "#cacaa8"
 main_colour 												= green
 	
 theme.font                                  		= "Terminus 9"
+
 theme.fg_normal                             		= "#AAAAAA"
 --theme.fg_focus                              		= "#F0DFAF"
 theme.fg_focus                              		= main_colour
