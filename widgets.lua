@@ -8,7 +8,7 @@ local lain        = require("lain")
 
 --{{---| Main spacer  |---------------------------------------------------------------------------
 spacer            = wibox.widget.textbox()
-spacer:set_text('|')
+spacer:set_text(' | ')
 
 --{{---| Voliume spacer  |---------------------------------------------------------------------------
 volspace          = wibox.widget.textbox()
@@ -194,8 +194,7 @@ kbdcfg.widget:buttons(
 
 
 --{{---| Clock  |---------------------------------------------------------------------------
-clockicon   = wibox.widget.imagebox(beautiful.wclock_icon)
-mytextclock = awful.widget.textclock(" %H:%M ")
+mytextclock = awful.widget.textclock()
 lain.widgets.calendar:attach(mytextclock, { font_size = 9 })
 
 --{{---| System Settings |---------------------------------------------------------------------------

@@ -250,13 +250,12 @@ for s = 1, screen.count() do
     right_layout:add(volicon)
     right_layout:add(volpct)
     right_layout:add(volspace)
-    right_layout:add(spacer)
-    --right_layout:add(lan_usage)
-    --right_layout:add(spacer)
-    --right_layout:add(wifi_usage)
-    right_layout:add(setIcon)
+
     right_layout:add(spacer)
     right_layout:add(mytextclock)
+    right_layout:add(spacer)
+    right_layout:add(setIcon)
+    right_layout:add(volspace)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
