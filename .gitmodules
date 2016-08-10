@@ -1,0 +1,3 @@
+[submodule "extensions/lain"]
+	path = extensions/lain
+	url = https://github.com/copycat-killer/lain.git

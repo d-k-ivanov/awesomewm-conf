@@ -39,6 +39,9 @@ local handler     = require("handler")
 --{{---| Bashets |----------------------------------------------------------------------------
 local bashets     = require("bashets")
 
+--{{---| Lain |----------------------------------------------------------------------------
+local lain        = require("lain")
+
 --{{---| Java GUI's fix |---------------------------------------------------------------------------
 awful.util.spawn_with_shell("wmname LG3D")
 
@@ -69,7 +72,7 @@ local layouts     =
     awful.layout.suit.tile,
     awful.layout.suit.fair,
     awful.layout.suit.magnifier,
-    awful.layout.suit.max
+    awful.layout.suit.max,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
@@ -77,6 +80,18 @@ local layouts     =
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max.fullscreen
+    --lain.layout.cascade,
+    --lain.layout.cascadetile,
+    --lain.layout.centerfair,
+    --lain.layout.centerhwork,
+    --lain.layout.centerwork,
+    --lain.layout.centerworkd,
+    --lain.layout.termfair,
+    --lain.layout.uselessfair,
+    --lain.layout.uselesspiral,
+    --lain.layout.uselesstile
+
+
     
 }
 

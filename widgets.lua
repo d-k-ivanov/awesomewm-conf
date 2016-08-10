@@ -4,6 +4,7 @@ local beautiful   = require("beautiful")
 local vicious     = require("vicious")
 local naughty     = require("naughty")
 local blingbling  = require("blingbling")
+local lain        = require("lain")
 
 --{{---| Main spacer  |---------------------------------------------------------------------------
 spacer            = wibox.widget.textbox()
@@ -173,10 +174,10 @@ volpct:buttons(volicon:buttons())
 volspace:buttons(volicon:buttons())
 
 --{{---| Keyboard layout - widget|---------------------------------------------------------------------------
-kbdcfg        = {}
-kbdcfg.cmd      = "setxkbmap"
+kbdcfg            = {}
+kbdcfg.cmd        = "setxkbmap"
 kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
-kbdcfg.current  = 1  -- us is our default layout
+kbdcfg.current    = 1  -- us is our default layout
 kbdcfg.widget     = wibox.widget.textbox()
 kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
 kbdcfg.switch     = function ()
@@ -193,19 +194,9 @@ kbdcfg.widget:buttons(
 
 
 --{{---| Clock  |---------------------------------------------------------------------------
-mytextclock = awful.widget.textclock()
-do
-local started=false
-  mytextclock:connect_signal("button::press",
-    function()
-      if started then
-        awful.util.spawn("pkill -f 'gnome-control-center datetime'")
-      else
-        awful.util.spawn("gnome-control-center datetime")
-      end
-      started=not started
-    end)
-end
+clockicon   = wibox.widget.imagebox(beautiful.wclock_icon)
+mytextclock = awful.widget.textclock(" %H:%M ")
+lain.widgets.calendar:attach(mytextclock, { font_size = 9 })
 
 --{{---| System Settings |---------------------------------------------------------------------------
 

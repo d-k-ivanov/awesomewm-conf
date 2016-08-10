@@ -1,6 +1,6 @@
 theme 					= {}
 theme.wallpaper 		= "~/.config/awesome/wallpapers/pas.jpg"
--- blue | gray | green | red | yellow | zen
+-- blue | gray | green | purple | red | yellow | zen
 theme.colour 			= "purple"
 
 --{{--- Style ------------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ yellow														= "#f6be57"
 zen															= "#cacaa8"
 purple														= "#8476ad"
 
--- blue = dblue | gray = gray | green = dgreen | red = red | yellow = yellow | zen = zen | purple = purple
+-- blue = dblue | gray = gray | green = dgreen | purple = purple | red = red | yellow = yellow | zen = zen
 main_colour 												= purple
 	
 theme.font                                  		= "Terminus 9"
@@ -113,6 +113,19 @@ theme.layout_fullscreen 			= "~/.config/awesome/theme/" .. theme.colour .. "/lay
 theme.layout_magnifier  			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-huge/magnifier.png"
 theme.layout_floating   			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-huge/floating.png"
 
+--{{--- Lain layout ------------------------------------------------------------------------------------------
+--theme.useless_gap_width				= 9
+--theme.layout_cascade					= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/cascade.png"
+--theme.layout_cascadetile			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/cascadebrowse.png"
+--theme.layout_centerfair				= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/centerfair.png"
+--theme.layout_centerhwork			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/centerwork.png"
+--theme.layout_centerwork				= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/floating.png"
+--theme.layout_centerworkd			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/floating.png"
+--theme.layout_termfair				= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/termfair.png"
+--theme.layout_uselessfair			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/floating.png"
+--theme.layout_uselesspiral			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/floating.png"
+--theme.layout_uselesstile			= "~/.config/awesome/theme/" .. theme.colour .. "/layouts-lain/floating.png"
+
 --{{--- Theme icons ------------------------------------------------------------------------------------------
 theme.awesome_icon           		= "~/.config/awesome/theme/" .. theme.colour .. "/arch.png"
 theme.menu_submenu_icon      		= "~/.config/awesome/theme/" .. theme.colour .. "/submenu.png"
@@ -141,6 +154,9 @@ theme.volume_low						= "~/.config/awesome/theme/icons/volume/volume-low.png"
 theme.volume_muted					= "~/.config/awesome/theme/icons/volume/volume-muted.png"
 theme.volume_off						= "~/.config/awesome/theme/icons/volume/volume-off.png"
 
+--{{--- Taskbar icons ------------------------------------------------------------------------------------------
+theme.wclock_icon						= "~/.config/awesome/theme/icons/bar/clock.png"
+
 --{{--- User icons ------------------------------------------------------------------------------------------
 
 theme.package_icon					= "~/.config/awesome/theme/icons/apps/package.png"
@@ -158,7 +174,7 @@ theme.quit_icon						= "~/.config/awesome/theme/icons/apps/quit.png"
 theme.shutdown_icon					= "~/.config/awesome/theme/icons/apps/shutdown.png"
 theme.restart_icon					= "~/.config/awesome/theme/icons/apps/restart.png"
 theme.hibernate_icon					= "~/.config/awesome/theme/icons/apps/hibernate.png"
-theme.thunderbird_icon					= "~/.config/awesome/theme/icons/apps/thunderbird.png"
+theme.thunderbird_icon				= "~/.config/awesome/theme/icons/apps/thunderbird.png"
 
 --{{----------------------------------------------------------------------------
 
