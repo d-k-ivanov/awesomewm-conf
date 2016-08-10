@@ -120,19 +120,20 @@ awful.menu.menu_keys.close  = { "Escape", "BackSpace", }
 myawesomemenu = {
   { "Read manual",            terminal .. ' -e "man awesome"',                                  beautiful.manual_icon     },
   { "Edit Awesome config",    terminal .. ' -e "' .. editor .. " " .. awesome.conffile .. '"',  beautiful.edit_icon       },
-  { "Reload",                 awesome.restart,                                                  beautiful.reload_icon     },
-  { "Quit",                   awesome.quit,                                                     beautiful.quit_icon       },
-  { "Hibernate",              "sudo pm-hibernate",                                              beautiful.hibernate_icon  },
-  { "Reboot",                 "sudo reboot",                                                    beautiful.restart_icon    },
-  { "Shutdown",               "sudo shutdown -h 0",                                             beautiful.shutdown_icon   }
+  { "Reload",                 awesome.restart,                                                  beautiful.reload_icon     }
+
 }
 
 
 mymainmenu = awful.menu({ items = { 
-  { "Awesome",          myawesomemenu,                                                          beautiful.awesome_icon    },
-  { "Applications",     xdgmenu,                                                                beautiful.packages_icon   },
-  { "Open Sakura",      terminal,                                                               beautiful.terminal_icon   },
-  { "Open Terminator",  terminal2,                                                              beautiful.terminator_icon }
+  { "Awesome",                myawesomemenu,                                                    beautiful.awesone_default },
+  { "Applications",           xdgmenu,                                                          beautiful.awesome_icon    },
+  { "Open Sakura",            terminal,                                                         beautiful.terminal_icon   },
+  { "Open Terminator",        terminal2,                                                        beautiful.terminator_icon },
+  { "Quit",                   awesome.quit,                                                     beautiful.quit_icon       },
+  { "Hibernate",              "sudo pm-hibernate",                                              beautiful.hibernate_icon  },
+  { "Reboot",                 "sudo reboot",                                                    beautiful.restart_icon    },
+  { "Shutdown",               "sudo shutdown -h 0",                                             beautiful.shutdown_icon   }
 }
 })
 
@@ -223,7 +224,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    right_layout:add(spacer)
+    --right_layout:add(spacer)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(spacer)
     right_layout:add(kbdcfg.widget)
@@ -417,28 +418,7 @@ root.keys(globalkeys)
 
 --{{---| Rules |------------------------------------------------------------------------------------
 -- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { class = "Vlc"              },  properties = { floating = true                    }},
-    { rule = { class = "Shutter"          },  properties = { floating = true                    }},
-    { rule = { class = "Sublime"          },  properties = { tag = tags[1][1]                   }},
-    { rule = { class = "Firefox"          },  properties = { tag = tags[1][2]                   }},
-    { rule = { class = "Gnome-commander"  },  properties = { tag = tags[1][3]                   }},
-    { rule = { class = "Doublecmd"         },  properties = { tag = tags[1][3]                   }},
-    { rule = { class = "Thunderbird"      },  properties = { tag = tags[1][4]                   }},
-    { rule = { class = "skype"            },  properties = { tag = tags[1][4]                   }},
-    { rule = { class = "Pac"              },  properties = { tag = tags[1][5]                   }},
-    { rule = { class = "libreoffice"      },  properties = { tag = tags[1][8]                   }},
-    { rule = { class = "Gimp"             },  properties = { tag = tags[1][9], floating = true  }},
-    
-}
+require("rules")
 
 --{{---| Signals |----------------------------------------------------------------------------------
 -- Signal function to execute when a new client appears.

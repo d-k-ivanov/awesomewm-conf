@@ -1,7 +1,7 @@
 theme 					= {}
 theme.wallpaper 		= "~/.config/awesome/wallpapers/pas.jpg"
 -- blue | gray | green | red | yellow | zen
-theme.colour 			= "green"
+theme.colour 			= "purple"
 
 --{{--- Style ------------------------------------------------------------------------------------------
 cyan  														= "#7f4de6"
@@ -17,9 +17,10 @@ green 														= "#84df19"
 red   														= "#eb2f6d"
 yellow														= "#f6be57"
 zen															= "#cacaa8"
+purple														= "#8476ad"
 
--- blue = dblue | gray = gray | green = dgreen | red = red | yellow = yellow | zen = zen
-main_colour 												= green
+-- blue = dblue | gray = gray | green = dgreen | red = red | yellow = yellow | zen = zen | purple = purple
+main_colour 												= purple
 	
 theme.font                                  		= "Terminus 9"
 
@@ -149,6 +150,7 @@ theme.system_monitor_icon			= "~/.config/awesome/theme/icons/apps/system_monitor
 theme.terminal_icon					= "~/.config/awesome/theme/icons/apps/terminal.png"
 theme.terminator_icon				= "~/.config/awesome/theme/icons/apps/terminator.png"
 
+theme.awesone_default				= "~/.config/awesome/theme/icons/awesome-default.png"
 theme.manual_icon						= "~/.config/awesome/theme/icons/apps/manual.png"
 theme.edit_icon						= "~/.config/awesome/theme/icons/apps/edit.png"
 theme.reload_icon						= "~/.config/awesome/theme/icons/apps/reload.png"
@@ -156,6 +158,7 @@ theme.quit_icon						= "~/.config/awesome/theme/icons/apps/quit.png"
 theme.shutdown_icon					= "~/.config/awesome/theme/icons/apps/shutdown.png"
 theme.restart_icon					= "~/.config/awesome/theme/icons/apps/restart.png"
 theme.hibernate_icon					= "~/.config/awesome/theme/icons/apps/hibernate.png"
+theme.thunderbird_icon					= "~/.config/awesome/theme/icons/apps/thunderbird.png"
 
 --{{----------------------------------------------------------------------------
 

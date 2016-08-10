@@ -7,7 +7,7 @@ local blingbling  = require("blingbling")
 
 --{{---| Main spacer  |---------------------------------------------------------------------------
 spacer            = wibox.widget.textbox()
-spacer:set_text(' | ')
+spacer:set_text('|')
 
 --{{---| Voliume spacer  |---------------------------------------------------------------------------
 volspace          = wibox.widget.textbox()
