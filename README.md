@@ -1,13 +1,13 @@
 # Awesome config
 
-Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-configh](https://github.com/pw4ever/awesome-wm-config).
+Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-config](https://github.com/pw4ever/awesome-wm-config).
 Maybe in future I'll make all-in-one-ultimate-awesome-config. You can use GutHub issues for feature requests and any other offers. 
 
 ### Installation
 I'd recommend use ArchLinux with this config, because of arch menu generation, but it isn't necessary.
 Any dependencies you can find in rc.lua and change for something yours.
 
-```
+```bash
 # Dependencies:
 sudo pacman -S sacura terminator vim firefox spacefm gnome-commander doublecmd \
                pcmanfm tmux gnome-control-center gnome-alsamixer alsa-utils    \
@@ -30,55 +30,51 @@ Modkey4+Control+r to restart awesome
 You need to create file *autostart.lua* and add simple startup records like this:
 ```lua
 -- run_once(prg,arg_string,pname,screen)
--- prg         - program name
--- arg_string  - startup arguments
--- pname       - process name
--- screen      - monitor location (tags [screen][x])
-
 run_once("skype")
 run_once("dropbox")
 run_once("nm-applet")
 run_once("empathy")
 run_once("thunderbird")
 run_once("firefox")
-run_once("doublecmd")
-run_once("pac")
+--run_once("gnome-commander")
+run_once("teamviewer")
+--run_once("pac")
+run_once("sublime_text")
+run_once("shutter --min_at_startup")
+run_once("remmina -i")
 ```
 
 ### Rules
 
-In **rc.lua** some rules are defined. You need to redifine them for your need or remove.
+In **rules.lua** some rules are defined. You need to redifine them for your need or remove.
 
 **Rules**
 ```lua
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
-    { rule = { class = "Vlc" },
-      properties = { floating = true } },
-    { rule = { class = "Gimp" },
-      properties = { tag = tags[1][5], floating = true } },
-    { rule = { class = "Firefox" },
-    properties = { tag = tags[1][2] } },
-    { rule = { class = "Double" },
-    properties = { tag = tags[1][3] } },
-    { rule = { class = "Thunderbird" },
-    properties = { tag = tags[1][4] } },
-    { rule = { class = "Skype" },
-    properties = { tag = tags[1][4] } },
-    { rule = { class = "Empathy" },
-    properties = { tag = tags[1][4] } },
-    { rule = { class = "Pac" },
-    properties = { tag = tags[1][6] } },
-    { rule = { class = "Sublime" },
-    properties = { tag = tags[1][7] } },
-}
+{ rule = { },
+  properties = { border_width   = beautiful.border_width,
+                 border_color   = beautiful.border_normal,
+                 focus          = awful.client.focus.filter,
+                 raise          = true,
+                 keys           = clientkeys,
+                 buttons        = clientbuttons,
+                 placement      = awful.placement.no_overlap+awful.placement.no_offscreen   }},
+{ rule_any   = { instance       = { "DTA", "copyq", },
+                 class          = { "Arandr", "Gpick", "Kruler", "MessageWin", 
+                                    "Sxiv", "Wpa_gui", "pinentry","veromix","xtightvncviewer"},
+                 name           = { "Event Tester", },
+                 role           = { "AlarmWindow", "pop-up", }}, 
+                 properties     = { floating = true                                         }},
+{ rule = { class = "Vlc"              },  properties = { floating = true                    }},
+{ rule = { class = "Shutter"          },  properties = { floating = true                    }},
+{ rule = { class = "Sublime"          },  properties = { screen = 1, tag = "IDE"            }},
+{ rule = { class = "Firefox"          },  properties = { screen = 1, tag = "Web"            }},
+{ rule = { class = "Gnome-commander"  },  properties = { screen = 1, tag = "Files"          }},
+{ rule = { class = "Doublecmd"        },  properties = { screen = 1, tag = "Files"          }},
+{ rule = { class = "Thunderbird"      },  properties = { screen = 1, tag = "MSG"            }},
+{ rule = { class = "skype"            },  properties = { screen = 1, tag = "MSG"            }},
+{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
+{ rule = { class = "libreoffice"      },  properties = { screen = 1, tag = "Work"           }},
+{ rule = { class = "Gimp"             },  properties = { floating = true                    }},
 ```
 
 ### Themes
@@ -90,6 +86,7 @@ I created following themes:
 * Blue   - 'blue'
 * Gray   - 'gray'
 * Green  - 'green'
+* Purple - 'purple'
 * Red    - 'red'
 * Yellow - 'yellow'
 * Zen    - 'zen'
@@ -101,7 +98,7 @@ I created following themes:
 
 To configure keyboard layout you neet to make apropriate changes in *kb.lua*. 
 Defaut layout: *US* and *RU*. 
-And key combination: Control+LeftShift (Which can be defined in *rc.lua*)
+And key combination: Alt+Space (Which can be defined in *rc.lua*, but this is the best I could think of)
 
 ### License
 
