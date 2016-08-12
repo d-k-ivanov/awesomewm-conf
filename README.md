@@ -95,7 +95,7 @@ I created following themes:
 * Zen    - 'zen'
 
 *Screenshot:*
-![BlueTheme](/screenshot/blue.png)
+![PurpleTheme](/screenshot/purple.png)
 
 ### Keyboard
 
