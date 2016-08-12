@@ -7,12 +7,10 @@ local blingbling  = require("blingbling")
 local lain        = require("lain")
 
 --{{---| Main spacer  |---------------------------------------------------------------------------
+spacer0            = wibox.widget.textbox()
+spacer0:set_text(' ')
 spacer            = wibox.widget.textbox()
 spacer:set_text(' | ')
-
---{{---| Voliume spacer  |---------------------------------------------------------------------------
-volspace          = wibox.widget.textbox()
-volspace:set_text(" ")
 
 --{{---| Battery  |---------------------------------------------------------------------------
   -- Battery attributes
@@ -115,11 +113,11 @@ vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
 
 --{{---| Network usage  |---------------------------------------------------------------------------
   -- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
-lan_usage = wibox.widget.textbox()
+lan_usage       = wibox.widget.textbox()
   -- Register widget
 vicious.register(lan_usage, vicious.widgets.net, '<span color="#CC9393">${enp6s0 down_kb}</span> <span color="#7F9F7F">${enp6s0 up_kb}</span>', 3)
 
-wifi_usage = wibox.widget.textbox()
+wifi_usage      = wibox.widget.textbox()
   -- Register widget
 vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
 
@@ -171,19 +169,30 @@ do
 end  
 
 volpct:buttons(volicon:buttons())
-volspace:buttons(volicon:buttons())
+volpct:buttons(volicon:buttons())
 
 --{{---| Keyboard layout - widget|---------------------------------------------------------------------------
 kbdcfg            = {}
 kbdcfg.cmd        = "setxkbmap"
 kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
 kbdcfg.current    = 1  -- us is our default layout
-kbdcfg.widget     = wibox.widget.textbox()
-kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
+-- widget for TEXT
+--kbdcfg.widget     = wibox.widget.textbox()
+--kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
+--kbdcfg.switch     = function ()
+--   kbdcfg.current  = kbdcfg.current % #(kbdcfg.layout) + 1
+--   local t = kbdcfg.layout[kbdcfg.current]
+--   kbdcfg.widget:set_text(" " .. t[3] .. " ")
+--   os.execute( kbdcfg.cmd .. " " .. t[1] .. ",us " .. t[2] )
+-- end
+-- Widget for FLAG
+kbdcfg.widget     = wibox.widget.imagebox()
+kbdcfg.widget:set_image(awful.util.getdir("config") .. "/theme/icons/flags/us.png")
+
 kbdcfg.switch     = function ()
   kbdcfg.current  = kbdcfg.current % #(kbdcfg.layout) + 1
   local t = kbdcfg.layout[kbdcfg.current]
-  kbdcfg.widget:set_text(" " .. t[3] .. " ")
+  kbdcfg.widget:set_image(awful.util.getdir("config") .. "/theme/icons/flags/" .. kbdcfg.layout[kbdcfg.current][1] .. ".png")
   os.execute( kbdcfg.cmd .. " " .. t[1] .. ",us " .. t[2] )
 end
 
@@ -194,7 +203,7 @@ kbdcfg.widget:buttons(
 
 
 --{{---| Clock  |---------------------------------------------------------------------------
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock("%H:%M")
 lain.widgets.calendar:attach(mytextclock, { font_size = 9 })
 
 --{{---| System Settings |---------------------------------------------------------------------------
@@ -203,8 +212,7 @@ setIcon = wibox.widget.imagebox()
 setIcon:set_image(beautiful.system_monitor_icon)
   -- Buttons
 do
-  local started_1=false
-  local started_2=false
+  local started_1=fals
   setIcon:buttons(awful.util.table.join(
      awful.button({ }, 1, function() 
       if started_1 then
@@ -224,3 +232,6 @@ do
     end)
   ))
 end 
+
+--{{---| Tray |---------------------------------------------------------------------------
+systray = wibox.widget.systray()
