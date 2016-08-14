@@ -4,7 +4,7 @@ theme.wallpaper 																= "~/.config/awesome/wallpapers/pas.jpg"
 -- blue | gray | green | purple | red | yellow | zen
 theme.colour 																		= "purple"
 
---{{--- Style ------------------------------------------------------------------------------------------
+--{{--- Style ---------------------------------------------------------------------------------------------------------------------------
 cyan  																					= "#7f4de6"
 lblue 																					= "#6c9eab"
 black 																					= "#3f3f3f"
@@ -23,7 +23,7 @@ purple																					= "#8476ad"
 -- blue = dblue | gray = gray | green = dgreen | purple = purple | red = red | yellow = yellow | zen = zen
 main_colour 																		= purple
 	
-theme.font                                  		= "Terminus 9"
+theme.font                                  		= "Consolas 8"
 
 theme.fg_normal                             		= "#AAAAAA"
 --theme.fg_focus                              		= "#F0DFAF"
@@ -54,7 +54,7 @@ theme.notify_font_color_1                   		= green
 theme.notify_font_color_2                   		= main_colour 
 theme.notify_font_color_3                   		= black
 theme.notify_font_color_4                   		= white
-theme.notify_font                           		= "Terminus 8"
+theme.notify_font                           		= "Consolas 10"
 theme.notify_fg                             		= theme.fg_normal
 theme.notify_bg                             		= theme.bg_normal
 theme.notify_border                         		= theme.border_focus

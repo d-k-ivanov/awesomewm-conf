@@ -2,7 +2,7 @@ local awful                                 = require("awful")
 local naughty                               = require("naughty")
 local beautiful                             = require("beautiful")
 
---{{---| Naughty theme |----------------------------------------------------------------------------
+--{{---| Naughty theme |----------------------------------------------------------------------------------------------------
 naughty.config.presets.normal.font          = beautiful.notify_font
 naughty.config.presets.normal.fg            = beautiful.notify_fg
 naughty.config.presets.normal.bg            = beautiful.notify_bg
@@ -12,7 +12,7 @@ naughty.config.presets.low.opacity          = 0.8
 naughty.config.presets.critical.opacity     = 0.8
 
 
---{{---| Error handling |---------------------------------------------------------------------------
+--{{---| Error handling |---------------------------------------------------------------------------------------------------
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -31,7 +31,7 @@ do
     end)
 end
 
---{{---| Battery notification |----------------------------------------------------------------------
+--{{---| Battery notification |----------------------------------------------------------------------------------------------
 local function trim(s)
   return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
 end

@@ -6,13 +6,13 @@ local naughty     = require("naughty")
 local blingbling  = require("blingbling")
 local lain        = require("lain")
 
---{{---| Main spacer  |---------------------------------------------------------------------------
+--{{---| Main spacer  |-----------------------------------------------------------------------------------------------------
 spacer0            = wibox.widget.textbox()
 spacer0:set_text(' ')
 spacer            = wibox.widget.textbox()
 spacer:set_text(' | ')
 
---{{---| Battery  |---------------------------------------------------------------------------
+--{{---| Battery  |---------------------------------------------------------------------------------------------------------
   -- Battery attributes
 local bat_state   = ""
 local bat_charge  = 0
@@ -110,8 +110,7 @@ baticon:buttons(batpct:buttons())
 batt = wibox.widget.textbox()
 vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
 
-
---{{---| Network usage  |---------------------------------------------------------------------------
+--{{---| Network usage  |---------------------------------------------------------------------------------------------------
   -- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
 lan_usage       = wibox.widget.textbox()
   -- Register widget
@@ -121,7 +120,7 @@ wifi_usage      = wibox.widget.textbox()
   -- Register widget
 vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
 
---{{---| Volume  |---------------------------------------------------------------------------
+--{{---| Volume  |----------------------------------------------------------------------------------------------------------
   -- Cache
 vicious.cache(vicious.widgets.volume)
   -- Icon
@@ -171,7 +170,7 @@ end
 volpct:buttons(volicon:buttons())
 volpct:buttons(volicon:buttons())
 
---{{---| Keyboard layout - widget|---------------------------------------------------------------------------
+--{{---| Keyboard layout - widget|------------------------------------------------------------------------------------------
 kbdcfg            = {}
 kbdcfg.cmd        = "setxkbmap"
 kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
@@ -196,17 +195,17 @@ kbdcfg.switch     = function ()
   os.execute( kbdcfg.cmd .. " " .. t[1] .. ",us " .. t[2] )
 end
 
---{{---| Keyboard layout - mouse |---------------------------------------------------------------------------
+--{{---| Keyboard layout - mouse |------------------------------------------------------------------------------------------
 kbdcfg.widget:buttons(
  awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end))
 )
 
 
---{{---| Clock  |---------------------------------------------------------------------------
+--{{---| Clock  |-----------------------------------------------------------------------------------------------------------
 mytextclock = awful.widget.textclock("%H:%M")
 lain.widgets.calendar:attach(mytextclock, { font_size = 9 })
 
---{{---| System Settings |---------------------------------------------------------------------------
+--{{---| System Settings |--------------------------------------------------------------------------------------------------
 
 setIcon = wibox.widget.imagebox()
 setIcon:set_image(beautiful.system_monitor_icon)
@@ -233,5 +232,5 @@ do
   ))
 end 
 
---{{---| Tray |---------------------------------------------------------------------------
+--{{---| Tray |-------------------------------------------------------------------------------------------------------------
 systray = wibox.widget.systray()

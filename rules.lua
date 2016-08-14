@@ -25,8 +25,10 @@ awful.rules.rules = {
     --{ rule = { class = "Doublecmd"        },  properties = { screen = 1, tag = "Files"          }},
     { rule = { class = "Thunderbird"      },  properties = { screen = 1, tag = "MSG"            }},
     { rule = { class = "skype"            },  properties = { screen = 1, tag = "MSG"            }},
+    { rule = { class = "Org.gnome.Polari" },  properties = { screen = 1, tag = "MSG"            }},
+    { rule = { class = "Empathy" },  properties = { screen = 1, tag = "MSG"                     }},
     --{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
     { rule = { class = "libreoffice"      },  properties = { screen = 1, tag = "Work"           }},
     { rule = { class = "Gimp"             },  properties = { floating = true                    }},
-    
+    { rule = { class = "TeamViewer"       },  properties = { floating = true                    }},
 }
