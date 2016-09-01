@@ -386,9 +386,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, key_l,       function () awful.util.spawn("xscreensaver-command -lock") end,
                                                   {description = "Lock screen",                           group = "Utilities"     }),
 
---{{---| arandr |------------------------------------------------------------------------------------------------------
+--{{---| arandr |-----------------------------------------------------------------------------------------------------------
     awful.key({ modkey,           }, key_Tilda,   function () awful.util.spawn("arandr")                  end,
-                                                  {description = "run arandr",                            group = "Utilities"     }),
+                                                  {description = "run arandr",                            group = "Software"     }),
+
+--{{---| Virt-Manager |-----------------------------------------------------------------------------------------------------
+    awful.key({ modkey,           }, key_v,   function () awful.util.spawn("sudo virt-manager")           end,
+                                                  {description = "run sudo virt-manager",                 group = "Software"     }),
 
 --{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
     awful.key({ altkey            },  key_Space,  function() kbdcfg.switch()                              end,
@@ -407,6 +411,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, key_Return,  function (c) c:swap(awful.client.getmaster())           end,
                                                   {description = "Move to master",                        group = "Client"        }),
     awful.key({ modkey,           }, key_q,       awful.client.movetoscreen,
+                                                  {description = "Move to screen",                        group = "Client"        }),
+    awful.key({ modkey,           }, key_o,       awful.client.movetoscreen,
                                                   {description = "Move to screen",                        group = "Client"        }),
     awful.key({ modkey,           }, key_t,       function (c) c.ontop      = not c.ontop                 end,
                                                   {description = "Toggle keep on top",                    group = "Client"        }),
