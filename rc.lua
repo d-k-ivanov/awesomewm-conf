@@ -362,7 +362,7 @@ globalkeys = awful.util.table.join(
                                                   {description = "Restore minimized",                     group = "Client"        }),
 
 --{{---| Prompt |-----------------------------------------------------------------------------------------------------------
-    awful.key({ modkey            },  key_r,      function () mypromptbox[awful.screen.focused()]:run()   end,
+    awful.key({ modkey,           },  key_r,      function () mypromptbox[awful.screen.focused()]:run()   end,
                                                   {description = "Run prompt",                            group = "Launcher"      }),
     awful.key({ modkey, "Shift"   },  key_r,      function () awful.util.spawn_with_shell("gmrun")        end,
                                                   {description = "Run GTK prompt",                        group = "Launcher"      }),
@@ -375,27 +375,29 @@ globalkeys = awful.util.table.join(
                                                   {description = "LUA execute prompt",                    group = "Launcher"      }),
 
 --{{---| Menubar |----------------------------------------------------------------------------------------------------------
-    awful.key({ modkey            },  key_p,      function() menubar.show()                               end,
+    awful.key({ modkey,            },  key_p,     function() menubar.show()                               end,
                                                   {description = "Show menu bar",                         group = "Launcher"      }), 
 
 --{{---| Screenshot |-------------------------------------------------------------------------------------------------------
-    awful.key({                   },  key_Print,  function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end,
+    awful.key({                    },  key_Print, function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end,
                                                   {description = "Take Screenshot",                       group = "Utilities"     }),
 
 --{{---| Lock Screen |------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,           }, key_l,       function () awful.util.spawn("xscreensaver-command -lock") end,
+    awful.key({ modkey,            }, key_l,      function () awful.util.spawn("xscreensaver-command -lock") end,
                                                   {description = "Lock screen",                           group = "Utilities"     }),
 
 --{{---| arandr |-----------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,           }, key_Tilda,   function () awful.util.spawn("arandr")                  end,
+    awful.key({ modkey,            }, key_Tilda,  function () awful.util.spawn("arandr")                  end,
                                                   {description = "run arandr",                            group = "Software"     }),
 
 --{{---| Virt-Manager |-----------------------------------------------------------------------------------------------------
-    awful.key({ modkey,           }, key_v,   function () awful.util.spawn("sudo virt-manager")           end,
+    awful.key({ modkey,            }, key_v,      function () awful.util.spawn("sudo virt-manager")       end,
                                                   {description = "run sudo virt-manager",                 group = "Software"     }),
 
 --{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
-    awful.key({ altkey            },  key_Space,  function() kbdcfg.switch()                              end,
+    awful.key({ altkey,            },  key_Space, function() kbdcfg.switch()                              end,
+                                                  {description = "Change keyboard layout",                group = "Utilities"     }),
+    awful.key({ "Shift",           },  key_Ctrl_L,function() kbdcfg.switch()                              end,
                                                   {description = "Change keyboard layout",                group = "Utilities"     })
 )
 

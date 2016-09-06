@@ -36,6 +36,9 @@ key_Alt_L	= "#64"
 key_Ctrl_R	= "#105"
 key_Ctrl_L	= "#37"
 
+key_Shift_R = "62"
+key_Shift_L = "50"
+
 key_a 		= "#38"
 key_b 		= "#56"
 key_c 		= "#54"
