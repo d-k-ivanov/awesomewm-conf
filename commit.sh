@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Wrapper to commit Ansible-home 
+# Wrapper for git commit
 # Plathform: Git
 #
 # Author: Dmitry Ivanov

@@ -74,11 +74,11 @@ local layouts       =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.tile.bottom,
     awful.layout.suit.fair,
     awful.layout.suit.magnifier,
     awful.layout.suit.max,
     --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.top,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -100,11 +100,11 @@ local layouts       =
 tags                        = {
   names                     = { 
                                 "IDE", "Web", "Files", "MSG",
-                                "PAC", "SQL", "Vim", "Work", "Other" 
+                                "PAC", "SQL", "Vim", "Term", "Work" 
                               },
   layout                    = { 
-                                layouts[5], layouts[5], layouts[3], layouts[3],
-                                layouts[5], layouts[5], layouts[3], layouts[3], layouts[1]
+                                layouts[3], layouts[2], layouts[1], layouts[2],
+                                layouts[6], layouts[6], layouts[6], layouts[2], layouts[1]
                               }
 }
 
@@ -396,9 +396,9 @@ globalkeys = awful.util.table.join(
 
 --{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
     awful.key({ altkey,            },  key_Space, function() kbdcfg.switch()                              end,
-                                                  {description = "Change keyboard layout",                group = "Utilities"     }),
-    awful.key({ "Shift",           },  key_Ctrl_L,function() kbdcfg.switch()                              end,
                                                   {description = "Change keyboard layout",                group = "Utilities"     })
+    --awful.key({ "Shift",           },  key_Ctrl_L,function() kbdcfg.switch()                              end,
+    --                                              {description = "Change keyboard layout",                group = "Utilities"     })
 )
 
 clientkeys = awful.util.table.join(

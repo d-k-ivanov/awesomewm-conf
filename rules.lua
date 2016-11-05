@@ -21,6 +21,7 @@ awful.rules.rules = {
     { rule = { class = "Vlc"              },  properties = { floating = true                    }},
     { rule = { class = "Shutter"          },  properties = { floating = true                    }},
     { rule = { class = "Sublime"          },  properties = { tag = "IDE"                        }},
+    { rule = { class = "subl3"            },  properties = { tag = "IDE"                        }},
     --{ rule = { class = "Firefox"          },  properties = { screen = 1, tag = "Web"            }},
     --{ rule = { class = "chromium"         },  properties = { screen = 1, tag = "Web"            }},
     { rule = { class = "Firefox"          },  properties = { tag = "Web"                        }},
