@@ -13,9 +13,10 @@ awful.rules.rules = {
                      buttons        = clientbuttons,
                      placement      = awful.placement.no_overlap+awful.placement.no_offscreen   }},
     { rule_any   = { instance       = { "DTA", "copyq", },
-                     class          = { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer",
-                                        "Sxiv", "Wpa_gui", "pinentry", "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask"},
-                     name           = { "Event Tester", },
+                     class          = { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry", 
+                                        "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
+                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Gnome-commander", "Doublecmd", "Pcmanfm", "Gmrun"},
+                     name           = { "Event Tester" },
                      role           = { "AlarmWindow", "pop-up", }}, 
                      properties     = { floating = true                                         }},
     { rule = { class = "Vlc"              },  properties = { floating = true                    }},
@@ -33,6 +34,6 @@ awful.rules.rules = {
     { rule = { class = "Org.gnome.Polari" },  properties = { tag = "MSG"                        }},
     { rule = { class = "Empathy"          },  properties = { tag = "MSG"                        }},
     --{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
-    { rule = { class = "libreoffice"      },  properties = { tag = "Work"                       }},
-    { rule = { class = "Gimp"             },  properties = { floating = true                    }},
+    { rule = { class = "libreoffice"      },  properties = { tag = "Work"                       }}
+    --{ rule = { class = "Gimp"             },  properties = { floating = true                    }},
 }

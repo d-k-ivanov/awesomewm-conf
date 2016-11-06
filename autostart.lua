@@ -12,3 +12,6 @@ run_once("subl3")
 run_once("shutter --min_at_startup")
 run_once("remmina -i")
 run_once("goldendict")
+run_once("clipit")
+run_once("xscreensaver -no-splash")
+

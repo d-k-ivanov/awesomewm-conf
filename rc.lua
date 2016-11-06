@@ -326,7 +326,7 @@ globalkeys = awful.util.table.join(
                                                   {description = "Tougle SpaceFM",                        group = "File managers" }),
     awful.key({ modkey,           },  key_s,      function () awful.util.spawn(fms)                       end,
                                                   {description = "Run Gnome-Commander",                   group = "File managers" }),
-    awful.key({ modkey, "Shift"   },  key_d,      function () awful.util.spawn(fmd)                       end,
+    awful.key({ modkey, "Shift"   },  key_s,      function () awful.util.spawn(fmd)                       end,
                                                   {description = "Run Duble-Commander",                   group = "File managers" }),
     awful.key({ modkey,           },  key_x,      function () 
                                                     if fmx_started then
@@ -383,7 +383,7 @@ globalkeys = awful.util.table.join(
                                                   {description = "Take Screenshot",                       group = "Utilities"     }),
 
 --{{---| Lock Screen |------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,            }, key_l,      function () awful.util.spawn("xscreensaver-command -lock") end,
+    awful.key({ modkey,            }, key_Escape,      function () awful.util.spawn("xscreensaver-command -lock") end,
                                                   {description = "Lock screen",                           group = "Utilities"     }),
 
 --{{---| arandr |-----------------------------------------------------------------------------------------------------------
