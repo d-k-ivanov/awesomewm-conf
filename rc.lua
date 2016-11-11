@@ -383,7 +383,7 @@ globalkeys = awful.util.table.join(
                                                   {description = "Take Screenshot",                       group = "Utilities"     }),
 
 --{{---| Lock Screen |------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,            }, key_Escape,      function () awful.util.spawn("xscreensaver-command -lock") end,
+    awful.key({ modkey,            }, key_z,      function () awful.util.spawn("xscreensaver-command -lock") end,
                                                   {description = "Lock screen",                           group = "Utilities"     }),
 
 --{{---| arandr |-----------------------------------------------------------------------------------------------------------

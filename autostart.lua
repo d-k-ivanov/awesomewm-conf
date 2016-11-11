@@ -14,4 +14,6 @@ run_once("remmina -i")
 run_once("goldendict")
 run_once("clipit")
 run_once("xscreensaver -no-splash")
+run_once("yakyak")
+
 
