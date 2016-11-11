@@ -48,14 +48,16 @@ local function bat_notification()
     naughty.notify({ title      = "Battery Warning"
       , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
       , fg="#ff0000"
-      , bg="#deb887"
-      , timeout    = 15
-      , position   = "bottom_left"
+      --, bg="#deb887"
+      , bg="#333"
+      , timeout    = 1
+      --, position   = "bottom_left"
+      , position   = "top_right"
     })
   end
 end
 
-battimer = timer({timeout = 120})
+battimer = timer({timeout = 2})
 battimer:connect_signal("timeout", bat_notification)
 battimer:start()
 
