@@ -1,5 +1,5 @@
 -- run_once(prg,arg_string,pname,screen)
-run_once("skype")
+run_once("skypeforlinux")
 run_once("dropbox")
 run_once("nm-applet")
 run_once("empathy")
