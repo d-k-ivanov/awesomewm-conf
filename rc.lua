@@ -100,11 +100,11 @@ local layouts       =
 tags                        = {
   names                     = { 
                                 "IDE", "Web", "Files", "MSG",
-                                "PAC", "SQL", "Vim", "Term", "Work" 
+                                "PAC", "SQL", "IMG", "Term", "Work" 
                               },
   layout                    = { 
                                 layouts[3], layouts[2], layouts[1], layouts[2],
-                                layouts[6], layouts[6], layouts[6], layouts[2], layouts[1]
+                                layouts[6], layouts[6], layouts[6], layouts[2], layouts[4]
                               }
 }
 
