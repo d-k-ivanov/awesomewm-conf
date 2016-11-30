@@ -15,7 +15,7 @@ awful.rules.rules = {
     { rule_any   = { instance       =   { "DTA", "copyq", },
                      class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry", 
                                         "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
-                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun"},
+                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview"},
                      name           =   { "Event Tester" },
                      role           =   { "AlarmWindow", "pop-up", }}, 
                      properties     =   { floating = true                                         }},
@@ -34,9 +34,9 @@ awful.rules.rules = {
     { rule = { class = "skype"              },  properties = { tag = "MSG"                        }},
     { rule = { class = "Org.gnome.Polari"   },  properties = { tag = "MSG"                        }},
     { rule = { class = "Empathy"            },  properties = { tag = "MSG"                        }},
-    { rule = { class = "yakyak"             },  properties = { tag = "MSG"                        }},
+    { rule = { class = "yakyak"             },  properties = { tag = "MSG"                        }}
     --{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
-    { rule = { class = "libreoffice"        },  properties = { tag = "Work"                       }}
+    --{ rule = { class = "libreoffice"        },  properties = { tag = "Work"                       }}
     --{ rule = { class = "SWT"                },  properties = { tag = "Work"                       }}
     --{ rule = { class = "Gimp"               },  properties = { floating = true                    }}
     
