@@ -394,6 +394,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,            }, key_v,      function () awful.util.spawn("sudo virt-manager")       end,
                                                   {description = "run sudo virt-manager",                 group = "Software"     }),
 
+--{{---| Network Restart |-----------------------------------------------------------------------------------------------------
+    awful.key({ modkey, "Shift"    }, key_n,      function () awful.util.spawn("sudo systemctl restart NetworkManager.service")         end,
+                                                  {description = "Restart Network Manager",                 group = "Software"     }),
+
+
 --{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
     awful.key({ altkey,            },  key_Space, function() kbdcfg.switch()                              end,
                                                   {description = "Change keyboard layout",                group = "Utilities"     })

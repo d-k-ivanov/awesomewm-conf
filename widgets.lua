@@ -173,6 +173,7 @@ volpct:buttons(volicon:buttons())
 --{{---| Keyboard layout - widget|------------------------------------------------------------------------------------------
 kbdcfg            = {}
 kbdcfg.cmd        = "setxkbmap"
+--kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" }, { "es", "" , "ES" } } 
 kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
 kbdcfg.current    = 1  -- us is our default layout
 -- widget for TEXT
