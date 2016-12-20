@@ -104,7 +104,7 @@ tags                        = {
                               },
   layout                    = { 
                                 layouts[6], layouts[2], layouts[1], layouts[2],
-                                layouts[6], layouts[6], layouts[6], layouts[2], layouts[4]
+                                layouts[6], layouts[6], layouts[6], layouts[2], layouts[2]
                               }
 }
 
