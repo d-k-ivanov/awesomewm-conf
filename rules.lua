@@ -34,6 +34,7 @@ awful.rules.rules = {
     { rule = { class = "skype"              },  properties = { tag = "MSG"                        }},
     { rule = { class = "Org.gnome.Polari"   },  properties = { tag = "MSG"                        }},
     { rule = { class = "Empathy"            },  properties = { tag = "MSG"                        }},
+    { rule = { class = "Pidgin"             },  properties = { tag = "MSG"                        }},
     { rule = { class = "yakyak"             },  properties = { tag = "MSG"                        }}
     --{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
     --{ rule = { class = "libreoffice"        },  properties = { tag = "Work"                       }}

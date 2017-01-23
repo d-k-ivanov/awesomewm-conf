@@ -1,3 +1,6 @@
+local xresources                                = require("beautiful.xresources")
+local dpi                                       = xresources.apply_dpi
+
 theme 																					= {}
 theme.wallpaper 																= "~/.config/awesome/wallpapers/pas.jpg"
 
@@ -23,7 +26,9 @@ purple																					= "#8476ad"
 -- blue = dblue | gray = gray | green = dgreen | purple = purple | red = red | yellow = yellow | zen = zen
 main_colour 																		= purple
 	
-theme.font                                  		= "Consolas 8"
+--theme.font                                  		= "Consolas 8"
+--theme.font                                      = "Terminus 9"
+theme.font                                  		= "Inconsolata 9"
 
 theme.fg_normal                             		= "#AAAAAA"
 --theme.fg_focus                              		= "#F0DFAF"
@@ -46,7 +51,7 @@ theme.taglist_fg_focus                      		= main_colour
 theme.tasklist_bg_focus                     		= "#222222" 
 theme.tasklist_fg_focus                     		= main_colour 
 theme.textbox_widget_as_label_font_color    		= white 
-theme.textbox_widget_margin_top             		= 1
+theme.textbox_widget_margin_top             		= dpi(1)
 theme.text_font_color_1                     		= green
 theme.text_font_color_2                     		= main_colour 
 theme.text_font_color_3                     		= white
@@ -54,7 +59,9 @@ theme.notify_font_color_1                   		= green
 theme.notify_font_color_2                   		= main_colour 
 theme.notify_font_color_3                   		= black
 theme.notify_font_color_4                   		= white
-theme.notify_font                           		= "Consolas 10"
+--theme.notify_font                           		= "Consolas 10"
+--theme.notify_font                               = "Terminus 10"
+theme.notify_font                           		= "Inconsolata 10"
 theme.notify_fg                             		= theme.fg_normal
 theme.notify_bg                             		= theme.bg_normal
 theme.notify_border                         		= theme.border_focus
@@ -64,15 +71,15 @@ theme.awful_widget_color                    		= main_colour
 theme.awful_widget_gradien_color_1          		= orange
 theme.awful_widget_gradien_color_2          		= orange
 theme.awful_widget_gradien_color_3          		= orange
-theme.awful_widget_height                   		= 14
-theme.awful_widget_margin_top               		= 2
+theme.awful_widget_height                   		= dpi(14)
+theme.awful_widget_margin_top               		= dpi(2)
 
 theme.mouse_finder_color 												= "#CC9393"
 
-theme.menu_height 															= 16
-theme.menu_width  															= 200
+theme.menu_height 															= dpi(16)
+theme.menu_width  															= dpi(200)
 
-theme.systray_icon_spacing 											= 5
+theme.systray_icon_spacing 											= dpi(5)
 
 --{{--- Titlebar ------------------------------------------------------------------------------------------------------------------------
 theme.titlebar_close_button_focus  							= "~/.config/awesome/theme/" .. theme.colour .. "/titlebar/close_focus.png"

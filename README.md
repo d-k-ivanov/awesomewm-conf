@@ -1,3 +1,5 @@
+# Only for AwesomeVM v4+
+
 # Awesome config
 
 Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-config](https://github.com/pw4ever/awesome-wm-config).

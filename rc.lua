@@ -3,6 +3,8 @@ local awful         = require("awful")
 local gears         = require("gears")
 awful.rules         = require("awful.rules")
                       require("awful.autofocus")
+local xresources    = require("beautiful.xresources")
+local dpi           = xresources.apply_dpi
 
 --{{---| Parse config |----------------------------------------------------------------------------------------------------
 local config_path   = awful.util.getdir("config")
@@ -23,7 +25,7 @@ end
 
 --{{---| Menu |-------------------------------------------------------------------------------------------------------------
 awful.menu          = require("awful.menu")
-local xdg_menu      = require("archmenu")
+local appmenu       = require("appmenu")
 local menubar       = require("menubar")
 
 --{{---| Widgets |----------------------------------------------------------------------------------------------------------
@@ -136,7 +138,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { 
   { "Awesome",                myawesomemenu,               beautiful.awesone_default },
-  { "Applications",           xdgmenu,                     beautiful.awesome_icon    },
+  { "Applications",           appmenu,                     beautiful.awesome_icon    },
   { "Open xTerm",             terminal,                    beautiful.terminal_icon   },
   { "Open Terminator",        terminal2,                   beautiful.terminator_icon },
   { "Quit",                   awesome.quit,                beautiful.quit_icon       },
@@ -228,7 +230,7 @@ awful.screen.connect_for_each_screen(function(s)
     mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
     
     -- Create the wibox
-    mywibox[s]              = awful.wibox({ position = "top", screen = s, height = "16"  })
+    mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(16)  })
     
     -- Add widgets to the wibox
     mywibox[s]:setup {
