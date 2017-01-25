@@ -15,7 +15,7 @@ awful.rules.rules = {
     { rule_any   = { instance       =   { "DTA", "copyq", },
                      class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry", 
                                         "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
-                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview"},
+                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox"},
                      name           =   { "Event Tester" },
                      role           =   { "AlarmWindow", "pop-up", }}, 
                      properties     =   { floating = true                                         }},
