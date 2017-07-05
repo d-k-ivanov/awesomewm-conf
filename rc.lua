@@ -102,7 +102,7 @@ local layouts       =
 tags                        = {
   names                     = { 
                                 "IDE", "Web", "Files", "MSG",
-                                "PAC", "SQL", "IMG", "Term", "Work" 
+                                "Build", "DB", "IMG", "Term", "Work" 
                               },
   layout                    = { 
                                 layouts[6], layouts[2], layouts[1], layouts[2],

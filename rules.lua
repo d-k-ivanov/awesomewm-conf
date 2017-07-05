@@ -27,6 +27,7 @@ awful.rules.rules = {
     --{ rule = { class = "chromium"         },  properties = { screen = 1, tag = "Web"            }},
     { rule = { class = "Firefox"            },  properties = { tag = "Web"                        }},
     { rule = { class = "chromium"           },  properties = { tag = "Web"                        }},
+    { rule = { class = "google-chrome"      },  properties = { tag = "Web"                        }},
     --{ rule = { class = "Gnome-commander"  },  properties = { screen = 1, tag = "Files"          }},
     --{ rule = { class = "Doublecmd"        },  properties = { screen = 1, tag = "Files"          }},
     { rule = { class = "Thunderbird"        },  properties = { tag = "MSG"                        }},
