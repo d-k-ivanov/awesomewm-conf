@@ -27,6 +27,7 @@ end
 awful.menu          = require("awful.menu")
 local appmenu       = require("appmenu")
 local menubar       = require("menubar")
+local freedesktop   = require("freedesktop")
 
 --{{---| Widgets |----------------------------------------------------------------------------------------------------------
 local wibox         = require("wibox")
@@ -135,18 +136,32 @@ myawesomemenu = {
 
 }
 
+-- mymainmenu = awful.menu({ items = { 
+--   { "Awesome",                myawesomemenu,               beautiful.awesone_default },
+--   { "Applications",           myappmenu,                   beautiful.awesome_icon    },
+--   { "Open xTerm",             terminal,                    beautiful.terminal_icon   },
+--   { "Open Terminator",        terminal2,                   beautiful.terminator_icon },
+--   { "Quit",                   awesome.quit,                beautiful.quit_icon       },
+--   { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
+--   { "Reboot",                 "sudo reboot",               beautiful.restart_icon    },
+--   { "Shutdown",               "sudo shutdown -h 0",        beautiful.shutdown_icon   }
+-- }
+-- })
 
-mymainmenu = awful.menu({ items = { 
-  { "Awesome",                myawesomemenu,               beautiful.awesone_default },
-  { "Applications",           appmenu,                     beautiful.awesome_icon    },
-  { "Open xTerm",             terminal,                    beautiful.terminal_icon   },
-  { "Open Terminator",        terminal2,                   beautiful.terminator_icon },
-  { "Quit",                   awesome.quit,                beautiful.quit_icon       },
-  { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
-  { "Reboot",                 "sudo reboot",               beautiful.restart_icon    },
-  { "Shutdown",               "sudo shutdown -h 0",        beautiful.shutdown_icon   }
-}
+mymainmenu = freedesktop.menu.build({
+    before = {
+        { "Awesome",                myawesomemenu,               beautiful.awesone_default },
+    },
+    after = {
+        { "Open xTerm",             terminal,                    beautiful.terminal_icon   },
+        { "Open Terminator",        terminal2,                   beautiful.terminator_icon },
+        { "Quit",                   awesome.quit,                beautiful.quit_icon       },
+        { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
+        { "Reboot",                 "sudo reboot",               beautiful.restart_icon    },
+        { "Shutdown",               "sudo shutdown -h 0",        beautiful.shutdown_icon   }
+    }
 })
+
 
 mylauncher                  = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
