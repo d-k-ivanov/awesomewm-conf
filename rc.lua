@@ -245,7 +245,7 @@ awful.screen.connect_for_each_screen(function(s)
     mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
     
     -- Create the wibox
-    mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(16)  })
+    mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(20)  })
     
     -- Add widgets to the wibox
     mywibox[s]:setup {
@@ -404,7 +404,13 @@ globalkeys = awful.util.table.join(
                                                   {description = "Lock screen",                           group = "Utilities"     }),
 
 --{{---| arandr |-----------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,            }, key_Tilda,  function () awful.util.spawn("arandr")                  end,
+    awful.key({ modkey,            }, key_Tilda,  function () 
+                                                    if arandr_started then
+                                                      awful.util.spawn("pkill -f 'arandr'")
+                                                    else
+                                                      awful.util.spawn("arandr")
+                                                    end
+                                                    arandr_started = not arandr_started                   end,
                                                   {description = "run arandr",                            group = "Software"     }),
 
 --{{---| Virt-Manager |-----------------------------------------------------------------------------------------------------
