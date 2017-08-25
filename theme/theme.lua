@@ -145,10 +145,10 @@ theme.layout_floating														= "~/.config/awesome/theme/layouts/huge/float
 --{{--- Theme icons ---------------------------------------------------------------------------------------------------------------------
 theme.awesome_icon															= "~/.config/awesome/theme/blank.png"
 theme.menu_submenu_icon													= "~/.config/awesome/theme/submenu.png"
-theme.icon_theme																= Papirus
+theme.icon_theme																= "Papirus"
 
 --{{--- Battery icons -------------------------------------------------------------------------------------------------------------------
-theme.battery_missing 													= "~/.config/awesome/theme/icons/battery/battery_missing.png"
+--[[theme.battery_missing 													= "~/.config/awesome/theme/icons/battery/battery_missing.png"
 theme.battery_empty 														= "~/.config/awesome/theme/icons/battery/battery_empty.png"
 theme.battery_full 															= "~/.config/awesome/theme/icons/battery/battery_full.png"
 theme.battery_1 																= "~/.config/awesome/theme/icons/battery/battery_1.png"
@@ -162,7 +162,24 @@ theme.battery_charging_1 												= "~/.config/awesome/theme/icons/battery/ba
 theme.battery_charging_2 												= "~/.config/awesome/theme/icons/battery/battery_charging_2.png"
 theme.battery_charging_3 												= "~/.config/awesome/theme/icons/battery/battery_charging_3.png"
 theme.battery_charging_4 												= "~/.config/awesome/theme/icons/battery/battery_charging_4.png"
-theme.battery_charging_5 												= "~/.config/awesome/theme/icons/battery/battery_charging_5.png"
+theme.battery_charging_5 												= "~/.config/awesome/theme/icons/battery/battery_charging_5.png"]]
+
+theme.battery_missing 													= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-missing.svg"
+theme.battery_empty 														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.svg"
+theme.battery_full 															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full.svg"
+theme.battery_1 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.sv"
+theme.battery_2 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-caution.svg"
+theme.battery_3 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-low.svg"
+theme.battery_4 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-good.svg"
+theme.battery_5 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full.svg"
+theme.battery_charging_empty 										= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty-charging.svg"
+theme.battery_charging_full 										= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-ac-adapter.svg"
+theme.battery_charging_1 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty-charging.svg"
+theme.battery_charging_2 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-caution-charging.svg"
+theme.battery_charging_3 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-low-charging.svg"
+theme.battery_charging_4 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-good-charging.svg"
+theme.battery_charging_5 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full-charging.svg"
+
 
 --{{--- Volume icons --------------------------------------------------------------------------------------------------------------------
 theme.volume_high																= "~/.config/awesome/theme/icons/volume/volume-high.png"
@@ -170,6 +187,12 @@ theme.volume_medium															= "~/.config/awesome/theme/icons/volume/volume
 theme.volume_low																= "~/.config/awesome/theme/icons/volume/volume-low.png"
 theme.volume_muted															= "~/.config/awesome/theme/icons/volume/volume-muted.png"
 theme.volume_off																= "~/.config/awesome/theme/icons/volume/volume-off.png"
+
+--[[theme.volume_high																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-high.svg"
+theme.volume_medium															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-high.svg"
+theme.volume_low																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-medium.svg"
+theme.volume_off																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-low.svg"
+theme.volume_muted															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-muted.svg"]]
 
 --{{--- Taskbar icons -------------------------------------------------------------------------------------------------------------------
 theme.wclock_icon																= "~/.config/awesome/theme/icons/bar/clock.png"

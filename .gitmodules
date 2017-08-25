@@ -1,3 +1,6 @@
 [submodule "theme/icons/papirus-icon-theme"]
 	path = theme/icons/papirus-icon-theme
 	url = git@github.com:PapirusDevelopmentTeam/papirus-icon-theme.git
+[submodule "extensions/freedesktop"]
+	path = extensions/freedesktop
+	url = git@github.com:copycat-killer/awesome-freedesktop.git
