@@ -13,13 +13,15 @@ awful.rules.rules = {
                      buttons        = clientbuttons,
                      placement      = awful.placement.no_overlap+awful.placement.no_offscreen   }},
     { rule_any   = { instance       =   { "DTA", "copyq", },
-                     class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry", 
+                     class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry",
                                         "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
-                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox", "XCalc", "Vncviewer"},
+                                        "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox",
+                                        "XCalc", "Vncviewer", "Pavucontrol", "Cheese"},
+      --"Leafpad",
                      name           =   { "Event Tester" },
-                     role           =   { "AlarmWindow", "pop-up", }}, 
+                     role           =   { "AlarmWindow", "pop-up", }},
                      properties     =   { floating = true                                         }},
-    { rule = { class = "Vlc"                },  properties = { floating = true                    }},
+    { rule = { class = "vlc"                },  properties = { floating = true                    }},
     { rule = { class = "Shutter"            },  properties = { floating = true                    }},
     { rule = { class = "Sublime"            },  properties = { tag = "IDE"                        }},
     { rule = { class = "subl3"              },  properties = { tag = "IDE"                        }},
@@ -43,5 +45,5 @@ awful.rules.rules = {
     --{ rule = { class = "libreoffice"        },  properties = { tag = "Work"                       }}
     --{ rule = { class = "SWT"                },  properties = { tag = "Work"                       }}
     --{ rule = { class = "Gimp"               },  properties = { floating = true                    }}
-    
+
 }

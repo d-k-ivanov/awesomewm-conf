@@ -7,8 +7,12 @@ local blingbling  = require("blingbling")
 local lain        = require("lain")
 
 --{{---| Main spacer  |-----------------------------------------------------------------------------------------------------
-spacer0            = wibox.widget.textbox()
+spacer0           = wibox.widget.textbox()
 spacer0:set_text(' ')
+spacer1           = wibox.widget.textbox()
+spacer1:set_text('>')
+spacer2           = wibox.widget.textbox()
+spacer2:set_text('<')
 spacer            = wibox.widget.textbox()
 spacer:set_text(' | ')
 
@@ -94,7 +98,7 @@ local started=false
     awful.button({ }, 1, popup_bat),
     --awful.button({ }, 1, function () naughty.notify { text = bat_state , timeout = 5, hover_timeout = 0.5 } end),
     --awful.button({ }, 3, power_menu)
-    awful.button({ }, 3, function() 
+    awful.button({ }, 3, function()
       if started then
         awful.util.spawn("pkill -f 'gnome-control-center power'")
       else
@@ -154,18 +158,18 @@ do
   volicon:buttons(awful.util.table.join(
     awful.button({ }, 1, function() awful.util.spawn_with_shell("amixer -q set Master toggle")      end),
     awful.button({ }, 2, function() awful.util.spawn("amixer sset Mic toggle")           end),
-    awful.button({ }, 3, function() 
+    awful.button({ }, 3, function()
       if started then
-        awful.util.spawn("pkill -f 'gnome-alsamixer'")
+        awful.util.spawn("pkill -f 'pavucontrol'")
       else
-        awful.util.spawn("gnome-alsamixer")
+        awful.util.spawn("pavucontrol")
       end
       started=not started
     end),
     awful.button({ }, 4, function() awful.util.spawn_with_shell("amixer -q set Master 1%+ unmute")  end),
     awful.button({ }, 5, function() awful.util.spawn_with_shell("amixer -q set Master 1%- unmute")  end)
   ))
-end  
+end
 
 volpct:buttons(volicon:buttons())
 volpct:buttons(volicon:buttons())
@@ -173,8 +177,8 @@ volpct:buttons(volicon:buttons())
 --{{---| Keyboard layout - widget|------------------------------------------------------------------------------------------
 kbdcfg            = {}
 kbdcfg.cmd        = "setxkbmap"
---kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" }, { "es", "" , "ES" } } 
-kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } } 
+--kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" }, { "es", "" , "ES" } }
+kbdcfg.layout     = { { "us", "" , "US" }, { "ru", "" , "RU" } }
 kbdcfg.current    = 1  -- us is our default layout
 -- widget for TEXT
 --kbdcfg.widget     = wibox.widget.textbox()
@@ -214,7 +218,7 @@ setIcon:set_image(beautiful.system_monitor_icon)
 do
   local started_1=fals
   setIcon:buttons(awful.util.table.join(
-     awful.button({ }, 1, function() 
+     awful.button({ }, 1, function()
       if started_1 then
         awful.util.spawn("pkill -f 'lxtask'")
       else
@@ -222,7 +226,7 @@ do
       end
       started_1=not started_1
     end),
-     awful.button({ }, 3, function() 
+     awful.button({ }, 3, function()
       if started_3 then
         awful.util.spawn("pkill -f 'gnome-control-center'")
       else
@@ -231,7 +235,7 @@ do
       started_3=not started_3
     end)
   ))
-end 
+end
 
 --{{---| Tray |-------------------------------------------------------------------------------------------------------------
 systray = wibox.widget.systray()
