@@ -7,7 +7,7 @@
 -- @contributor Victor Unegbu (fixed issue with formatting)
 --
 -- @license GPLv3
--- @release 0.6.3 
+-- @release 0.6.3
 ------------------------------------------------------------------------
 
 -- Grab only needed enviroment
@@ -16,7 +16,8 @@ local string = string
 local io = io
 local table = table
 local pairs = pairs
-local timer = timer
+--local timer = timer
+local timer = require("gears.timer")
 local type = type
 local image = image
 local capi = {oocairo = oocairo, timer = timer, dbus = dbus}
@@ -80,7 +81,7 @@ function util.split(str, sep)
 end
 
 function util.tmpkey(script)
-	-- Replace all slashes with empty string so that /home/user1/script.sh 
+	-- Replace all slashes with empty string so that /home/user1/script.sh
 	-- and /home/user2/script.sh will have different temporary files
 	local tmpname = string.gsub(script, '/', '')
 
@@ -196,11 +197,11 @@ function util.create_timers_table()
 				func()
 			end
 		end
-		
-		if t.add_signal ~= nil then
-			t:add_signal("timeout", f)
-		else
+
+		if t.connect_signal ~= nil then
 			t:connect_signal("timeout", f)
+		else
+			t:add_signal("timeout", f)
 		end
 		table.insert(timers, t)
 	end
@@ -231,7 +232,7 @@ end
 function util.update_widget(widget, values, format)
 	if widget ~= nil then
 		if type(values) == "table" then
-			util.update_widget_field(widget, util.format(values, format))			
+			util.update_widget_field(widget, util.format(values, format))
 		else
 			util.update_widget_field(widget, values)
 		end
@@ -258,16 +259,16 @@ function bashets.set_defaults(defs)
 	if type(defs) == "table" then
 		if defs.update_time ~= nil then
 			defaults.update_time = defs.update_time
-		end 
+		end
 		if defs.file_update_time ~= nil then
 			defaults.file_update_time = defs.file_update_time
-		end 
+		end
 		if defs.format_string ~= nil then
 			defaults.format_string = defs.format_string
 		end
 		if defs.updater ~= nil then
 			defaults.updater = defs.updater
-		end 
+		end
 
 		defaults.separator = defs.separator --now could be nil
 	end
@@ -375,7 +376,7 @@ function bashets.schedule_e(script, widget, callback, format, updtime, sep)
 	ewidgets[key].separator = sep
 	ewidgets[key].cmd = util.fullpath(defaults.updater) .. " \"" .. ascript .. "\" " .. key .. " " ..updtime
 	--print(ewidgets[key].cmd)
-	
+
 --	awful.util.spawn_with_shell()
 end
 
@@ -402,8 +403,8 @@ function bashets.register_d(bus, iface, widget, callback, format)
 	if capi.dbus then
 		bus = bus or "session"
 		capi.dbus.add_match(bus, "interface='" .. iface .. "'")
-		
-		capi.dbus.connect_signal(iface, function (...) 
+
+		capi.dbus.connect_signal(iface, function (...)
 			local argums = {...}
 			local data = {}
 			for _,v in pairs(argums) do
@@ -469,7 +470,7 @@ function bashets.register(object, options)
 		-- Do it first time
 		local data = func()
 		util.update_widget(widget, data, format)
-		
+
 		-- Schedule it for timed execution
 		bashets.schedule_w(func, widget, callback, format, updtime)
 
