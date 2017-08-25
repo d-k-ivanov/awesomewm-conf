@@ -210,11 +210,6 @@ mytasklist.buttons          = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-
-local systray = wibox.widget.systray()
---systray:set_screen (s)
---systray:set_base_size(48)
-
 awful.screen.connect_for_each_screen(function(s)
 
       -- Wallpaper
