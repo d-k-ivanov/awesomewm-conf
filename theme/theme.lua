@@ -148,7 +148,7 @@ theme.menu_submenu_icon													= "~/.config/awesome/theme/submenu.png"
 theme.icon_theme																= "Papirus"
 
 --{{--- Battery icons -------------------------------------------------------------------------------------------------------------------
---[[theme.battery_missing 													= "~/.config/awesome/theme/icons/battery/battery_missing.png"
+theme.battery_missing 													= "~/.config/awesome/theme/icons/battery/battery_missing.png"
 theme.battery_empty 														= "~/.config/awesome/theme/icons/battery/battery_empty.png"
 theme.battery_full 															= "~/.config/awesome/theme/icons/battery/battery_full.png"
 theme.battery_1 																= "~/.config/awesome/theme/icons/battery/battery_1.png"
@@ -162,9 +162,9 @@ theme.battery_charging_1 												= "~/.config/awesome/theme/icons/battery/ba
 theme.battery_charging_2 												= "~/.config/awesome/theme/icons/battery/battery_charging_2.png"
 theme.battery_charging_3 												= "~/.config/awesome/theme/icons/battery/battery_charging_3.png"
 theme.battery_charging_4 												= "~/.config/awesome/theme/icons/battery/battery_charging_4.png"
-theme.battery_charging_5 												= "~/.config/awesome/theme/icons/battery/battery_charging_5.png"]]
+theme.battery_charging_5 												= "~/.config/awesome/theme/icons/battery/battery_charging_5.png"
 
-theme.battery_missing 													= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-missing.svg"
+--[[theme.battery_missing 													= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-missing.svg"
 theme.battery_empty 														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.svg"
 theme.battery_full 															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full.svg"
 theme.battery_1 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.sv"
@@ -178,7 +178,7 @@ theme.battery_charging_1 												= "~/.config/awesome/theme/icons/papirus-ic
 theme.battery_charging_2 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-caution-charging.svg"
 theme.battery_charging_3 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-low-charging.svg"
 theme.battery_charging_4 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-good-charging.svg"
-theme.battery_charging_5 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full-charging.svg"
+theme.battery_charging_5 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full-charging.svg"]]
 
 
 --{{--- Volume icons --------------------------------------------------------------------------------------------------------------------
