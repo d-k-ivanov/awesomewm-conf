@@ -7,3 +7,6 @@
 [submodule "extensions/blingbling"]
 	path = extensions/blingbling
 	url = git@github.com:cedlemo/blingbling.git
+[submodule "extensions/lain"]
+	path = extensions/lain
+	url = git@github.com:copycat-killer/lain.git

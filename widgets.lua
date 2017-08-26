@@ -208,7 +208,7 @@ kbdcfg.widget:buttons(
 
 --{{---| Clock  |-----------------------------------------------------------------------------------------------------------
 mytextclock = awful.widget.textclock("%H:%M")
-lain.widgets.calendar:attach(mytextclock, { font_size = 9 })
+lain.widget.calendar({ attach_to = { mytextclock }})
 
 --{{---| System Settings |--------------------------------------------------------------------------------------------------
 
