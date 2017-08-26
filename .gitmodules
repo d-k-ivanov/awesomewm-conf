@@ -10,3 +10,6 @@
 [submodule "extensions/lain"]
 	path = extensions/lain
 	url = git@github.com:copycat-killer/lain.git
+[submodule "extensions/vicious"]
+	path = extensions/vicious
+	url = git@github.com:Mic92/vicious.git
