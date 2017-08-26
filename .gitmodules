@@ -4,3 +4,6 @@
 [submodule "extensions/freedesktop"]
 	path = extensions/freedesktop
 	url = git@github.com:copycat-killer/awesome-freedesktop.git
+[submodule "extensions/blingbling"]
+	path = extensions/blingbling
+	url = git@github.com:cedlemo/blingbling.git
