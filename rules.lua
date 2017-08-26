@@ -1,6 +1,4 @@
 -- xprop - X tool to get window properties
-local awful     = require("awful")
-local beautiful = require("beautiful")
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.

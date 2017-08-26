@@ -1,5 +1,3 @@
-local awful       = require("awful")
-
 --{{---| Helpers |----------------------------------------------------------------------------------------------------------
 function client_menu_toggle_fn()
     local instance = nil

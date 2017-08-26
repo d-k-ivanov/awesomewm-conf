@@ -1,11 +1,3 @@
-local awful       = require("awful")
-local wibox       = require("wibox")
-local beautiful   = require("beautiful")
-local vicious     = require("vicious")
-local naughty     = require("naughty")
-local blingbling  = require("blingbling")
-local lain        = require("lain")
-
 --{{---| Main spacer  |-----------------------------------------------------------------------------------------------------
 spacer0           = wibox.widget.textbox()
 spacer0:set_text(' ')

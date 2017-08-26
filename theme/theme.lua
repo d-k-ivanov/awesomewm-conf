@@ -1,6 +1,3 @@
-local xresources																= require("beautiful.xresources")
-local dpi																				= xresources.apply_dpi
-
 theme 																					= {}
 theme.wallpaper 																= "~/.config/awesome/theme/wallpapers/pas.jpg"
 
