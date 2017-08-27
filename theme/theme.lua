@@ -1,5 +1,7 @@
+local config_dir              = gears.filesystem.get_dir("config")
+
 theme 																					= {}
-theme.wallpaper 																= "~/.config/awesome/theme/wallpapers/pas.jpg"
+theme.wallpaper 																= config_dir .. "theme/wallpapers/pas.jpg"
 
 -- blue | gray | green | purple | red | yellow | zen
 theme.colour 																		= "purple"
@@ -113,18 +115,18 @@ theme.taglist_squares_sel												= "~/.config/awesome/theme/tags/squaref_a.p
 theme.taglist_squares_unsel											= "~/.config/awesome/theme/tags/square_a.png"
 
 --{{--- Layout --------------------------------------------------------------------------------------------------------------------------
-theme.layout_tile																= "~/.config/awesome/theme/layouts/huge/tile.png"
-theme.layout_tileleft														= "~/.config/awesome/theme/layouts/huge/tileleft.png"
-theme.layout_tilebottom													= "~/.config/awesome/theme/layouts/huge/tilebottom.png"
-theme.layout_tiletop														= "~/.config/awesome/theme/layouts/huge/tiletop.png"
-theme.layout_fairv															= "~/.config/awesome/theme/layouts/huge/fairv.png"
-theme.layout_fairh															= "~/.config/awesome/theme/layouts/huge/fairh.png"
-theme.layout_spiral															= "~/.config/awesome/theme/layouts/huge/spiral.png"
-theme.layout_dwindle														= "~/.config/awesome/theme/layouts/huge/dwindle.png"
-theme.layout_max																= "~/.config/awesome/theme/layouts/huge/max.png"
-theme.layout_fullscreen													= "~/.config/awesome/theme/layouts/huge/fullscreen.png"
-theme.layout_magnifier													= "~/.config/awesome/theme/layouts/huge/magnifier.png"
-theme.layout_floating														= "~/.config/awesome/theme/layouts/huge/floating.png"
+theme.layout_tile																= config_dir .. "theme/icons/layouts/tile.png"
+theme.layout_tileleft														= config_dir .. "theme/icons/layouts/tileleft.png"
+theme.layout_tilebottom													= config_dir .. "theme/icons/layouts/tilebottom.png"
+theme.layout_tiletop														= config_dir .. "theme/icons/layouts/tiletop.png"
+theme.layout_fairv															= config_dir .. "theme/icons/layouts/fairv.png"
+theme.layout_fairh															= config_dir .. "theme/icons/layouts/fairh.png"
+theme.layout_spiral															= config_dir .. "theme/icons/layouts/spiral.png"
+theme.layout_dwindle														= config_dir .. "theme/icons/layouts/dwindle.png"
+theme.layout_max																= config_dir .. "theme/icons/layouts/max.png"
+theme.layout_fullscreen													= config_dir .. "theme/icons/layouts/fullscreen.png"
+theme.layout_magnifier													= config_dir .. "theme/icons/layouts/magnifier.png"
+theme.layout_floating														= config_dir .. "theme/icons/layouts/floating.png"
 
 --{{--- Lain layout ---------------------------------------------------------------------------------------------------------------------
 --theme.useless_gap_width												= 9
@@ -140,7 +142,8 @@ theme.layout_floating														= "~/.config/awesome/theme/layouts/huge/float
 --theme.layout_uselesstile											= "~/.config/awesome/theme/layouts-lain/floating.png"
 
 --{{--- Theme icons ---------------------------------------------------------------------------------------------------------------------
-theme.awesome_icon															= "~/.config/awesome/theme/blank.png"
+--theme.awesome_icon															= "~/.config/awesome/theme/blank.png"
+theme.awesome_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/places/distributor-logo-gentoo.svg"
 theme.menu_submenu_icon													= "~/.config/awesome/theme/submenu.png"
 theme.icon_theme																= "Papirus"
 
@@ -161,7 +164,8 @@ theme.battery_charging_3 												= "~/.config/awesome/theme/icons/battery/ba
 theme.battery_charging_4 												= "~/.config/awesome/theme/icons/battery/battery_charging_4.png"
 theme.battery_charging_5 												= "~/.config/awesome/theme/icons/battery/battery_charging_5.png"
 
---[[theme.battery_missing 													= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-missing.svg"
+--[[
+theme.battery_missing 													= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-missing.svg"
 theme.battery_empty 														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.svg"
 theme.battery_full 															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full.svg"
 theme.battery_1 																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-empty.sv"
@@ -175,8 +179,8 @@ theme.battery_charging_1 												= "~/.config/awesome/theme/icons/papirus-ic
 theme.battery_charging_2 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-caution-charging.svg"
 theme.battery_charging_3 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-low-charging.svg"
 theme.battery_charging_4 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-good-charging.svg"
-theme.battery_charging_5 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full-charging.svg"]]
-
+theme.battery_charging_5 												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/battery-full-charging.svg"
+]]
 
 --{{--- Volume icons --------------------------------------------------------------------------------------------------------------------
 theme.volume_high																= "~/.config/awesome/theme/icons/volume/volume-high.png"
@@ -185,11 +189,11 @@ theme.volume_low																= "~/.config/awesome/theme/icons/volume/volume-l
 theme.volume_muted															= "~/.config/awesome/theme/icons/volume/volume-muted.png"
 theme.volume_off																= "~/.config/awesome/theme/icons/volume/volume-off.png"
 
---[[theme.volume_high																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-high.svg"
-theme.volume_medium															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-high.svg"
-theme.volume_low																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-medium.svg"
-theme.volume_off																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-low.svg"
-theme.volume_muted															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/status/audio-volume-muted.svg"]]
+--[[theme.volume_high																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Dark/symbolic/status/audio-volume-high-symbolic.svg"
+theme.volume_medium															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Dark/symbolic/status/audio-volume-high-symbolic.svg"
+theme.volume_low																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Dark/symbolic/status/audio-volume-medium-symbolic.svg"
+theme.volume_off																= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Dark/symbolic/status/audio-volume-low-symbolic.svg"
+theme.volume_muted															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Dark/symbolic/status/audio-volume-muted-symbolic.svg"]]
 
 --{{--- Taskbar icons -------------------------------------------------------------------------------------------------------------------
 theme.wclock_icon																= "~/.config/awesome/theme/icons/bar/clock.png"
@@ -198,15 +202,16 @@ theme.wclock_icon																= "~/.config/awesome/theme/icons/bar/clock.png"
 theme.system_monitor_icon												= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/htop.svg"
 theme.terminal_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/xterm.svg"
 theme.terminator_icon														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/terminator.svg"
+--theme.dropbox_icon                              = "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/dropbox.svg"
 
 theme.awesone_default														= "~/.config/awesome/theme/icons/awesome_logo.svg"
 theme.manual_icon																= "~/.config/awesome/theme/icons/apps/manual.png"
 theme.edit_icon																	= "~/.config/awesome/theme/icons/apps/edit.png"
 theme.reload_icon																= "~/.config/awesome/theme/icons/apps/reload.png"
-theme.quit_icon																	= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/system-log-out.svg"
-theme.hibernate_icon														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/system-hibernate.svg"
-theme.restart_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/system-restart.svg"
-theme.shutdown_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus-Light/48x48/apps/system-shutdown.svg"
+theme.quit_icon																	= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/apps/system-log-out.svg"
+theme.hibernate_icon														= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/apps/system-hibernate.svg"
+theme.restart_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/apps/system-restart.svg"
+theme.shutdown_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/apps/system-shutdown.svg"
 
 --{{-------------------------------------------------------------------------------------------------------------------------------------
 

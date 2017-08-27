@@ -1,5 +1,5 @@
---{{---| Java GUI's fix |--------------------------------------------------------------------------------------------------
-awful.util.spawn_with_shell("wmname LG3D")
+--{{---| Java GUI's fix |------------------------------------------------------------------------------------------------
+--awful.util.spawn_with_shell("wmname LG3D")
 
 -- function run_once(prg,arg_string,pname,screen)
 --   if not prg then
@@ -26,10 +26,14 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
---{{---| Rules |-----------------------------------------------------------------------------------------------------------
+--{{---| Rules |---------------------------------------------------------------------------------------------------------
 -- run_once(prg,arg_string,pname,screen)
+
+--{{---| Java GUI's fix ---}}---
+run_once("wmname LG3D")
+
 --run_once("skypeforlinux")
-run_once("dropbox")
+--run_once("dropbox")
 run_once("nm-applet")
 --run_once("jetbrains-toolbox --minimize")
 --run_once("/home/id/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize")
@@ -37,7 +41,7 @@ run_once("nm-applet")
 --run_once("pidgin")
 run_once("slack")
 --run_once("telegram-desktop")
-run_once("thunderbird")
+--run_once("thunderbird")
 -- run_once("firefox")
 -- run_once("google-chrome-stable")
 --run_once("gnome-commander")

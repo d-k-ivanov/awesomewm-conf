@@ -1,12 +1,12 @@
 --{{---| Main spacer  |-----------------------------------------------------------------------------------------------------
 spacer0           = wibox.widget.textbox()
-spacer0:set_text(' ')
+                    spacer0:set_text(' ')
 spacer1           = wibox.widget.textbox()
-spacer1:set_text('>')
+                    spacer1:set_text('>')
 spacer2           = wibox.widget.textbox()
-spacer2:set_text('<')
+                    spacer2:set_text('<')
 spacer            = wibox.widget.textbox()
-spacer:set_text(' | ')
+                    spacer:set_text(' | ')
 
 --{{---| Battery  |---------------------------------------------------------------------------------------------------------
   -- Battery attributes
@@ -28,7 +28,7 @@ vicious.register(batpct, vicious.widgets.bat, function(widget, args)
 
   if args[1] == "↯" then
     baticon:set_image(beautiful.battery_charging_full)
-  elseif args[1] == "−" or args[1] == "⌁" then
+  elseif args[1] == "-" or args[1] == "⌁" then
     if bat_charge > 93 then
       baticon:set_image(beautiful.battery_5)
     elseif bat_charge <= 93 and bat_charge > 77 then
@@ -72,7 +72,7 @@ function popup_bat()
     state = "Charged"
   elseif bat_state == "+" then
     state = "Charging"
-  elseif bat_state == "−" then
+  elseif bat_state == "-" then
     state = "Discharging"
   elseif bat_state == "⌁" then
     state = "Not charging"
@@ -114,7 +114,7 @@ vicious.register(lan_usage, vicious.widgets.net, '<span color="#CC9393">${enp6s0
 
 wifi_usage      = wibox.widget.textbox()
   -- Register widget
-vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp3s0 up_kb}</span>', 3)
+vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
 
 --{{---| Volume  |----------------------------------------------------------------------------------------------------------
   -- Cache
@@ -229,5 +229,4 @@ do
   ))
 end
 
---{{---| Tray |-------------------------------------------------------------------------------------------------------------
-systray = wibox.widget.systray()
+

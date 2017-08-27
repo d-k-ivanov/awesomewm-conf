@@ -1,3 +1,6 @@
+--{{---| Tray |-------------------------------------------------------------------------------------------------------------
+systray = wibox.widget.systray()
+
 layouts = { awful.layout.suit.floating,     -- 1
             awful.layout.suit.tile,         -- 2
             awful.layout.suit.tile.bottom,  -- 3
@@ -116,15 +119,15 @@ awful.screen.connect_for_each_screen(function(s)
     mytasklist[s], -- Middle widget
     {-- Widgets that are aligned to the right
       layout                = wibox.layout.fixed.horizontal(),
-      spacer,
+      --spacer,
       systray,
       spacer0,
       kbdcfg.widget,
       spacer0,
       setIcon,
-      spacer0,
-      mylayoutbox[s],
 
+      spacer,
+      dropbox_widget,
       spacer,
       baticon,
       batpct,
@@ -134,6 +137,7 @@ awful.screen.connect_for_each_screen(function(s)
       spacer,
       mytextclock,
       spacer0,
+      mylayoutbox[s],
     },
   }
 
