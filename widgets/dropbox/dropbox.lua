@@ -85,3 +85,9 @@ update(dropbox_widget)
 mytimer = gears.timer({ timeout = 1 })
 mytimer:connect_signal("timeout", function () update(dropbox_widget) end)
 mytimer:start()
+
+do
+  dropbox_widget:buttons(awful.util.table.join(
+    awful.button({ }, 1, function() awful.util.spawn_with_shell("xdg-open https://dropbox.com")      end)
+  ))
+end
