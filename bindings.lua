@@ -111,7 +111,9 @@ globalkeys = awful.util.table.join(
 		{description = "Show menu bar",                         group = "Launcher"      }),
 
 	--{{---| Screenshot |-------------------------------------------------------------------------------------------------------
-	awful.key({                    },  key_Print, function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end,
+--	awful.key({                    },  key_Print, function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end,
+--	awful.key({                    },  key_Print, function () awful.util.spawn("bash -c 'sleep 0.2 && scrot screenshot-%Y-%m-%d-%H-%M-%S.png --select -e \'mkdir -p ~/Documents/screenshots && mv $f ~/Documents/screenshots/ 2>/dev/null\''") end,
+	awful.key({                    },  key_Print, function () awful.util.spawn("bash -c 'sleep 0.2 && mkdir -p ~/Documents/screenshots && scrot ~/Documents/screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png --select'") end,
 		{description = "Take Screenshot",                       group = "Utilities"     }),
 
 	--{{---| Lock Screen |------------------------------------------------------------------------------------------------------

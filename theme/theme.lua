@@ -142,8 +142,8 @@ theme.layout_floating														= config_dir .. "theme/icons/layouts/floating
 --theme.layout_uselesstile											= "~/.config/awesome/theme/layouts-lain/floating.png"
 
 --{{--- Theme icons ---------------------------------------------------------------------------------------------------------------------
---theme.awesome_icon															= "~/.config/awesome/theme/blank.png"
-theme.awesome_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/places/distributor-logo-gentoo.svg"
+theme.awesome_icon															= "~/.config/awesome/theme/blank.png"
+--theme.awesome_icon															= "~/.config/awesome/theme/icons/papirus-icon-theme/Papirus/48x48/places/distributor-logo-gentoo.svg"
 theme.menu_submenu_icon													= "~/.config/awesome/theme/submenu.png"
 theme.icon_theme																= "Papirus"
 

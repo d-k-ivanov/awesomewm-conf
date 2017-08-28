@@ -28,7 +28,7 @@ layouts = { awful.layout.suit.floating,     -- 1
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
   names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "ML"      , "DB"      , "JS"      , "Deploy"  , "Dev"        },
-  layout                    = { layouts[2]  , layouts[2], layouts[6], layouts[4], layouts[6], layouts[6], layouts[6], layouts[4], layouts[4]    }
+  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[4], layouts[6], layouts[6], layouts[6], layouts[4], layouts[4]    }
 }
 
 mywibox                     = {}
@@ -105,7 +105,9 @@ awful.screen.connect_for_each_screen(function(s)
   mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
   -- Create the wiboxaa
-  mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(20)  })
+--  mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(20)  })
+  mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
+
 
   -- Add widgets to the wibox
   mywibox[s]:setup {

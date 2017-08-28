@@ -1,6 +1,12 @@
 --{{---| Dropbox |-------------------------------------------------------------------------------------------------------------
-local config_dir        = gears.filesystem.get_dir("config")
+function script_path()
+  local str = debug.getinfo(2, "S").source:sub(2)
+  return str:match("(.*/)"):gsub([[//]],[[/]])
+end
+
+local widget_dir        = script_path()
 local status_bin_cmd    = "dropbox-cli status"
+
 
 -- Textbox version
 -- dropbox_widget = wibox.widget.textbox()
@@ -28,12 +34,12 @@ local status_bin_cmd    = "dropbox-cli status"
 
 -- Imagebox version
 
-local dropbox_status_blank    = config_dir .. "widgets/dropbox/dropboxstatus-blank.png"
-local dropbox_status_busy2    = config_dir .. "widgets/dropbox/dropboxstatus-busy2.png"
-local dropbox_status_busy1    = config_dir .. "widgets/dropbox/dropboxstatus-busy1.png"
-local dropbox_status_idle     = config_dir .. "widgets/dropbox/dropboxstatus-idle.png"
-local dropbox_status_logo     = config_dir .. "widgets/dropbox/dropboxstatus-logo.png"
-local dropbox_status_x        = config_dir .. "widgets/dropbox/dropboxstatus-x.png"
+local dropbox_status_blank    = widget_dir .. "dropboxstatus-blank.png"
+local dropbox_status_busy2    = widget_dir .. "dropboxstatus-busy2.png"
+local dropbox_status_busy1    = widget_dir .. "dropboxstatus-busy1.png"
+local dropbox_status_idle     = widget_dir .. "dropboxstatus-idle.png"
+local dropbox_status_logo     = widget_dir .. "dropboxstatus-logo.png"
+local dropbox_status_x        = widget_dir .. "dropboxstatus-x.png"
 local dropbox_loading_icon    = dropbox_status_busy1
 local dropbox_number          = 1
 
@@ -78,7 +84,7 @@ function update(widget)
   end
 
 end
--- Imagebox version
+
 update(dropbox_widget)
 
 -- Use a prime number to avoid running at the same time as other commands
@@ -89,5 +95,7 @@ mytimer:start()
 do
   dropbox_widget:buttons(awful.util.table.join(
     awful.button({ }, 1, function() awful.util.spawn_with_shell("xdg-open https://dropbox.com")      end)
+    -- DEBUG
+    --awful.button({ }, 3, function() naughty.notify { text = script_path(), timeout = 5, hover_timeout = 0.5 }      end)
   ))
 end
