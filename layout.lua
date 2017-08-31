@@ -27,7 +27,7 @@ layouts = { awful.layout.suit.floating,     -- 1
 
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
-  names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "ML"      , "DB"      , "JS"      , "Deploy"  , "Dev"        },
+  names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "Term"      , "DB"      , "JS"      , "Deploy"  , "Dev"        },
   layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[4], layouts[6], layouts[6], layouts[6], layouts[4], layouts[4]    }
 }
 
