@@ -27,8 +27,8 @@ layouts = { awful.layout.suit.floating,     -- 1
 
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
-  names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "Term"      , "DB"      , "JS"      , "Deploy"  , "Dev"        },
-  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[4], layouts[6], layouts[6], layouts[6], layouts[4], layouts[4]    }
+  names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "Deploy"  , "Term"    , "DB"      , "JS"      , "Android"  , "Dev"        },
+  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]    }
 }
 
 mywibox                     = {}
@@ -133,6 +133,8 @@ awful.screen.connect_for_each_screen(function(s)
       spacer,
       baticon,
       batpct,
+      spacer,
+      brightness_widget,
       spacer,
       volicon,
       volpct,
