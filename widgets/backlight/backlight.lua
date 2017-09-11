@@ -59,7 +59,7 @@ function update_icon(widget, stdout, stderr, exitreason, exitcode)
       widget.image = backlight_high
     elseif (brightness_level <= 75 and brightness_level > 45) then
       widget.image = backlight_medium
-    elseif (brightness_level <= 45 and brightness_level > 20) thenw
+    elseif (brightness_level <= 45 and brightness_level > 20) then
       widget.image = backlight_low
     elseif (brightness_level <= 20) then
       widget.image = backlight_off
