@@ -36,12 +36,12 @@ mypromptbox                 = {}
 mylayoutbox                 = {}
 mytaglist                   = {}
 mytaglist.buttons           = awful.util.table.join(
-  awful.button({ },         1, awful.tag.viewonly),
-  awful.button({ modkey },  1, awful.client.movetotag),
+  awful.button({ },         1, function(t) t:view_only()                                        end),
+  awful.button({ modkey },  1, function(t) if client.focus then client.focus:move_to_tag(t) end end),
   awful.button({ },         3, awful.tag.viewtoggle),
-  awful.button({ modkey },  3, awful.client.toggletag),
-  awful.button({ },         4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-  awful.button({ },         5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end))
+  awful.button({ modkey },  3, function(t) if client.focus then client.focus:toggle_tag(t)  end end),
+  awful.button({ },         4, function(t) awful.tag.viewnext(awful.tag.getscreen(t))           end),
+  awful.button({ },         5, function(t) awful.tag.viewprev(awful.tag.getscreen(t))           end))
 mytasklist                  = {}
 mytasklist.buttons          = awful.util.table.join(
   awful.button({ }, 1, function (c)
@@ -72,7 +72,6 @@ mytasklist.buttons          = awful.util.table.join(
 
 
 awful.screen.connect_for_each_screen(function(s)
-
   -- Wallpaper
   if beautiful.wallpaper then
     local wallpaper = beautiful.wallpaper
@@ -104,7 +103,7 @@ awful.screen.connect_for_each_screen(function(s)
   -- Create a tasklist widget
   mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
-  -- Create the wiboxaa
+  -- Create the wibox
 --  mywibox[s]              = awful.wibox({ position = "top", screen = s, height = dpi(20)  })
   mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
 

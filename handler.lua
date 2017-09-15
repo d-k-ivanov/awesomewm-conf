@@ -37,7 +37,7 @@ local function trim(s)
 end
 
 local function bat_notification()
-  
+
   local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
   local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
 
@@ -57,7 +57,7 @@ local function bat_notification()
   end
 end
 
-battimer = timer({timeout = 2})
+battimer = gears.timer({ timeout = 2 })
 battimer:connect_signal("timeout", bat_notification)
 battimer:start()
 

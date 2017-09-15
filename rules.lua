@@ -16,7 +16,7 @@ awful.rules.rules = {
                    class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry",
                                         "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
                                         "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox",
-                                        "XCalc", "Vncviewer", "Pavucontrol", "Cheese", "HP Device Manager - Setup"},
+                                        "XCalc", "Vncviewer", "Pavucontrol", "Cheese", "HP Device Manager - Setup", "Qalculate-gtk"},
                                         --"Leafpad",w
                    name           =   { "Event Tester" },
                    role           =   { "AlarmWindow", "pop-up", }},

@@ -42,29 +42,29 @@ globalkeys = awful.util.table.join(
 	--{{---| Hotkeys |----------------------------------------------------------------------------------------------------------
 
 	--{{---| Terminal |---------------------------------------------------------------------------------------------------------
-	awful.key({ modkey,           },  key_Return, function () awful.util.spawn(terminal)                  end,
+	awful.key({ modkey,           },  key_Return, function () awful.spawn(terminal,{})                   end,
 		{description = "Run xTerm",                             group = "Terminals"     }),
-	awful.key({ modkey, "Control" },  key_Return, function () awful.util.spawn(terminal2)                 end,
+	awful.key({ modkey, "Control" },  key_Return, function () awful.spawn(terminal2,{})                  end,
 		{description = "Run Terminator",                        group = "Terminals"     }),
 
 	--{{---| File managers |----------------------------------------------------------------------------------------------------
 	awful.key({ modkey,           },  key_e,      function ()
 		if fme_started then
-			awful.util.spawn("pkill -f '" .. fme .. "'")
+			awful.spawn("pkill -f '" .. fme .. "'",{})
 		else
-			awful.util.spawn(fme)
+			awful.spawn(fme,{})
 		end
 		fme_started = not fme_started                         end,
 		{description = "Tougle SpaceFM",                        group = "File managers" }),
-	awful.key({ modkey, "Shift"   },  key_s,      function () awful.util.spawn(fms)                       end,
+	awful.key({ modkey, "Shift"   },  key_s,      function () awful.spawn(fms,{})                         end,
 		{description = "Run Gnome-Commander",                   group = "File managers" }),
-	awful.key({ modkey,           },  key_s,      function () awful.util.spawn(fmd)                       end,
+	awful.key({ modkey,           },  key_s,      function () awful.spawn(fmd,{})                         end,
 		{description = "Run Duble-Commander",                   group = "File managers" }),
 	awful.key({ modkey,           },  key_x,      function ()
 		if fmx_started then
-			awful.util.spawn("pkill -f '" .. fmx .. "'")
+			awful.spawn("pkill -f '" .. fmx .. "'",{})
 		else
-			awful.util.spawn(fmx)
+			awful.spawn(fmx,{})
 		end
 		fmx_started = not fmx_started                         end,
 		{description = "Tougle PCmanFM",                        group = "File managers" }),
@@ -96,7 +96,7 @@ globalkeys = awful.util.table.join(
 	--{{---| Prompt |-----------------------------------------------------------------------------------------------------------
 	awful.key({ modkey,           },  key_r,      function () mypromptbox[awful.screen.focused()]:run()   end,
 		{description = "Run prompt",                            group = "Launcher"      }),
-	awful.key({ modkey, "Shift"   },  key_r,      function () awful.util.spawn_with_shell("gmrun")        end,
+	awful.key({ modkey, "Shift"   },  key_r,      function () awful.spawn_with_shell("gmrun")        end,
 		{description = "Run GTK prompt",                        group = "Launcher"      }),
 
 	awful.key({ modkey, "Shift"   },  key_x,      function ()
@@ -111,31 +111,31 @@ globalkeys = awful.util.table.join(
 		{description = "Show menu bar",                         group = "Launcher"      }),
 
 	--{{---| Screenshot |-------------------------------------------------------------------------------------------------------
---	awful.key({                    },  key_Print, function () awful.util.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'") end,
---	awful.key({                    },  key_Print, function () awful.util.spawn("bash -c 'sleep 0.2 && scrot screenshot-%Y-%m-%d-%H-%M-%S.png --select -e \'mkdir -p ~/Documents/screenshots && mv $f ~/Documents/screenshots/ 2>/dev/null\''") end,
-	awful.key({                    },  key_Print, function () awful.util.spawn("bash -c 'sleep 0.2 && mkdir -p ~/Documents/screenshots && scrot ~/Documents/screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png --select'") end,
+--	awful.key({                    },  key_Print, function () awful.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'",{}) end,
+--	awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && scrot screenshot-%Y-%m-%d-%H-%M-%S.png --select -e \'mkdir -p ~/Documents/screenshots && mv $f ~/Documents/screenshots/ 2>/dev/null\''",{}) end,
+	awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && mkdir -p ~/Documents/screenshots && scrot ~/Documents/screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png --select'",{}) end,
 		{description = "Take Screenshot",                       group = "Utilities"     }),
 
 	--{{---| Lock Screen |------------------------------------------------------------------------------------------------------
-	awful.key({ modkey,            }, key_z,      function () awful.util.spawn("xscreensaver-command -lock") end,
+	awful.key({ modkey,            }, key_z,      function () awful.spawn("xscreensaver-command -lock",{}) end,
 		{description = "Lock screen",                           group = "Utilities"     }),
 
 	--{{---| arandr |-----------------------------------------------------------------------------------------------------------
 	awful.key({ modkey,            }, key_Tilda,  function ()
 		if arandr_started then
-			awful.util.spawn("pkill -f 'arandr'")
+			awful.spawn("pkill -f 'arandr'",{})
 		else
-			awful.util.spawn("arandr")
+			awful.spawn("arandr",{})
 		end
 		arandr_started = not arandr_started                   end,
 		{description = "run arandr",                            group = "Software"     }),
 
 	--{{---| Virt-Manager |-----------------------------------------------------------------------------------------------------
-	awful.key({ modkey,            }, key_v,      function () awful.util.spawn("sudo virt-manager")       end,
+	awful.key({ modkey,            }, key_v,      function () awful.spawn("sudo virt-manager",{})       end,
 		{description = "run sudo virt-manager",                 group = "Software"     }),
 
 	--{{---| Network Restart |-----------------------------------------------------------------------------------------------------
-	awful.key({ modkey, "Shift"    }, key_n,      function () awful.util.spawn("sudo systemctl restart NetworkManager.service")         end,
+	awful.key({ modkey, "Shift"    }, key_n,      function () awful.spawn("sudo systemctl restart NetworkManager.service",{})         end,
 		{description = "Restart Network Manager",                 group = "Software"     }),
 
 
@@ -157,9 +157,9 @@ clientkeys = awful.util.table.join(
 		{description = "Toggle floating",                       group = "Client"        }),
 	awful.key({ modkey, "Control" }, key_Return,  function (c) c:swap(awful.client.getmaster())           end,
 		{description = "Move to master",                        group = "Client"        }),
-	awful.key({ modkey,           }, key_q,       awful.client.movetoscreen,
+	awful.key({ modkey,           }, key_q,       function (c) c:move_to_screen()                         end,
 		{description = "Move to screen",                        group = "Client"        }),
-	awful.key({ modkey,           }, key_o,       awful.client.movetoscreen,
+	awful.key({ modkey,           }, key_o,       function (c) c:move_to_screen()                         end,
 		{description = "Move to screen",                        group = "Client"        }),
 	awful.key({ modkey,           }, key_t,       function (c) c.ontop = not c.ontop                      end,
 		{description = "Toggle keep on top",                    group = "Client"        }),

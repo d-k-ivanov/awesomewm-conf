@@ -164,7 +164,6 @@ do
 end
 
 volpct:buttons(volicon:buttons())
-volpct:buttons(volicon:buttons())
 
 --{{---| Keyboard layout - widget|------------------------------------------------------------------------------------------
 kbdcfg            = {}
@@ -199,8 +198,9 @@ kbdcfg.widget:buttons(
 
 
 --{{---| Clock  |-----------------------------------------------------------------------------------------------------------
-mytextclock = awful.widget.textclock("%H:%M")
-lain.widget.calendar({ attach_to = { mytextclock }})
+--mytextclock = wibox.widget.textclock("%H:%M")
+mytextclock = wibox.widget.textclock()
+--lain.widget.calendar({ attach_to = { mytextclock }})
 
 --{{---| System Settings |--------------------------------------------------------------------------------------------------
 
