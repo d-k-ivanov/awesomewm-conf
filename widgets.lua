@@ -148,18 +148,18 @@ end, nil, "Master")
 do
   local started=false
   volicon:buttons(awful.util.table.join(
-    awful.button({ }, 1, function() awful.util.spawn_with_shell("amixer -q set Master toggle")      end),
-    awful.button({ }, 2, function() awful.util.spawn("amixer sset Mic toggle")           end),
+    awful.button({ }, 1, function() awful.spawn.with_shell("amixer -q set Master toggle", false)      end),
+    awful.button({ }, 2, function() awful.spawn("amixer sset Mic toggle", false)           end),
     awful.button({ }, 3, function()
       if started then
-        awful.util.spawn("pkill -f 'pavucontrol'")
+        awful.spawn("pkill -f 'pavucontrol'", false)
       else
-        awful.util.spawn("pavucontrol")
+        awful.spawn("pavucontrol", false)
       end
       started=not started
     end),
-    awful.button({ }, 4, function() awful.util.spawn_with_shell("amixer -q set Master 1%+ unmute")  end),
-    awful.button({ }, 5, function() awful.util.spawn_with_shell("amixer -q set Master 1%- unmute")  end)
+    awful.button({ }, 4, function() awful.spawn.with_shell("amixer -q set Master 1%+ unmute", false)  end),
+    awful.button({ }, 5, function() awful.spawn.with_shell("amixer -q set Master 1%- unmute", false)  end)
   ))
 end
 

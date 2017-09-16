@@ -35,10 +35,19 @@ set_image = function(self, path)
   end
 }
 
+-- Section for Watcher
 function update(widget, stdout, stderr, exitreason, exitcode)
+
+-- Section for Timer and Updater
+--function update(widget)
+
   --local fd = io.popen(status_bin_cmd)
+
+  -- Section for Timer and Updater
   --local status = fd:read("*all")
+  -- Section for Watcher
   local status = stdout
+
   if string.find(status, "date", 1, true) then
     widget:set_image(dropbox_status_idle)
   elseif string.find(status, "Syncing", 1, true) then
@@ -65,21 +74,7 @@ function update(widget, stdout, stderr, exitreason, exitcode)
 
 end
 
---update(dropbox_widget)
---
--- Use a prime number to avoid running at the same time as other commands
---mytimer = gears.timer({ timeout = 1 })
---mytimer:connect_signal("timeout", function () update(dropbox_widget)                        end)
---mytimer:start()
-
---[[do
-  dropbox_widget:buttons(awful.util.table.join(
-    awful.button({ }, 1, function() awful.spawn_with_shell("xdg-open https://dropbox.com", {})      end)
-    -- DEBUG
-    --awful.button({ }, 3, function() naughty.notify { text = script_path(), timeout = 5, hover_timeout = 0.5 }      end)
-  ))
-end]]
-
+-- Version with Wacher
 dropbox_widget:connect_signal("button::press", function(_,_,_,button)
   if (button == 1) then
     spawn("xdg-open https://dropbox.com", false)
@@ -88,3 +83,20 @@ dropbox_widget:connect_signal("button::press", function(_,_,_,button)
 end)
 
 watch(status_bin_cmd, 1, update, dropbox_widget)
+
+-- Version with Timer and Updater
+--update(dropbox_widget)
+
+-- Use a prime number to avoid running at the same time as other commands
+--mytimer = gears.timer({ timeout = 2 })
+--mytimer:connect_signal("timeout", function () update(dropbox_widget)                        end)
+--mytimer:connect_signal("timeout", function () update(dropbox_widget)                        end)
+--mytimer:start()
+
+--do
+--  dropbox_widget:buttons(awful.util.table.join(
+--    awful.button({ }, 1, function() awful.spawn("xdg-open https://dropbox.com", {})      end)
+--    -- DEBUG
+--    --awful.button({ }, 3, function() naughty.notify { text = script_path(), timeout = 5, hover_timeout = 0.5 }      end)
+--  ))
+--end
