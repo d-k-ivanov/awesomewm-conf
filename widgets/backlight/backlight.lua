@@ -26,7 +26,7 @@ local backlight_low               = widget_dir .. "display-brightness-low.svg"
 local backlight_off               = widget_dir .. "display-brightness-off.svg"
 
 -- Boxes
-local brightness_text = wibox.widget.textbox()
+local brightness_text = wibox.widget.textbox(" n/a")
 local brightness_icon = wibox.widget {
   {
     id = "icon",

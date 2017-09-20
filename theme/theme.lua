@@ -4,7 +4,7 @@ theme 																					= {}
 theme.wallpaper 																= config_dir .. "theme/wallpapers/pas.jpg"
 
 -- blue | gray | green | purple | red | yellow | zen
-theme.colour 																		= "purple"
+theme.colour 																		= "white_gray"
 
 --{{--- Style ---------------------------------------------------------------------------------------------------------------------------
 cyan  																					= "#7f4de6"
@@ -21,15 +21,17 @@ red   																					= "#eb2f6d"
 yellow																					= "#f6be57"
 zen																							= "#cacaa8"
 purple																					= "#8476ad"
+white_gray																			= "#d3dae3"
+
 
 bbblluu																					= "#44849d"
 
 -- blue = dblue | gray = gray | green = dgreen | purple = purple | red = red | yellow = yellow | zen = zen
-main_colour 																		= purple
+main_colour 																		= white_gray
 
---theme.font																		= "Consolas 8"
---theme.font																		= "Terminus 9"
-theme.font																			= "Inconsolata 9"
+--theme.font																	= "Consolas 9"
+--theme.font																	= "Terminus 9"
+theme.font																	  = "Inconsolata 9"
 
 theme.fg_normal																	= "#AAAAAA"
 --theme.fg_focus																= "#F0DFAF"
@@ -74,8 +76,8 @@ theme.awful_widget_color												= main_colour
 theme.awful_widget_gradien_color_1							= orange
 theme.awful_widget_gradien_color_2							= orange
 theme.awful_widget_gradien_color_3							= orange
-theme.awful_widget_height												= dpi(14)
-theme.awful_widget_margin_top										= dpi(2)
+--theme.awful_widget_height												= dpi(14)
+--theme.awful_widget_margin_top										= dpi(2)
 
 theme.mouse_finder_color												= "#CC9393"
 

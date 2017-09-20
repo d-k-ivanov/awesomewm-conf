@@ -28,7 +28,7 @@ layouts = { awful.layout.suit.floating,     -- 1
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
   names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "Deploy"  , "Term"    , "DB"      , "JS"      , "Android"  , "Dev"        },
-  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]    }
+  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[2], layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2]    }
 }
 
 mywibox                     = {}

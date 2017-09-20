@@ -4,6 +4,8 @@ gears               = require("gears")
 awful.rules         = require("awful.rules")
                       require("awful.autofocus")
 xresources          = require("beautiful.xresources")
+                      --require("lgi").GLib.setenv("GDK_SCALE", "1.5", true)`
+                      --require("lgi").GLib.setenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1", true)
 dpi                 = xresources.apply_dpi
 
 --{{---| Extensions |----------------------------------------------------------------------------------------------------

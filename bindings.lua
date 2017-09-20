@@ -131,13 +131,22 @@ globalkeys = awful.util.table.join(
 		{description = "run arandr",                            group = "Software"     }),
 
 	--{{---| Virt-Manager |-----------------------------------------------------------------------------------------------------
-	awful.key({ modkey,            }, key_v,      function () awful.spawn("sudo virt-manager",{})       end,
+	awful.key({ modkey,            }, key_v,      function () awful.spawn("sudo virt-manager",{})         end,
 		{description = "run sudo virt-manager",                 group = "Software"     }),
 
-	--{{---| Network Restart |-----------------------------------------------------------------------------------------------------
+	--{{---| Network Restart |--------------------------------------------------------------------------------------------------
 	awful.key({ modkey, "Shift"    }, key_n,      function () awful.spawn("sudo systemctl restart NetworkManager.service",{})         end,
 		{description = "Restart Network Manager",                 group = "Software"     }),
 
+  --{{---| Calculator   |-----------------------------------------------------------------------------------------------------
+  awful.key({ modkey,            }, key_c,function ()
+    if calc_started then
+      awful.spawn("pkill -f 'qalculate-gtk'",{})
+    else
+      awful.spawn.with_shell("GDK_SCALE=2 qalculate-gtk",{})
+    end
+    calc_started = not calc_started                                                                       end,
+    {description = "Calculator",                 group = "Software"     }),
 
 	--{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
 	awful.key({ altkey,            },  key_Space, function() kbdcfg.switch()                              end,
