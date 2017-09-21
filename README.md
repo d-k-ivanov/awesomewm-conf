@@ -1,7 +1,13 @@
-# Only for AwesomeVM v4+
+## Only for AwesomeVM v4+
 
-# Awesome config
+## Awesome WM config
 >Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-config](https://github.com/pw4ever/awesome-wm-config).
+
+### Available widgets
+All of mine [widgets](widgets/README.md) you could find in **[./widgets](/widgets)** directory. Each of them have own README file which describes functionality.
+  - [backlight](widgets/backlight/README.md) - widget to control and show brightness level (laptop only)
+  - [dropbox](widgets/dropbox/README.md) - simple Dropbox icon to replace original (which QT-based, so it bring some problems)
+  - [keylock-icons](widgets/keylock-icons/README.md) - set of icons to show status of _Lock_ buttons
 
 ### Dependencies
 Additional software should be installed to cover all shortcuts:
@@ -17,7 +23,7 @@ Additional software should be installed to cover all shortcuts:
 
 ### Installation
 ```bash
-git clone https://github.com/keepbot/awesome-config.git ~/.config/awesome
+git clone https://github.com/keepbot/awesomeWM-config.git ~/.config/awesome
 Modkey+Control+r to restart awesome
 ```
 
@@ -128,10 +134,10 @@ I've desided to stay with only one theme which fits my need/
 
 *Screenshot:*
 
-![WhiteTheme](/screenshot/white.png)
+![WhiteTheme](screenshot/white.png)
 
 
-#### There is old themes also existen in directory theme/old
+#### There are old themes also existed in directory _theme/old_
 To change theme you need to change theme name and main colour in *theme.lua*
 
 
@@ -146,11 +152,11 @@ I created following themes:
 
 *Screenshot of purple:*
 
-![PurpleTheme](/screenshot/purple.png)
+![PurpleTheme](screenshot/purple.png)
 
 ### Keyboard
 
 To configure keyboard layout you neet to make apropriate changes in *whdgets.lua* 
 Defaut layout: *US* and *RU*
-And key combination: Alt+Space (Which can be defined in *rc.lua*, but this is the best I could think of)
+And key combination: Alt+Space (Which can be defined in *bindings.lua*, but this is the best I could think of)
 

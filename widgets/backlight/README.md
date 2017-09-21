@@ -37,3 +37,9 @@ local brightness_dec_level_to_10  = "sudo xbacklight -dec 10"
 * **mouse right key**   - set brightness level to 10%.
 * **mouse wheel up**    - Increase brightness level by 10%   
 * **mouse wheel down**  - Increase brightness level by 10% 
+
+### Screenshot
+![backlight](backlight.png)
+
+### Icons
+![high](display-brightness-high.svg)![medium](display-brightness-medium.svg)![low](display-brightness-low.svg)![off](display-brightness-off.svg)

@@ -12,3 +12,10 @@ Some linux distribution have only *dropbox* program to get status, and if your l
 -- New:
 local status_bin_cmd    = "dropbox status"
 ```
+
+### Screenshot
+![dropbox](dropbox.png)
+
+### Icons
+
+![logo](dropboxstatus-logo.png)![idle](dropboxstatus-idle.png)![busy1](dropboxstatus-busy1.png)![busy2](dropboxstatus-busy2.png)![x](dropboxstatus-x.png)
