@@ -13,9 +13,9 @@ package.path        = config_path .. "/path/to/folder/with/<widget>.lua;"       
 
 ### List
 
-- [backlight](backlight/README.md) 
-- [dropbox](dropbox/README.md) 
-- [keylock-icons](keylock-icons/README.md) 
+- [backlight](backlight) 
+- [dropbox](dropbox) 
+- [keylock-icons](keylock-icons) 
 
 
 ### Screenshot

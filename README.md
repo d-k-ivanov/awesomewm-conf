@@ -4,10 +4,10 @@
 >Thanks to **[Wei "pw" Peng](https://github.com/pw4ever)** who enspired me a lot! Look at his [awesome-wm-config](https://github.com/pw4ever/awesome-wm-config).
 
 ### Available widgets
-All of mine [widgets](widgets/README.md) you could find in **[./widgets](/widgets)** directory. Each of them have own README file which describes functionality.
-  - [backlight](widgets/backlight/README.md) - widget to control and show brightness level (laptop only)
-  - [dropbox](widgets/dropbox/README.md) - simple Dropbox icon to replace original (which QT-based, so it bring some problems)
-  - [keylock-icons](widgets/keylock-icons/README.md) - set of icons to show status of _Lock_ buttons
+All of mine [widgets](/widgets) you could find in **[./widgets](/widgets)** directory. Each of them have own README file which describes functionality.
+  - [backlight](/widgets/backlight) - widget to control and show brightness level (laptop only)
+  - [dropbox](/widgets/dropbox) - simple Dropbox icon to replace original (which QT-based, so it bring some problems)
+  - [keylock-icons](widgets/keylock-icons) - set of icons to show status of _Lock_ buttons
 
 ### Dependencies
 Additional software should be installed to cover all shortcuts:
