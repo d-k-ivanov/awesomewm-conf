@@ -96,7 +96,7 @@ globalkeys = awful.util.table.join(
 	--{{---| Prompt |-----------------------------------------------------------------------------------------------------------
 	awful.key({ modkey,           },  key_r,      function () mypromptbox[awful.screen.focused()]:run()   end,
 		{description = "Run prompt",                            group = "Launcher"      }),
-	awful.key({ modkey, "Shift"   },  key_r,      function () awful.spawn_with_shell("gmrun")        end,
+	awful.key({ modkey, "Shift"   },  key_r,      function () awful.spawn.with_shell("gmrun", false)        end,
 		{description = "Run GTK prompt",                        group = "Launcher"      }),
 
 	awful.key({ modkey, "Shift"   },  key_x,      function ()

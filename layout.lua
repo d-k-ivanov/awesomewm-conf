@@ -138,6 +138,8 @@ awful.screen.connect_for_each_screen(function(s)
       volicon,
       volpct,
       spacer,
+      keylock_icons_widget,
+      spacer,
       mytextclock,
       spacer0,
       mylayoutbox[s],

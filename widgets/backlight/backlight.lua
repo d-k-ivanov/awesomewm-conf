@@ -1,11 +1,13 @@
 --{{---| Backlight |-------------------------------------------------------------------------------------------------------
-local awful = require("awful")
-local wibox = require("wibox")
-local gears = require("gears")
-local watch = require("awful.widget.watch")
-local spawn = require("awful.spawn")
+local awful   = require("awful")
+local wibox   = require("wibox")
+local gears   = require("gears")
+local naughty = require("naughty")
+local string  = require("string")
+local watch   = require("awful.widget.watch")
+local spawn   = require("awful.spawn")
 
-function script_path()
+local function script_path()
   local str = debug.getinfo(2, "S").source:sub(2)
   return str:match("(.*/)"):gsub([[//]],[[/]])
 end
@@ -45,7 +47,7 @@ brightness_widget = wibox.widget {
   layout = wibox.layout.fixed.horizontal,
 }
 
-function update_text(widget, stdout, stderr, exitreason, exitcode)
+local function update_text(widget, stdout, stderr, exitreason, exitcode)
   -- for acpilight
   --local brightness_level = tonumber(stdout)
   -- for xbacklight
@@ -53,11 +55,11 @@ function update_text(widget, stdout, stderr, exitreason, exitcode)
   widget:set_text(" " .. brightness_level .. "%")
 end
 
-function update_icon(widget, stdout, stderr, exitreason, exitcode)
+local function update_icon(widget, stdout, stderr, exitreason, exitcode)
   -- for acpilight
   --local brightness_level = tonumber(stdout)
   -- for xbacklight
-  local brightness_level = tonumber(string.format("%.0f", status))
+  local brightness_level = tonumber(string.format("%.0f", stdout))
   if (brightness_level > 75) then
       widget.image = backlight_high
     elseif (brightness_level <= 75 and brightness_level > 45) then
@@ -69,7 +71,7 @@ function update_icon(widget, stdout, stderr, exitreason, exitcode)
     end
 end
 
-function release_brightness()
+local function release_brightness()
   awful.spawn.with_shell(brightness_bin_init  , false)
   awful.spawn(brightness_bin_set .. "90"      , false)
   awful.spawn(brightness_bin_set .. "100"     , false)

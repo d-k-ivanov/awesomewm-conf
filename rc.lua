@@ -46,6 +46,7 @@ lain                = require("lain")
                       require("widgets")
                       require("dropbox")
                       require("backlight")
+                      require("keylock-icons")
 
 --{{---| Helpers    |----------------------------------------------------------------------------------------------------
 helpers             = require("helpers")

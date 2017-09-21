@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="24" height="24" id="svg2" version="1.1" inkscape:version="0.47 r22583" sodipodi:docname="caps-lock-on.svg">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="24" height="24" id="svg2" version="1.1" inkscape:version="0.47 r22583" sodipodi:docname="New document 1">
   <defs id="defs4">
     <inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 526.18109 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="744.09448 : 526.18109 : 1" inkscape:persp3d-origin="372.04724 : 350.78739 : 1" id="perspective10" />
   </defs>
@@ -16,7 +16,7 @@
     </rdf:RDF>
   </metadata>
   <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-1028.3622)">
-    <rect style="opacity:0.24;fill:black;fill-opacity:0;fill-rule:evenodd;stroke:#606060;stroke-width:0.96210461999999997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" id="rect2816" width="17.037895" height="17.037895" x="3.4810522" y="1031.8433" rx="1.6707922" ry="1.6530181" />
-    <text xml:space="preserve" style="font-size:17.19642830000000089px;font-style:normal;font-weight:normal;fill:#606060;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;opacity:0.24" x="5.6089916" y="1093.1226" id="text3590" transform="scale(1.0446886,0.95722306)"><tspan sodipodi:role="line" id="tspan3592" x="5.6089916" y="1093.1226">A</tspan></text>
+    <rect style="opacity:1;fill:black;fill-opacity:0;fill-rule:evenodd;stroke:#606060;stroke-width:0.96210461999999997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" id="rect2816" width="17.037895" height="17.037895" x="3.4810522" y="1031.8433" rx="1.6707922" ry="1.6530181" />
+    <text xml:space="preserve" style="font-size:17.19642830000000089px;font-style:normal;font-weight:normal;fill:#606060;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" x="5.6089916" y="1093.1226" id="text3590" transform="scale(1.0446886,0.95722306)"><tspan sodipodi:role="line" id="tspan3592" x="5.6089916" y="1093.1226">A</tspan></text>
   </g>
 </svg>

@@ -1,11 +1,13 @@
 --{{---| Dropbox |-------------------------------------------------------------------------------------------------------------
-local awful = require("awful")
-local wibox = require("wibox")
-local gears = require("gears")
-local watch = require("awful.widget.watch")
-local spawn = require("awful.spawn")
+local awful   = require("awful")
+local wibox   = require("wibox")
+local gears   = require("gears")
+local naughty = require("naughty")
+local string  = require("string")
+local watch   = require("awful.widget.watch")
+local spawn   = require("awful.spawn")
 
-function script_path()
+local function script_path()
   local str = debug.getinfo(2, "S").source:sub(2)
   return str:match("(.*/)"):gsub([[//]],[[/]])
 end
@@ -36,7 +38,7 @@ set_image = function(self, path)
 }
 
 -- Section for Watcher
-function update(widget, stdout, stderr, exitreason, exitcode)
+local function update(widget, stdout, stderr, exitreason, exitcode)
 
 -- Section for Timer and Updater
 --function update(widget)
@@ -76,8 +78,8 @@ end
 
 -- Version with Wacher
 dropbox_widget:connect_signal("button::press", function(_,_,_,button)
-  if (button == 1) then
-    spawn("xdg-open https://dropbox.com", false)
+  if      (button == 1) then spawn("xdg-open https://dropbox.com", false)
+--  elseif  (button == 3) then naughty.notify { text = script_path(), timeout = 5, hover_timeout = 0.5 }
   end
   spawn.easy_async(status_bin_cmd, function(stdout, stderr, exitreason, exitcode) update(dropbox_widget, stdout, stderr, exitreason, exitcode) end)
 end)

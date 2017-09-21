@@ -1,36 +1,69 @@
 --{{---| Backlight |-------------------------------------------------------------------------------------------------------
-local awful = require("awful")
-local wibox = require("wibox")
-local gears = require("gears")
-local watch = require("awful.widget.watch")
-local spawn = require("awful.spawn")
+local awful   = require("awful")
+local wibox   = require("wibox")
+local gears   = require("gears")
+local naughty = require("naughty")
+local string  = require("string")
+local watch   = require("awful.widget.watch")
+local spawn   = require("awful.spawn")
 
-function script_path()
+local spacer0                 = wibox.widget.textbox()
+                                spacer0:set_text(' ')
+
+local function script_path()
   local str = debug.getinfo(2, "S").source:sub(2)
   return str:match("(.*/)"):gsub([[//]],[[/]])
+end
+
+local function isempty(s)
+  return s == nil or s == ''
 end
 
 local widget_dir                  = script_path()
 
 -- Commands
-local brightness_bin_init         = "sudo bash -c 'echo 100 > /sys/class/backlight/acpi_video0/brightness'"
-local brightness_bin_set          = "xbacklight -set "
-local brightness_bin_get          = "xbacklight -get"
-local brightness_inc_level_to_10  = "xbacklight -inc 10"
-local brightness_dec_level_to_10  = "xbacklight -dec 10"
+local key_status_cmd            = "bash -c 'xset -q | grep 00:'" -- 1>&2'
+--local caps_lock_cmd           = "bash -c 'xset -q | grep 00:'"
+--local num_lock_cmd            = "bash -c 'xset -q | grep 01:'"
+--local scroll_lock_cmd         = "bash -c 'xset -q | grep 02:'"
 
 -- Images
-local backlight_high              = widget_dir .. "display-brightness-high.svg"
-local backlight_medium            = widget_dir .. "display-brightness-medium.svg"
-local backlight_low               = widget_dir .. "display-brightness-low.svg"
-local backlight_off               = widget_dir .. "display-brightness-off.svg"
+local caps_lock_on              = widget_dir .. "caps-lock-on.svg"
+local caps_lock_off             = widget_dir .. "caps-lock-off.svg"
+local num_lock_on               = widget_dir .. "num-lock-on.svg"
+local num_lock_off              = widget_dir .. "num-lock-off.svg"
+local scroll_lock_on            = widget_dir .. "scroll-lock-on.svg"
+local scroll_lock_off           = widget_dir .. "scroll-lock-off.svg"
 
 -- Boxes
-local brightness_text = wibox.widget.textbox()
-local brightness_icon = wibox.widget {
+local caps_lock_icon = wibox.widget {
   {
     id = "icon",
-    image = backlight_high,
+    image = caps_lock_off,
+    --resize = false,
+    widget = wibox.widget.imagebox,
+  },
+  layout = wibox.container.margin(_, _, _, 3),
+  set_image = function(self, path)
+    self.icon.image = path
+  end
+}
+local num_lock_icon = wibox.widget {
+  {
+    id = "icon",
+    image = num_lock_off,
+    --resize = false,
+    widget = wibox.widget.imagebox,
+  },
+  layout = wibox.container.margin(_, _, _, 3),
+  set_image = function(self, path)
+    self.icon.image = path
+  end
+}
+local scroll_lock_icon = wibox.widget {
+  {
+    id = "icon",
+    image = scroll_lock_off,
     --resize = false,
     widget = wibox.widget.imagebox,
   },
@@ -40,56 +73,68 @@ local brightness_icon = wibox.widget {
   end
 }
 
-brightness_widget = wibox.widget {
-  brightness_icon,
-  brightness_text,
+keylock_icons_widget = wibox.widget {
+  caps_lock_icon,
+--  spacer0,
+  num_lock_icon,
+--  spacer0,
+  scroll_lock_icon,
   layout = wibox.layout.fixed.horizontal,
 }
 
-function update_text(widget, stdout, stderr, exitreason, exitcode)
-  local brightness_level = tonumber(string.format("%.0f", stdout))
-  widget:set_text(" " .. brightness_level .. "%")
-end
-
-function update_icon(widget, stdout, stderr, exitreason, exitcode)
-  local brightness_level = tonumber(string.format("%.0f", stdout))
-    if (brightness_level > 75) then
-      widget.image = backlight_high
-    elseif (brightness_level <= 75 and brightness_level > 45) then
-      widget.image = backlight_medium
-    elseif (brightness_level <= 45 and brightness_level > 20) then
-      widget.image = backlight_low
-    elseif (brightness_level <= 20) then
-      widget.image = backlight_off
-    end
-end
-
--- Old signal processing
---do
---  brightness_widget:buttons(
---    gears.table.join(
---      awful.button({ }, 1,  function()
---                            awful.util.spawn_with_shell(brightness_bin_init)
---                            awful.util.spawn_with_shell(brightness_bin_set .. "90")
---                            awful.util.spawn_with_shell(brightness_bin_set .. "100")                                    end),
---      awful.button({ }, 4, function() awful.util.spawn_with_shell(brightness_inc_level_to_10)                           end),
---      awful.button({ }, 5, function() awful.util.spawn_with_shell(brightness_dec_level_to_10)                           end)
---    )
---  )
---end
-
-brightness_widget:connect_signal("button::press", function(_,_,_,button)
-  if     (button == 1) then awful.spawn(brightness_bin_init         , false)
-                            awful.spawn(brightness_bin_set .. "90"  , false)
-                            awful.spawn(brightness_bin_set .. "100" , false)
-  elseif (button == 4) then awful.spawn(brightness_inc_level_to_10  , false)
-  elseif (button == 5) then awful.spawn(brightness_dec_level_to_10  , false)
+local function update_keylock_icons(widget, stdout, stderr, exitreason, exitcode)
+  if not isempty(stderr) then
+    naughty.notify({ title      = "Keylock-Icons widget error!"
+      , text       = "Something went wrong: %\nError string: "..stderr
+      , fg="#ff0000"
+      --, bg="#deb887"
+      , bg="#333"
+      , timeout    = 1
+      --, position   = "bottom_left"
+      , position   = "top_right"
+    })
+    return
   end
+  local caps_lock_status     = string.match(stdout, 'Caps Lock:%s+(%w+)')
+  local num_lock_status      = string.match(stdout, 'Num Lock:%s+(%w+)')
+  local scroll_lock_status   = string.match(stdout, 'Scroll Lock:%s+(%w+)')
+  if string.find(caps_lock_status, "on", 1, true) then
+    caps_lock_icon.image = caps_lock_on
+  else
+    caps_lock_icon.image = caps_lock_off
+  end
+  if string.find(num_lock_status, "on", 1, true) then
+    num_lock_icon.image = num_lock_on
+  else
+    num_lock_icon.image = num_lock_off
+  end
+  if string.find(scroll_lock_status, "on", 1, true) then
+    scroll_lock_icon.image = scroll_lock_on
+  else
+    scroll_lock_icon.image = scroll_lock_off
+  end
+end
 
-  spawn.easy_async(brightness_bin_get, function(stdout, stderr, exitreason, exitcode)
-    update_tray_icon(brightness_widget, stdout, stderr, exitreason, exitcode)
-  end)
+-- TODO: Create signal handler to togle KeyLock Buttons
+--caps_lock_icon:connect_signal("button::press", function(_,_,_,button)
+--  if     (button == 1) then
+--    awful.spawn.with_line_callback(key_status_cmd, {
+--      stdout = function(line)
+--        local caps_lock_status     = string.match(line, 'Caps Lock:%s+(%w+)')
+--        if string.find(caps_lock_status, "on", 1, true) then
+--          spawn.with_shell("sudo setleds -D -caps < /dev/console", false)
+--        else
+--          spawn.with_shell("sudo setleds -D +caps < /dev/console", false)
+--        end
+--      end
+--    })
+--    --naughty.notify { text = spawn(caps_lock_cmd, false), timeout = 5, hover_timeout = 0.5 }
+--  end
+--end)
+
+keylock_icons_widget:connect_signal("button::press", function(_,_,_,button)
+  spawn.easy_async(key_status_cmd, function(stdout, stderr, exitreason, exitcode) update_keylock_icons(keylock_icons_widget, stdout, stderr, exitreason, exitcode) end)
 end)
 
-watch(brightness_bin_get, 1, update_text, brightness_text)
-watch(brightness_bin_get, 1, update_icon, brightness_icon)
+watch(key_status_cmd, 1, update_keylock_icons, keylock_icons_widget)
+
