@@ -16,6 +16,7 @@ package.path        = config_path .. "/extensions/?.lua;"       .. package.path
 package.path        = config_path .. "/extensions/?/?.lua;"     .. package.path
 package.path        = config_path .. "/extensions/?/init.lua;"  .. package.path
 package.path        = config_path .. "/widgets/?/?.lua;"        .. package.path
+package.path        = config_path .. "/include/?.lua;"          .. package.path
 
 
 

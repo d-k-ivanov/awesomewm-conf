@@ -8,6 +8,12 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
 	awful.key({ modkey,           },  key_F1,     hotkeys_popup.show_help,
 		{description = "Show help",                             group = "Awesome"       }),
+  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("d1 && d1",{})
+                                                            awesome.restart()                           end,
+    {description = "One monitor",                           group = "Display"       }),
+  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("d2",{})
+                                                            awesome.restart()                           end,
+    {description = "Two monitors",                          group = "Display"       }),
 	awful.key({ modkey,           },  key_Left,   awful.tag.viewprev,
 		{description = "View previous Tag",                     group = "Tag"           }),
 	awful.key({ modkey,           },  key_Right,  awful.tag.viewnext,
@@ -105,6 +111,8 @@ globalkeys = awful.util.table.join(
 			awful.util.eval, nil,
 			awful.util.getdir("cache") .. "/history_eval")          end,
 		{description = "LUA execute prompt",                    group = "Launcher"      }),
+
+
 
 	--{{---| Menubar |----------------------------------------------------------------------------------------------------------
 	awful.key({ modkey,            },  key_p,     function() menubar.show()                               end,
