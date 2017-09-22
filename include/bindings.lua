@@ -8,10 +8,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
 	awful.key({ modkey,           },  key_F1,     hotkeys_popup.show_help,
 		{description = "Show help",                             group = "Awesome"       }),
-  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("d1 && d1",{})
+  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{})
                                                             awesome.restart()                           end,
     {description = "One monitor",                           group = "Display"       }),
-  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("d2",{})
+  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/two_display.sh",{})
                                                             awesome.restart()                           end,
     {description = "Two monitors",                          group = "Display"       }),
 	awful.key({ modkey,           },  key_Left,   awful.tag.viewprev,
@@ -102,7 +102,7 @@ globalkeys = awful.util.table.join(
 	--{{---| Prompt |-----------------------------------------------------------------------------------------------------------
 	awful.key({ modkey,           },  key_r,      function () mypromptbox[awful.screen.focused()]:run()   end,
 		{description = "Run prompt",                            group = "Launcher"      }),
-	awful.key({ modkey, "Shift"   },  key_r,      function () awful.spawn.with_shell("gmrun", false)        end,
+	awful.key({ modkey, "Shift"   },  key_r,      function () awful.spawn.with_shell("gmrun", false)      end,
 		{description = "Run GTK prompt",                        group = "Launcher"      }),
 
 	awful.key({ modkey, "Shift"   },  key_x,      function ()

@@ -108,5 +108,5 @@ brightness_widget:connect_signal("button::press", function(_,_,_,button)
   end)
 end)
 
---watch(brightness_bin_get, 2, update_text, brightness_text)
---watch(brightness_bin_get, 3, update_icon, brightness_icon)
+watch(brightness_bin_get, 2, update_text, brightness_text)
+watch(brightness_bin_get, 3, update_icon, brightness_icon)
