@@ -8,7 +8,7 @@ local autostart = require("runonce")
 --{{---| Java GUI's fix ---}}---
 autostart.run("wmname LG3D")
 
---autostart.run("skypeforlinux")
+autostart.run("skypeforlinux")
 --autostart.run("dropbox")
 autostart.run("nm-applet")
 autostart.run("jetbrains-toolbox --minimize")
