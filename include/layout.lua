@@ -1,15 +1,15 @@
 --{{---| Tray |-------------------------------------------------------------------------------------------------------------
 systray = wibox.widget.systray()
 
-layouts = { awful.layout.suit.floating,     -- 1
-            awful.layout.suit.tile,         -- 2
-            awful.layout.suit.tile.bottom,  -- 3
-            awful.layout.suit.fair,         -- 4
-            awful.layout.suit.magnifier,    -- 5
-            awful.layout.suit.max,          -- 6
+layouts = { awful.layout.suit.floating,         -- 1
+            awful.layout.suit.tile,             -- 2
+            awful.layout.suit.tile.bottom,      -- 3
+            awful.layout.suit.fair,             -- 4
+            awful.layout.suit.magnifier,        -- 5
+            awful.layout.suit.max,              -- 6
             --awful.layout.suit.tile.left,
             --awful.layout.suit.tile.top,
-            --awful.layout.suit.fair.horizontal,
+            --awful.layout.suit.fair.horizontal,  -- 7
             --awful.layout.suit.spiral,
             --awful.layout.suit.spiral.dwindle,
             --awful.layout.suit.max.fullscreen
@@ -17,7 +17,7 @@ layouts = { awful.layout.suit.floating,     -- 1
             --lain.layout.cascadetile,
             --lain.layout.centerfair,
             --lain.layout.centerhwork,
-            -- lain.layout.centerwork,
+            --lain.layout.centerwork,
             --lain.layout.centerworkd,
             --lain.layout.termfair,
             --lain.layout.uselessfair,
@@ -27,8 +27,9 @@ layouts = { awful.layout.suit.floating,     -- 1
 
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
-  names                     = { "Main"      , "Web"     , "Files"   , "MSG"     , "Deploy"  , "Term"    , "DB"      , "JS"      , "Android"  , "Dev"        },
-  layout                    = { layouts[2]  , layouts[2], layouts[2], layouts[2], layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2]    }
+  --names                   = { "Main"    , "Web"     , "Files"   , "MSG"     , "Deploy🔨", "Term"    , "DB⛁📚"   , "Dev"     , "Net"     , "Android" , "Games"    },
+  names                     = { "💥"      , "🌐"      , "📁"      , "💬"      , "🔨"        , "💻"      , "📡"      , "📝"      ,  ""       , "📱"      , "🎮"       },
+  layout                    = { layouts[2], layouts[2], layouts[2], layouts[2], layouts[2]  , layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
 }
 
 mywibox                     = {}

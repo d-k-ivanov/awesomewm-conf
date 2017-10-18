@@ -16,7 +16,8 @@ awful.rules.rules = {
                    class          =   { "Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry",
                                         "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator",
                                         "Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox",
-                                        "XCalc", "Vncviewer", "Pavucontrol", "Cheese", "HP Device Manager - Setup", "Qalculate-gtk", "Apache Jmeter"},
+                                        "XCalc", "Vncviewer", "Pavucontrol", "Cheese", "HP Device Manager - Setup", "Qalculate-gtk", "Apache Jmeter",
+                                        "battle.net.exe", "battle.net.beta.exe", "diablo iii.exe"},
                                         --"Leafpad",w
                    name           =   { "Event Tester" },
                    role           =   { "AlarmWindow", "pop-up", }},
@@ -32,15 +33,15 @@ awful.rules.rules = {
   --{ rule = { class = "Google-chrome"      },  properties = { tag = "Web"                        }},
   --{ rule = { class = "Gnome-commander"  },  properties = { screen = 1, tag = "Files"          }},
   --{ rule = { class = "Doublecmd"        },  properties = { screen = 1, tag = "Files"          }},
-  { rule = { class = "Thunderbird"        },  properties = { tag = "MSG"                        }},
-  { rule = { class = "Geary"              },  properties = { tag = "MSG"                        }},
-  { rule = { class = "skype"              },  properties = { tag = "MSG"                        }},
-  { rule = { class = "Org.gnome.Polari"   },  properties = { tag = "MSG"                        }},
-  { rule = { class = "Empathy"            },  properties = { tag = "MSG"                        }},
-  { rule = { class = "Pidgin"             },  properties = { tag = "MSG"                        }},
-  { rule = { class = "yakyak"             },  properties = { tag = "MSG"                        }},
-  { rule = { class = "TelegramDesktop"    },  properties = { tag = "MSG"                        }},
-  { rule = { class = "Slack"              },  properties = { tag = "MSG"                        }}
+  { rule = { class = "Thunderbird"        },  properties = { tag = "💬"                        }},
+  { rule = { class = "Geary"              },  properties = { tag = "💬"                        }},
+  { rule = { class = "skype"              },  properties = { tag = "💬"                        }},
+  { rule = { class = "Org.gnome.Polari"   },  properties = { tag = "💬"                        }},
+  { rule = { class = "Empathy"            },  properties = { tag = "💬"                        }},
+  { rule = { class = "Pidgin"             },  properties = { tag = "💬"                        }},
+  { rule = { class = "yakyak"             },  properties = { tag = "💬"                        }},
+  { rule = { class = "TelegramDesktop"    },  properties = { tag = "💬"                        }},
+  { rule = { class = "Slack"              },  properties = { tag = "💬"                        }}
   --{ rule = { class = "Pac"              },  properties = { screen = 1, tag = "PAC"            }},
   --{ rule = { class = "libreoffice"        },  properties = { tag = "Work"                       }}
   --{ rule = { class = "SWT"                },  properties = { tag = "Work"                       }}

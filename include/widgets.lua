@@ -200,6 +200,17 @@ kbdcfg.widget:buttons(
 --{{---| Clock  |-----------------------------------------------------------------------------------------------------------
 --mytextclock = wibox.widget.textclock("%H:%M")
 mytextclock = wibox.widget.textclock()
+mytextclock:connect_signal("button::press", function(_,_,_,button)
+  if     (button == 1) then
+    awful.spawn.easy_async("cal -1", function(stdout, stderr, reason, exit_code)
+      naughty.notify { text = stdout, timeout = 5, hover_timeout = 0.5  }
+    end)
+  elseif (button == 3) then
+    awful.spawn.easy_async("cal -3", function(stdout, stderr, reason, exit_code)
+      naughty.notify { text = stdout, timeout = 5, hover_timeout = 0.5  }
+    end)
+  end
+end)
 --lain.widget.calendar({ attach_to = { mytextclock }})
 
 --{{---| System Settings |--------------------------------------------------------------------------------------------------

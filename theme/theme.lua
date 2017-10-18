@@ -29,9 +29,9 @@ bbblluu																					= "#44849d"
 -- blue = dblue | gray = gray | green = dgreen | purple = purple | red = red | yellow = yellow | zen = zen
 main_colour 																		= white_gray
 
---theme.font																	= "Consolas 9"
---theme.font																	= "Terminus 9"
-theme.font																	  = "Inconsolata 9"
+--theme.font																			= "Consolas 9"
+--theme.font																		= "Terminus 9"
+theme.font																		= "Inconsolata 9"
 
 theme.fg_normal																	= "#AAAAAA"
 --theme.fg_focus																= "#F0DFAF"
