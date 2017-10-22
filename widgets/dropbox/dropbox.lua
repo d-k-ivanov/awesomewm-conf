@@ -84,7 +84,7 @@ dropbox_widget:connect_signal("button::press", function(_,_,_,button)
   spawn.easy_async(status_bin_cmd, function(stdout, stderr, exitreason, exitcode) update(dropbox_widget, stdout, stderr, exitreason, exitcode) end)
 end)
 
-watch(status_bin_cmd, 1, update, dropbox_widget)
+watch(status_bin_cmd, 2, update, dropbox_widget)
 
 -- Version with Timer and Updater
 --update(dropbox_widget)
