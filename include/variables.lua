@@ -5,7 +5,8 @@ fmx_started   = false
 
 terminal2      = "xterm"
 --terminal2     = "terminator"
-terminal     = "sakura"
+--terminal     = "sakura"
+terminal     = "alacritty"
 editor        = os.getenv("EDITOR") or "vim"
 editor_cmd    = terminal .. " -e " .. editor
 browser       = "google-chrome-stable"

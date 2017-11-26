@@ -21,7 +21,7 @@ awful.rules.rules = {
 		class								= {
 			"Arandr", "Gpick", "Kruler", "MessageWin", "TeamViewer","Sxiv", "Wpa_gui", "pinentry", "veromix", "xtightvncviewer", "Xscreensaver-demo", "Lxtask", "Speedcrunch", "Gnome-calculator", --[["Leafpad",]]
 			"Gnome-alsamixer", "Gimp", "Spacefm", "Pcmanfm", "Gmrun", "Usbview", "Wine", "Gtklp", "VirtualBox", "XCalc", "Vncviewer", "Pavucontrol", "Cheese", "HP Device Manager - Setup", "Qalculate-gtk", "Apache Jmeter",
-			"battle.net.exe", "battle.net.beta.exe", "diablo iii.exe"},
+			"battle.net.exe", "battle.net.beta.exe", "diablo iii.exe","com-install4j-runtime-launcher-Launcher", "cpumeter", "Tk"},
 		name								= { "Event Tester" },
 		role								= { "AlarmWindow", "pop-up", }},
 		properties					= { floating = true }
@@ -38,6 +38,7 @@ awful.rules.rules = {
 	-- { rule = { class = "Gnome-commander"	},  properties = { screen = 1, tag = "Files"          }},
 	-- { rule = { class = "Doublecmd"				},  properties = { screen = 1, tag = "Files"          }},
 	{ rule = { class = "Thunderbird"        },  properties = { tag = "💬"                        }},
+	{ rule = { class = "Evolution"          },  properties = { tag = "💬"                        }},
 	{ rule = { class = "Geary"              },  properties = { tag = "💬"                        }},
 	{ rule = { class = "skype"              },  properties = { tag = "💬"                        }},
 	{ rule = { class = "Org.gnome.Polari"   },  properties = { tag = "💬"                        }},

@@ -6,13 +6,11 @@ root.buttons(awful.util.table.join(
 ))
 --{{---| Key bindings |-----------------------------------------------------------------------------------------------------
 globalkeys = awful.util.table.join(
-	awful.key({ modkey,           },  key_F1,     hotkeys_popup.show_help,
+	awful.key({ modkey,           },  key_F1,                 hotkeys_popup.show_help,
 		{description = "Show help",                             group = "Awesome"       }),
-  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{})
-                                                            awesome.restart()                           end,
+  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{}); awesome.restart() end,
     {description = "One monitor",                           group = "Display"       }),
-  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/two_display.sh",{})
-                                                            awesome.restart()                           end,
+  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/two_display.sh",{}); awesome.restart() end,
     {description = "Two monitors",                          group = "Display"       }),
 	awful.key({ modkey,           },  key_Left,   awful.tag.viewprev,
 		{description = "View previous Tag",                     group = "Tag"           }),
@@ -192,7 +190,7 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 12 do
 	globalkeys = awful.util.table.join(globalkeys,
 		-- View tag only.
 		awful.key({ modkey }, "#" .. i + 9,         function () local screen = awful.screen.focused()
