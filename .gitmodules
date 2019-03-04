@@ -1,15 +1,25 @@
 [submodule "theme/icons/papirus-icon-theme"]
 	path = theme/icons/papirus-icon-theme
 	url = git@github.com:PapirusDevelopmentTeam/papirus-icon-theme.git
+	ignore = dirty
+	branch = master
 [submodule "extensions/freedesktop"]
 	path = extensions/freedesktop
 	url = git@github.com:copycat-killer/awesome-freedesktop.git
+	ignore = dirty
+	branch = master
 [submodule "extensions/blingbling"]
 	path = extensions/blingbling
 	url = git@github.com:cedlemo/blingbling.git
+	ignore = dirty
+	branch = master
 [submodule "extensions/lain"]
 	path = extensions/lain
 	url = git@github.com:copycat-killer/lain.git
+	ignore = dirty
+	branch = master
 [submodule "extensions/vicious"]
 	path = extensions/vicious
 	url = git@github.com:Mic92/vicious.git
+	ignore = dirty
+	branch = master
