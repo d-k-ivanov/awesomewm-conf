@@ -46,15 +46,15 @@ globalkeys = awful.util.table.join(
 	--{{---| Hotkeys |----------------------------------------------------------------------------------------------------------
 
 	--{{---| Terminal |---------------------------------------------------------------------------------------------------------
-	awful.key({ modkey,           },  key_Return, function () awful.spawn(terminal,{})                   end,
+	awful.key({ modkey,           },  key_Tilda, function () awful.spawn(terminal2,{})                   end,
 		{description = "Run xTerm",                             group = "Terminals"     }),
-	awful.key({ modkey, "Control" },  key_Return, function () awful.spawn(terminal2,{})                  end,
+	awful.key({ modkey, "Control" },  key_Return, function () awful.spawn(terminal,{})                  end,
 		{description = "Run Terminator",                        group = "Terminals"     }),
 
 	--{{---| File managers |----------------------------------------------------------------------------------------------------
 	awful.key({ modkey,           },  key_e,      function ()
 		if fme_started then
-			awful.spawn("pkill -f '" .. fme .. "'",{})
+		  awful.spawn("pkill -f '" .. fme .. "'",{})
 		else
 			awful.spawn(fme,{})
 		end
@@ -90,9 +90,9 @@ globalkeys = awful.util.table.join(
 		{description = "Increase the number of columns",        group = "Layout"        }),
 	awful.key({ modkey, "Control" },  key_l,      function () awful.tag.incncol(-1)                       end,
 		{description = "Decrease the number of columns",        group = "Layout"        }),
-	awful.key({ modkey,           },  key_Space,  function () awful.layout.inc(layouts,  1)               end,
+	awful.key({ modkey,           },  key_PgUp,  function () awful.layout.inc(layouts,  1)               end,
 		{description = "Select next",                           group = "Layout"        }),
-	awful.key({ modkey, "Shift"   },  key_Space,  function () awful.layout.inc(layouts, -1)               end,
+	awful.key({ modkey,           },  key_PgDn,  function () awful.layout.inc(layouts, -1)               end,
 		{description = "Select previous",                       group = "Layout"        }),
 	awful.key({ modkey, "Control" },  key_n,      awful.client.restore,
 		{description = "Restore minimized",                     group = "Client"        }),
@@ -127,7 +127,7 @@ globalkeys = awful.util.table.join(
 		{description = "Lock screen",                           group = "Utilities"     }),
 
 	--{{---| arandr |-----------------------------------------------------------------------------------------------------------
-	awful.key({ modkey,            }, key_Tilda,  function ()
+	awful.key({ modkey,            }, key_F12,  function ()
 		if arandr_started then
 			awful.spawn("pkill -f 'arandr'",{})
 		else
@@ -155,7 +155,7 @@ globalkeys = awful.util.table.join(
     {description = "Calculator",                 group = "Software"     }),
 
 	--{{---| Keyboard layout |--------------------------------------------------------------------------------------------------
-	awful.key({ altkey,            },  key_Space, function() kbdcfg.switch()                              end,
+	awful.key({ modkey,            },  key_Space, function() kbdcfg.switch()                              end,
 		{description = "Change keyboard layout",                group = "Utilities"     })
 --awful.key({ "Shift",           },  key_Ctrl_L,function() kbdcfg.switch()                              end,
 --                                              {description = "Change keyboard layout",                group = "Utilities"     })
