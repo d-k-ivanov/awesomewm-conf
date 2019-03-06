@@ -1,17 +1,17 @@
 local config_dir              = gears.filesystem.get_dir("config")
 
-theme 																					= {}
+theme 																		    = {}
 theme.wallpaper 																= config_dir .. "theme/wallpapers/pas.jpg"
 
 -- blue | gray | green | purple | red | yellow | zen
-theme.colour 																		= "white_gray"
+theme.colour 															        = "white_gray"
 
 --{{--- Style ---------------------------------------------------------------------------------------------------------------------------
-cyan  																					= "#7f4de6"
-lblue 																					= "#6c9eab"
-black 																					= "#3f3f3f"
-lgrey 																					= "#d2d2d2"
-dgrey 																					= "#333333"
+cyan  												                            = "#7f4de6"
+lblue 												                            = "#6c9eab"
+black 												                            = "#3f3f3f"
+lgrey 												                            = "#d2d2d2"
+dgrey 																		    = "#333333"
 white 																					= "#ffffff"
 
 dblue 																					= "#00ccff"
