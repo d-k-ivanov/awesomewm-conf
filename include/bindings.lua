@@ -8,10 +8,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           },  key_F1,                 hotkeys_popup.show_help,
         {description = "Show help",                             group = "Awesome"       }),
-  awful.key({ modkey,           },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{}); awesome.restart() end,
-    {description = "One monitor",                           group = "Display"       }),
-  awful.key({ modkey,           },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/two_display.sh",{}); awesome.restart() end,
-    {description = "Two monitors",                          group = "Display"       }),
+  awful.key({ modkey,             },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{}); awesome.restart() end,
+    {description = "One monitor",                               group = "Display"       }),
+  awful.key({ modkey,             },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/set-display.sh hdmi2",{}); awesome.restart() end,
+    {description = "Two monitors",                              group = "Display"       }),
     awful.key({ modkey,           },  key_Left,   awful.tag.viewprev,
         {description = "View previous Tag",                     group = "Tag"           }),
     awful.key({ modkey,           },  key_Right,  awful.tag.viewnext,
@@ -34,9 +34,9 @@ globalkeys = awful.util.table.join(
         {description = "Focus the previous screen",             group = "Screen"        }),
     awful.key({ modkey,           },  key_u,      awful.client.urgent.jumpto,
         {description = "Jump to urgent client",                 group = "Client"        }),
-    awful.key({ modkey,           },  key_Tab,    awful.tag.viewnext,
+    awful.key({ altkey,           },  key_Tab,    awful.tag.viewnext,
         {description = "View next Tag",                         group = "Client"        }),
-    awful.key({ altkey,           },  key_Tab,    awful.tag.viewprev,
+    awful.key({ altkey, "Shift"   },  key_Tab,    awful.tag.viewprev,
         {description = "View previous Tag",                     group = "Client"        }),
     -- awful.key({ modkey,           },  key_Tab", function () awful.client.focus.history.previous()
     --                                               if client.focus then
@@ -74,9 +74,9 @@ globalkeys = awful.util.table.join(
         {description = "Tougle PCmanFM",                        group = "File managers" }),
 
     --{{---| Standard |---------------------------------------------------------------------------------------------------------
-    awful.key({ modkey, "Control" },  key_r,      awesome.restart,
+    awful.key({ modkey, "Control" },  key_r,                    awesome.restart,
         { description= "Reload configuration",                  group = "Awesome"       }),
-    awful.key({ modkey, "Shift"   },  key_q,      awesome.quit,
+    awful.key({ modkey, "Shift"   },  key_BackSpace,            awesome.quit,
         { description= "Exit from Awesome",                     group = "Awesome"       }),
     awful.key({ modkey,           },  key_l,      function () awful.tag.incmwfact( 0.05)                  end,
         {description = "Increase master width",                 group = "Layout"        }),
@@ -172,7 +172,7 @@ clientkeys = awful.util.table.join(
         {description = "Toggle floating",                       group = "Client"        }),
     awful.key({ modkey, "Control" }, key_Return,  function (c) c:swap(awful.client.getmaster())           end,
         {description = "Move to master",                        group = "Client"        }),
-    awful.key({ modkey,           }, key_q,       function (c) c:move_to_screen()                         end,
+    awful.key({ modkey,           }, key_Tab,       function (c) c:move_to_screen()                         end,
         {description = "Move to screen",                        group = "Client"        }),
     awful.key({ modkey,           }, key_o,       function (c) c:move_to_screen()                         end,
         {description = "Move to screen",                        group = "Client"        }),
