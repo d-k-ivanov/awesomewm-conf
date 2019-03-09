@@ -90,9 +90,9 @@ globalkeys = awful.util.table.join(
         {description = "Increase the number of columns",        group = "Layout"        }),
     awful.key({ modkey, "Control" },  key_l,      function () awful.tag.incncol(-1)                       end,
         {description = "Decrease the number of columns",        group = "Layout"        }),
-    awful.key({ modkey,           },  key_PgUp,  function () awful.layout.inc(layouts,  1)                end,
+    awful.key({ altkey,           },  key_Space,  function () awful.layout.inc(layouts,  1)                end,
         {description = "Select next",                           group = "Layout"        }),
-    awful.key({ modkey,           },  key_PgDn,  function () awful.layout.inc(layouts, -1)                end,
+    awful.key({ altkey, "Shift"   },  key_Space,  function () awful.layout.inc(layouts, -1)                end,
         {description = "Select previous",                       group = "Layout"        }),
     awful.key({ modkey, "Control" },  key_n,      awful.client.restore,
         {description = "Restore minimized",                     group = "Client"        }),
@@ -127,7 +127,7 @@ globalkeys = awful.util.table.join(
         {description = "Lock screen",                           group = "Utilities"     }),
 
     --{{---| arandr |-----------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,            }, key_F12,  function ()
+    awful.key({ modkey,            }, key_F8,  function ()
         if arandr_started then
             awful.spawn("pkill -f 'arandr'",{})
         else
@@ -172,7 +172,7 @@ clientkeys = awful.util.table.join(
         {description = "Toggle floating",                       group = "Client"        }),
     awful.key({ modkey, "Control" }, key_Return,  function (c) c:swap(awful.client.getmaster())           end,
         {description = "Move to master",                        group = "Client"        }),
-    awful.key({ modkey,           }, key_Tab,       function (c) c:move_to_screen()                         end,
+    awful.key({ modkey,           }, key_q,       function (c) c:move_to_screen()                         end,
         {description = "Move to screen",                        group = "Client"        }),
     awful.key({ modkey,           }, key_o,       function (c) c:move_to_screen()                         end,
         {description = "Move to screen",                        group = "Client"        }),

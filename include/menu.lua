@@ -39,7 +39,7 @@ mymainmenu = freedesktop.menu.build({
     { "Awesome",                myawesomemenu,               beautiful.awesone_default },
   },
   after = {
-    { "Open Alacritty",        terminal,                    beautiful.terminal_icon   },
+    { "Open Alacritty",         terminal,                    beautiful.terminal_icon   },
     { "Open xTerm",             terminal2,                   beautiful.terminator_icon },
     { "Quit",                   awesome.quit,                beautiful.quit_icon       },
     { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
