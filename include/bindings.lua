@@ -119,7 +119,10 @@ globalkeys = awful.util.table.join(
     --{{---| Screenshot |-------------------------------------------------------------------------------------------------------
 --    awful.key({                    },  key_Print, function () awful.spawn("scrot -e 'mv $f ~/Documents/screenshots/ 2>/dev/null'",{}) end,
 --    awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && scrot screenshot-%Y-%m-%d-%H-%M-%S.png --select -e \'mkdir -p ~/Documents/screenshots && mv $f ~/Documents/screenshots/ 2>/dev/null\''",{}) end,
-    awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && mkdir -p ~/Documents/screenshots && scrot ~/Documents/screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png --select'",{}) end,
+    -- awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && mkdir -p ~/Documents/screenshots && scrot ~/Documents/screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png --select'",{}) end,
+    awful.key({                    },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && scrot -s /tmp/scrot_tmp.png && xclip -selection c -t image/png /tmp/scrot_tmp.png && rm /tmp/scrot_tmp.png'",{}) end,
+        {description = "Take Screenshot",                       group = "Utilities"     }),
+    awful.key({"Shift"             },  key_Print, function () awful.spawn("bash -c 'sleep 0.2 && scrot    /tmp/scrot_tmp.png && xclip -selection c -t image/png /tmp/scrot_tmp.png && rm /tmp/scrot_tmp.png'",{}) end,
         {description = "Take Screenshot",                       group = "Utilities"     }),
 
     --{{---| Lock Screen |------------------------------------------------------------------------------------------------------
