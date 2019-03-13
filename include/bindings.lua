@@ -8,10 +8,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           },  key_F1,                 hotkeys_popup.show_help,
         {description = "Show help",                             group = "Awesome"       }),
-  awful.key({ modkey,             },  key_F2,     function () awful.spawn.with_shell("~/.data/screenlayout/one_display.sh && ~/.data/screenlayout/one_display.sh ",{}); awesome.restart() end,
-    {description = "One monitor",                               group = "Display"       }),
-  awful.key({ modkey,             },  key_F3,     function () awful.spawn.with_shell("~/.data/screenlayout/set-display.sh hdmi2",{}); awesome.restart() end,
-    {description = "Two monitors",                              group = "Display"       }),
+  awful.key({ modkey,             },  key_F2,     function () awful.spawn.with_shell("~/.bin/set-display.sh dock-reset",{}); awesome.restart() end,
+        {description = "One monitor",                               group = "Display"       }),
+  awful.key({ modkey,             },  key_F3,     function () awful.spawn.with_shell("~/.bin/set-display.sh dock3",{}); awesome.restart() end,
+        {description = "Two monitors",                              group = "Display"       }),
     awful.key({ modkey,           },  key_Left,   awful.tag.viewprev,
         {description = "View previous Tag",                     group = "Tag"           }),
     awful.key({ modkey,           },  key_Right,  awful.tag.viewnext,
@@ -53,6 +53,14 @@ globalkeys = awful.util.table.join(
 
     --{{---| File managers |----------------------------------------------------------------------------------------------------
     awful.key({ modkey,           },  key_e,      function ()
+        if fmx_started then
+            awful.spawn("pkill -f '" .. fmx .. "'",{})
+        else
+            awful.spawn(fmx,{})
+        end
+        fmx_started = not fmx_started                         end,
+        {description = "Tougle PCmanFM",                        group = "File managers" }),
+    awful.key({ modkey,           },  key_x,      function ()
         if fme_started then
           awful.spawn("pkill -f '" .. fme .. "'",{})
         else
@@ -64,14 +72,6 @@ globalkeys = awful.util.table.join(
         {description = "Run Gnome-Commander",                   group = "File managers" }),
     awful.key({ modkey,           },  key_s,      function () awful.spawn(fmd,{})                         end,
         {description = "Run Duble-Commander",                   group = "File managers" }),
-    awful.key({ modkey,           },  key_x,      function ()
-        if fmx_started then
-            awful.spawn("pkill -f '" .. fmx .. "'",{})
-        else
-            awful.spawn(fmx,{})
-        end
-        fmx_started = not fmx_started                         end,
-        {description = "Tougle PCmanFM",                        group = "File managers" }),
 
     --{{---| Standard |---------------------------------------------------------------------------------------------------------
     awful.key({ modkey, "Control" },  key_r,                    awesome.restart,
