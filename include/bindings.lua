@@ -46,10 +46,10 @@ globalkeys = awful.util.table.join(
     --{{---| Hotkeys |----------------------------------------------------------------------------------------------------------
 
     --{{---| Terminal |---------------------------------------------------------------------------------------------------------
-    awful.key({ modkey,           },  key_Tilda, function () awful.spawn(terminal2,{})                   end,
+    awful.key({ modkey,           },  key_Tilda,  function () awful.spawn(terminal,{})                    end,
         {description = "Run xTerm",                             group = "Terminals"     }),
-    awful.key({ modkey, "Control" },  key_Return, function () awful.spawn(terminal,{})                   end,
-        {description = "Run Terminator",                        group = "Terminals"     }),
+    awful.key({ modkey,           },  key_Return, function () awful.spawn(terminal2,{})                   end,
+        {description = "Run Tilda",                             group = "Terminals"     }),
 
     --{{---| File managers |----------------------------------------------------------------------------------------------------
     awful.key({ modkey,           },  key_e,      function ()

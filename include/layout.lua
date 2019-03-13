@@ -29,14 +29,14 @@ layouts = {
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags                        = {
 --   names                   = { "Main", "Web", "Files", "MSG", "Deploy", "Term", "Remote", "Dev", "Win", "DB", "Android", "Games"},
-  names                     = { "💥", -- 00 -- "Main"
+  names                     = { "⭗", -- 00 -- "Main"
                                 "🌐", -- 01 -- "Web"
                                 "💬", -- 02 -- "Messages"
                                 "🖂", -- 03 -- "EMail"
                                 "🗁", -- 04 -- "Files"
                                 "📃", -- 05 -- "Dev"
-                                "🔨", -- 06 -- "Deploy"
-                                "📚", -- 07 -- "DataBase"
+                                "🔨", -- 06 -- "Work"
+                                "⛫", -- 07 -- "DataBase"
                                 "💻", -- 08 -- "Term"
                                 "📡", -- 09 -- "Remote"
                                 "🎮", -- 10 -- "Games"
@@ -49,7 +49,7 @@ tags                        = {
                                 layouts[1], -- 03 -- "EMail"
                                 layouts[1], -- 04 -- "Files"
                                 layouts[1], -- 05 -- "Dev"
-                                layouts[1], -- 06 -- "Deploy"
+                                layouts[1], -- 06 -- "Work"
                                 layouts[1], -- 07 -- "DataBase"
                                 layouts[1], -- 08 -- "Term"
                                 layouts[1], -- 09 -- "Remote"

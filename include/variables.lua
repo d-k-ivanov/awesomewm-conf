@@ -3,10 +3,10 @@ fms_started   = false
 fmd_started   = false
 fmx_started   = false
 
-terminal2      = "xterm"
+terminal2      = "tilda"
 --terminal2     = "terminator"
 --terminal     = "sakura"
-terminal     = "alacritty"
+terminal     = "xterm"
 editor        = os.getenv("EDITOR") or "vim"
 editor_cmd    = terminal .. " -e " .. editor
 browser       = "google-chrome-stable"

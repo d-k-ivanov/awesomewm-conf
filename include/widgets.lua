@@ -219,13 +219,13 @@ setIcon = wibox.widget.imagebox()
 setIcon:set_image(beautiful.system_monitor_icon)
   -- Buttons
 do
-  local started_1=fals
+  local started_1=false
   setIcon:buttons(awful.util.table.join(
      awful.button({ }, 1, function()
       if started_1 then
-        awful.util.spawn("pkill -f 'lxtask'")
+        awful.util.spawn("pkill -f 'gnome-system-monitor'")
       else
-        awful.util.spawn("lxtask")
+        awful.util.spawn("gnome-system-monitor")
       end
       started_1=not started_1
     end),
