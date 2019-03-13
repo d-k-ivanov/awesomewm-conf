@@ -112,6 +112,11 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     awful.tag(tags.names, s, tags.layout)
+    -- if ( s == screen.primary) then
+    --     awful.tag(tags.names, s, tags.layout)
+    -- else
+    --     awful.tag({""}, s, tags.layout)
+    -- end
 
     -- Create a promptbox for each screen
     mypromptbox[s]          = awful.widget.prompt()
@@ -132,11 +137,12 @@ awful.screen.connect_for_each_screen(function(s)
     mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    if ( s == screen.primary) then
-        mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
-    else
-        mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(10) })
-    end
+    mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
+    -- if ( s == screen.primary) then
+    --     mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
+    -- else
+    --     mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(10) })
+    -- end
 
     -- Add widgets to the wibox
     if ( s == screen.primary) then
