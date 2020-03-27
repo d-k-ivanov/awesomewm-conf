@@ -21,47 +21,47 @@ baticon:set_image(beautiful.battery_full)
 
   -- Charge %
 batpct            = wibox.widget.textbox()
-vicious.register(batpct, vicious.widgets.bat, function(widget, args)
-  bat_state       = args[1]
-  bat_charge      = args[2]
-  bat_time        = args[3]
-
-  if args[1] == "↯" then
-    baticon:set_image(beautiful.battery_charging_full)
-  elseif args[1] == "-" or args[1] == "⌁" then
-    if bat_charge > 93 then
-      baticon:set_image(beautiful.battery_5)
-    elseif bat_charge <= 93 and bat_charge > 77 then
-      baticon:set_image(beautiful.battery_4)
-    elseif bat_charge <= 77 and bat_charge > 49 then
-      baticon:set_image(beautiful.battery_3)
-    elseif bat_charge <= 49 and bat_charge > 28 then
-      baticon:set_image(beautiful.battery_2)
-    elseif bat_charge <= 28 and bat_charge > 7 then
-      baticon:set_image(beautiful.battery_1)
-    elseif bat_charge <= 7 then
-      baticon:set_image(beautiful.battery_empty)
-    end
-  elseif args[1] == "+" then
-    if bat_charge > 93 then
-      baticon:set_image(beautiful.battery_charging_5)
-    elseif bat_charge <= 93 and bat_charge > 77 then
-      baticon:set_image(beautiful.battery_charging_4)
-    elseif bat_charge <= 77 and bat_charge > 49 then
-      baticon:set_image(beautiful.battery_charging_3)
-    elseif bat_charge <= 49 and bat_charge > 28 then
-      baticon:set_image(beautiful.battery_charging_2)
-    elseif bat_charge <= 28 and bat_charge > 7 then
-      baticon:set_image(beautiful.battery_charging_1)
-    elseif bat_charge <= 7 then
-      baticon:set_image(beautiful.battery_charging_empty)
-    end
-  else
-    baticon:set_image(beautiful.battery_missing)
-  end
-
-  return args[2] .. "%"
-end, nil, "BAT0")
+-- vicious.register(batpct, vicious.widgets.bat, function(widget, args)
+--   bat_state       = args[1]
+--   bat_charge      = args[2]
+--   bat_time        = args[3]
+-- 
+--   if args[1] == "↯" then
+--     baticon:set_image(beautiful.battery_charging_full)
+--   elseif args[1] == "-" or args[1] == "⌁" then
+--     if bat_charge > 93 then
+--       baticon:set_image(beautiful.battery_5)
+--     elseif bat_charge <= 93 and bat_charge > 77 then
+--       baticon:set_image(beautiful.battery_4)
+--     elseif bat_charge <= 77 and bat_charge > 49 then
+--       baticon:set_image(beautiful.battery_3)
+--     elseif bat_charge <= 49 and bat_charge > 28 then
+--       baticon:set_image(beautiful.battery_2)
+--     elseif bat_charge <= 28 and bat_charge > 7 then
+--       baticon:set_image(beautiful.battery_1)
+--     elseif bat_charge <= 7 then
+--       baticon:set_image(beautiful.battery_empty)
+--     end
+--   elseif args[1] == "+" then
+--     if bat_charge > 93 then
+--       baticon:set_image(beautiful.battery_charging_5)
+--     elseif bat_charge <= 93 and bat_charge > 77 then
+--       baticon:set_image(beautiful.battery_charging_4)
+--     elseif bat_charge <= 77 and bat_charge > 49 then
+--       baticon:set_image(beautiful.battery_charging_3)
+--     elseif bat_charge <= 49 and bat_charge > 28 then
+--       baticon:set_image(beautiful.battery_charging_2)
+--     elseif bat_charge <= 28 and bat_charge > 7 then
+--       baticon:set_image(beautiful.battery_charging_1)
+--     elseif bat_charge <= 7 then
+--       baticon:set_image(beautiful.battery_charging_empty)
+--     end
+--   else
+--     baticon:set_image(beautiful.battery_missing)
+--   end
+-- 
+--   return args[2] .. "%"
+-- end, nil, "BAT0")
 
   -- Buttons
 function popup_bat()
@@ -104,45 +104,45 @@ end
 baticon:buttons(batpct:buttons())
 
 batt = wibox.widget.textbox()
-vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
+-- vicious.register(batt, vicious.widgets.bat, "Batt: $2% Rem: $3", 61, "BAT0")
 
 --{{---| Network usage  |---------------------------------------------------------------------------------------------------
   -- Initialize widget, use widget({ type = "textbox" }) for awesome < 3.5
 lan_usage       = wibox.widget.textbox()
   -- Register widget
-vicious.register(lan_usage, vicious.widgets.net, '<span color="#CC9393">${enp6s0 down_kb}</span> <span color="#7F9F7F">${enp6s0 up_kb}</span>', 3)
+-- vicious.register(lan_usage, vicious.widgets.net, '<span color="#CC9393">${enp6s0 down_kb}</span> <span color="#7F9F7F">${enp6s0 up_kb}</span>', 3)
 
 wifi_usage      = wibox.widget.textbox()
   -- Register widget
-vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
+-- vicious.register(wifi_usage, vicious.widgets.net, '<span color="#CC9393">${wlp3s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
 
 --{{---| Volume  |----------------------------------------------------------------------------------------------------------
   -- Cache
-vicious.cache(vicious.widgets.volume)
+-- vicious.cache(vicious.widgets.volume)
   -- Icon
 volicon = wibox.widget.imagebox()
   -- Volume %
 volpct = wibox.widget.textbox()
-vicious.register(volpct, vicious.widgets.volume, function(widget, args)
-  vol_level = args[1]
-  vol_state = args[2]
-
-  if args[2] == "♩" then
-    volicon:set_image(beautiful.volume_muted)
-  else
-    if vol_level > 75 then
-      volicon:set_image(beautiful.volume_high)
-    elseif vol_level <= 75 and vol_level > 45 then
-      volicon:set_image(beautiful.volume_medium)
-    elseif vol_level <= 45 and vol_level > 20 then
-      volicon:set_image(beautiful.volume_low)
-    elseif vol_level <= 20 then
-      volicon:set_image(beautiful.volume_off)
-    end
-   end
-
-  return args[1] .. "%"
-end, nil, "Master")
+-- vicious.register(volpct, vicious.widgets.volume, function(widget, args)
+--   vol_level = args[1]
+--   vol_state = args[2]
+-- 
+--   if args[2] == "♩" then
+--     volicon:set_image(beautiful.volume_muted)
+--   else
+--     if vol_level > 75 then
+--       volicon:set_image(beautiful.volume_high)
+--     elseif vol_level <= 75 and vol_level > 45 then
+--       volicon:set_image(beautiful.volume_medium)
+--     elseif vol_level <= 45 and vol_level > 20 then
+--       volicon:set_image(beautiful.volume_low)
+--     elseif vol_level <= 20 then
+--       volicon:set_image(beautiful.volume_off)
+--     end
+--    end
+-- 
+--   return args[1] .. "%"
+-- end, nil, "Master")
 
   -- Buttons
 do

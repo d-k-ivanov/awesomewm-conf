@@ -1,7 +1,7 @@
 local config_dir              = gears.filesystem.get_dir("config")
 
 theme 																		    = {}
-theme.wallpaper 																= config_dir .. "theme/wallpapers/wall.jpg"
+theme.wallpaper 																= config_dir .. "theme/wallpapers/pas.jpg"
 
 -- blue | gray | green | purple | red | yellow | zen
 theme.colour 															        = "white_gray"
