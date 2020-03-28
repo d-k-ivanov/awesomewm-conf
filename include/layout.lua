@@ -137,7 +137,7 @@ awful.screen.connect_for_each_screen(function(s)
     mytasklist[s]           = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
+    mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(24) })
     -- if ( s == screen.primary) then
     --     mywibox[s]              = awful.wibar({ position = "top", screen = s, height = dpi(16) })
     -- else
