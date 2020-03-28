@@ -17,6 +17,9 @@ insert_final_newline = false
 [*.ftl]
 max_line_length = 80
 
+[*.gitmodules]
+insert_final_newline = false
+
 [*.js]
 max_line_length = 80
 
@@ -35,5 +38,5 @@ max_line_length = 80
 [*.ts]
 max_line_length = 80
 
-[*.gitmodules]
-insert_final_newline = false
+[{*.yml,*.yaml}]
+indent_size = 2

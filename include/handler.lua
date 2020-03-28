@@ -3,13 +3,13 @@ local naughty                               = require("naughty")
 local beautiful                             = require("beautiful")
 
 --{{---| Naughty theme |----------------------------------------------------------------------------------------------------
-naughty.config.presets.normal.font          = beautiful.notify_font
-naughty.config.presets.normal.fg            = beautiful.notify_fg
-naughty.config.presets.normal.bg            = beautiful.notify_bg
-naughty.config.presets.normal.border_color  = beautiful.notify_border
-naughty.config.presets.normal.opacity       = 0.8
-naughty.config.presets.low.opacity          = 0.8
-naughty.config.presets.critical.opacity     = 0.8
+naughty.config.presets.normal.font         = beautiful.notify_font
+naughty.config.presets.normal.fg           = beautiful.notify_fg
+naughty.config.presets.normal.bg           = beautiful.notify_bg
+naughty.config.presets.normal.border_color = beautiful.notify_border
+naughty.config.presets.normal.opacity      = 0.8
+naughty.config.presets.low.opacity         = 0.8
+naughty.config.presets.critical.opacity    = 0.8
 
 
 --{{---| Error handling |---------------------------------------------------------------------------------------------------
@@ -38,26 +38,25 @@ end
 
 local function bat_notification()
 
-  local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
-  local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
+    local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
+    local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
 
-  local bat_capacity = tonumber(f_capacity:read("*all"))
-  local bat_status = trim(f_status:read("*all"))
+    local bat_capacity = tonumber(f_capacity:read("*all"))
+    local bat_status = trim(f_status:read("*all"))
 
-  if (bat_capacity <= 10 and bat_status == "Discharging") then
-    naughty.notify({ title      = "Battery Warning"
-      , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
-      , fg="#ff0000"
-      --, bg="#deb887"
-      , bg="#333"
-      , timeout    = 1
-      --, position   = "bottom_left"
-      , position   = "top_right"
-    })
-  end
+    if (bat_capacity <= 10 and bat_status == "Discharging") then
+        naughty.notify({ title      = "Battery Warning"
+            , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
+            , fg="#ff0000"
+            --, bg="#deb887"
+            , bg="#333"
+            , timeout    = 1
+            --, position   = "bottom_left"
+            , position   = "top_right"
+        })
+    end
 end
 
 battimer = gears.timer({ timeout = 2 })
 battimer:connect_signal("timeout", bat_notification)
 battimer:start()
-

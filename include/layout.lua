@@ -8,39 +8,39 @@ layouts = {
             awful.layout.suit.tile.bottom,      -- 3
             awful.layout.suit.max,              -- 4
             awful.layout.suit.magnifier,        -- 5
-            --awful.layout.suit.tile.left,
-            --awful.layout.suit.tile.top,
-            --awful.layout.suit.fair.horizontal,  -- 6
-            --awful.layout.suit.spiral,
-            --awful.layout.suit.spiral.dwindle,
-            --awful.layout.suit.max.fullscreen
-            --lain.layout.cascade,
-            --lain.layout.cascadetile,
-            --lain.layout.centerfair,
-            --lain.layout.centerhwork,
-            --lain.layout.centerwork,
-            --lain.layout.centerworkd,
-            --lain.layout.termfair,
-            --lain.layout.uselessfair,
-            --lain.layout.uselesspiral,
-            --lain.layout.uselesstile,
+            -- awful.layout.suit.tile.left,
+            -- awful.layout.suit.tile.top,
+            -- awful.layout.suit.fair.horizontal,  -- 6
+            -- awful.layout.suit.spiral,
+            -- awful.layout.suit.spiral.dwindle,
+            -- awful.layout.suit.max.fullscreen
+            -- lain.layout.cascade,
+            -- lain.layout.cascadetile,
+            -- lain.layout.centerfair,
+            -- lain.layout.centerhwork,
+            -- lain.layout.centerwork,
+            -- lain.layout.centerworkd,
+            -- lain.layout.termfair,
+            -- lain.layout.uselessfair,
+            -- lain.layout.uselesspiral,
+            -- lain.layout.uselesstile,
           }
 
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags    = {
 -- names = { "Main", "Web", "Files", "MSG", "Deploy", "Term", "Remote", "Dev", "Win", "DB", "Android", "Games"},
-  names = { "⭗", -- 00 -- "Main"
-            "🌐", -- 01 -- "Web"
-            "💬", -- 02 -- "Messages"
-            "🖂", -- 03 -- "EMail"
-            "🗁", -- 04 -- "Files"
-            "📃", -- 05 -- "Dev"
-            "🔨", -- 06 -- "Work"
-            "⛫", -- 07 -- "DataBase"
-            "💻", -- 08 -- "Term"
-            "📡", -- 09 -- "Remote"
-            "🎮", -- 10 -- "Games"
-            "🗔"  -- 11 -- "Virtual"
+  names = { "main",     -- 00 -- "Main"
+            "www",      -- 01 -- "Web"
+            "chat",     -- 02 -- "Messages"
+            "mail",     -- 03 -- "EMail"
+            "files",    -- 04 -- "Files"
+            "dev",      -- 05 -- "Dev"
+            "tools",    -- 06 -- "Work"
+            "db",       -- 07 -- "DataBase"
+            "term",     -- 08 -- "Term"
+            "remote",   -- 09 -- "Remote"
+            "games",    -- 10 -- "Games"
+            "virtual"   -- 11 -- "Virtual"
         },
   layout = {
             layouts[1], -- 00 -- "Main"
@@ -58,19 +58,19 @@ tags    = {
         }
 }
 
-mywibox                     = {}
-mypromptbox                 = {}
-mylayoutbox                 = {}
-mytaglist                   = {}
-mytaglist.buttons           = awful.util.table.join(
-  awful.button({ },         1, function(t) t:view_only()                                        end),
-  awful.button({ modkey },  1, function(t) if client.focus then client.focus:move_to_tag(t) end end),
-  awful.button({ },         3, awful.tag.viewtoggle),
-  awful.button({ modkey },  3, function(t) if client.focus then client.focus:toggle_tag(t)  end end),
-  awful.button({ },         4, function(t) awful.tag.viewnext(awful.tag.getscreen(t))           end),
-  awful.button({ },         5, function(t) awful.tag.viewprev(awful.tag.getscreen(t))           end))
-mytasklist                  = {}
-mytasklist.buttons          = awful.util.table.join(
+mywibox                         = {}
+mypromptbox                     = {}
+mylayoutbox                     = {}
+mytaglist                       = {}
+mytaglist.buttons               = awful.util.table.join(
+    awful.button({ },           1, function(t) t:view_only()                                        end),
+    awful.button({ modkey },    1, function(t) if client.focus then client.focus:move_to_tag(t) end end),
+    awful.button({ },           3, awful.tag.viewtoggle),
+    awful.button({ modkey },    3, function(t) if client.focus then client.focus:toggle_tag(t)  end end),
+    awful.button({ },           4, function(t) awful.tag.viewnext(awful.tag.getscreen(t))           end),
+    awful.button({ },           5, function(t) awful.tag.viewprev(awful.tag.getscreen(t))           end))
+mytasklist                      = {}
+mytasklist.buttons              = awful.util.table.join(
     awful.button({ }, 1, function (c)
         if c == client.focus then
             c.minimized = true

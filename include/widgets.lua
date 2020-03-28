@@ -1,30 +1,33 @@
 --{{---| Main spacer  |-----------------------------------------------------------------------------------------------------
-spacer0           = wibox.widget.textbox()
-                    spacer0:set_text(' ')
-spacer1           = wibox.widget.textbox()
-                    spacer1:set_text('>')
-spacer2           = wibox.widget.textbox()
-                    spacer2:set_text('<')
-spacer            = wibox.widget.textbox()
-                    spacer:set_text(' | ')
+spacer0 = wibox.widget.textbox()
+spacer0:set_text(' ')
+
+spacer1 = wibox.widget.textbox()
+spacer1:set_text('>')
+
+spacer2 = wibox.widget.textbox()
+spacer2:set_text('<')
+
+spacer = wibox.widget.textbox()
+spacer:set_text(' | ')
 
 --{{---| Battery  |---------------------------------------------------------------------------------------------------------
   -- Battery attributes
-local bat_state   = ""
-local bat_charge  = 0
-local bat_time    = 0
-local blink       = true
+local bat_state  = ""
+local bat_charge = 0
+local bat_time   = 0
+local blink      = true
 
   -- Icon
-baticon           = wibox.widget.imagebox()
+baticon = wibox.widget.imagebox()
 baticon:set_image(beautiful.battery_full)
 
   -- Charge %
-batpct            = wibox.widget.textbox()
+batpct = wibox.widget.textbox()
 vicious.register(batpct, vicious.widgets.bat, function(widget, args)
-  bat_state       = args[1]
-  bat_charge      = args[2]
-  bat_time        = args[3]
+  bat_state  = args[1]
+  bat_charge = args[2]
+  bat_time   = args[3]
 
   if args[1] == "↯" then
     baticon:set_image(beautiful.battery_charging_full)
