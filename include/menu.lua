@@ -34,19 +34,19 @@ myawesomemenu = {
 -- }
 -- })
 
--- mymainmenu = freedesktop.menu.build({
---   before = {
---     { "Awesome",                myawesomemenu,               beautiful.awesone_default },
---   },
---   after = {
---     { "Open Alacritty",         terminal,                    beautiful.terminal_icon   },
---     { "Open xTerm",             terminal2,                   beautiful.terminator_icon },
---     { "Quit",                   awesome.quit,                beautiful.quit_icon       },
---     { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
---     { "Reboot",                 "sudo reboot",               beautiful.restart_icon    },
---     { "Shutdown",               "sudo shutdown -h 0",        beautiful.shutdown_icon   }
---   }
--- })
+mymainmenu = freedesktop.menu.build({
+  before = {
+    { "Awesome",                myawesomemenu,               beautiful.awesone_default },
+  },
+  after = {
+    { "Open Alacritty",         terminal,                    beautiful.terminal_icon   },
+    { "Open xTerm",             terminal2,                   beautiful.terminator_icon },
+    { "Quit",                   awesome.quit,                beautiful.quit_icon       },
+    { "Hibernate",              "sudo pm-hibernate",         beautiful.hibernate_icon  },
+    { "Reboot",                 "sudo reboot",               beautiful.restart_icon    },
+    { "Shutdown",               "sudo shutdown -h 0",        beautiful.shutdown_icon   }
+  }
+})
 
 --mylauncher                  = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 mylauncher                  = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })

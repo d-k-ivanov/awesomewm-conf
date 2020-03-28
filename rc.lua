@@ -29,7 +29,7 @@ beautiful           = require("beautiful")
 awful.menu          = require("awful.menu")
 appmenu             = require("appmenu")
 menubar             = require("menubar")
--- freedesktop         = require("freedesktop")
+freedesktop         = require("freedesktop")
 
 --{{---| Handlers   |----------------------------------------------------------------------------------------------------
 naughty             = require("naughty")
@@ -41,9 +41,9 @@ wibox               = require("wibox")
 --{{---| Bashets    |----------------------------------------------------------------------------------------------------
 bashets             = require("bashets")
 --{{---| Vicious    |----------------------------------------------------------------------------------------------------
--- vicious             = require("vicious")
+vicious             = require("vicious")
 --{{---| Lain       |----------------------------------------------------------------------------------------------------
--- lain                = require("lain")
+lain                = require("lain")
 --{{---| Widgets    |----------------------------------------------------------------------------------------------------
                       require("widgets")
                       require("dropbox")
