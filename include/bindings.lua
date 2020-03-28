@@ -183,8 +183,23 @@ clientkeys = awful.util.table.join(
         {description = "Toggle keep on top",                    group = "Client"        }),
     awful.key({ modkey,           }, key_n,       function (c) c.minimized = true                         end,
         {description = "Minimize",                              group = "Client"        }),
-    awful.key({ modkey,           }, key_m,       function (c) c.maximized_horizontal = not c.maximized_horizontal
-        c.maximized_vertical = not c.maximized_vertical         end,
+    awful.key({ modkey,           }, key_m,
+        function (c)
+            if c.maximized or c.maximized_horizontal or c.maximized_vertical then
+                c.maximized             = false
+                c.maximized_horizontal  = false
+                c.maximized_vertical    = false
+            else
+                c.maximized             = true
+            end
+
+            -- txt = tostring(c.maximized) .. " " .. tostring(c.maximized_horizontal) .. " " .. tostring(c.maximized_vertical)
+            -- naughty.notify {
+            --     text = txt,
+            --     timeout = 5,
+            --     hover_timeout = 0.5
+            -- }
+        end,
         {description = "Maximize",                              group = "Client"        }),
     awful.key({ modkey, "Control" },  key_s,      function (c) c.sticky = not c.sticky                    end,
         {description = "Sticky window",                         group = "Layout"        })
