@@ -63,8 +63,11 @@ awful.rules.rules = {
         role                                = { "AlarmWindow", "pop-up", }},
         properties                          = { floating = true }
     },
+
+
     -- { rule = { class = "Tilda"              },  properties = { floating = true, maximized_vertical = true, maximized_horizontal = true,                   }},
 
+    { rule = { role = "TfrmFileOp"          },  properties = { floating = true                  }},
     { rule = { class = "qemu-system-x86_64" },  properties = { floating = true                  }},
     { rule = { class = "Qemu-system-x86_64" },  properties = { floating = true                  }},
     { rule = { class = "spicy"              },  properties = { floating = true                  }},

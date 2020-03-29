@@ -2,15 +2,15 @@
 systray = wibox.widget.systray()
 
 layouts = {
-            awful.layout.suit.fair,             -- 0
-            awful.layout.suit.tile,             -- 1
-            awful.layout.suit.floating,         -- 2
-            awful.layout.suit.tile.bottom,      -- 3
-            awful.layout.suit.max,              -- 4
-            awful.layout.suit.magnifier,        -- 5
+            awful.layout.suit.fair,             -- 1
+            awful.layout.suit.tile,             -- 2
+            awful.layout.suit.floating,         -- 3
+            awful.layout.suit.tile.bottom,      -- 4
+            awful.layout.suit.max,              -- 5
+            awful.layout.suit.magnifier,        -- 6
             -- awful.layout.suit.tile.left,
             -- awful.layout.suit.tile.top,
-            -- awful.layout.suit.fair.horizontal,  -- 6
+            -- awful.layout.suit.fair.horizontal,
             -- awful.layout.suit.spiral,
             -- awful.layout.suit.spiral.dwindle,
             -- awful.layout.suit.max.fullscreen
@@ -37,18 +37,18 @@ tags    = {
             "dev",      -- 6 -- "Dev"
             "data",     -- 7 -- "DataBase"
             "term",     -- 8 -- "Term"
-            "media",    -- 9 -- "Work"
+            "win",      -- 9 -- "Windows"
         },
   layout = {
             layouts[1], -- 1 -- "Main"
             layouts[1], -- 2 -- "Web"
-            layouts[1], -- 3 -- "Messages"
-            layouts[1], -- 4 -- "EMail"
-            layouts[1], -- 5 -- "Files"
+            layouts[1], -- 3 -- "Messages
+            layouts[1], -- 4 -- "Files"
+            layouts[1], -- 5 -- "Work"
             layouts[1], -- 6 -- "Dev"
-            layouts[1], -- 7 -- "Work"
-            layouts[1], -- 8 -- "DataBase"
-            layouts[1]  -- 9 -- "Term"
+            layouts[1], -- 7 -- "DataBase
+            layouts[1], -- 8 -- "Term"
+            layouts[3]  -- 9 -- "Windows"
         }
 }
 

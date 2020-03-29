@@ -3,9 +3,10 @@ fms_started = false
 fmd_started = false
 fmx_started = false
 
-terminal    = "xterm"
+terminal    = "alacritty"
+terminal2   = "xterm"
 --terminal  = "sakura"
-terminal2   = "tilda"
+-- terminal2   = "tilda"
 --terminal2 = "terminator"
 editor      = os.getenv("EDITOR") or "vim"
 editor_cmd  = terminal .. " -e " .. editor

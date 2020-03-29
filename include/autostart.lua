@@ -8,10 +8,10 @@ local autostart = require("runonce")
 --{{---| Java GUI's fix ---}}---
 autostart.run("wmname LG3D")
 
--- autostart.run("skypeforlinux")
 -- autostart.run("dropbox")
 -- autostart.run("nm-applet")
 autostart.run("slack")
+autostart.run("skypeforlinux")
 autostart.run("teams")
 autostart.run("telegram-desktop")
 autostart.run("jetbrains-toolbox --minimize")
