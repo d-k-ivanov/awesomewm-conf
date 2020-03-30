@@ -84,19 +84,19 @@ awful.rules.rules = {
     -- { rule = { class = "Google-chrome"   },  properties = { tag = "Web"                      }},
     -- { rule = { class = "Gnome-commander" },  properties = { screen = 1, tag = "Files"        }},
     -- { rule = { class = "Doublecmd"       },  properties = { screen = 1, tag = "Files"        }},
+    { rule = { class = "Thunderbird"                },  properties = { tag = "3:mail"           }},
+    { rule = { class = "Evolution"                  },  properties = { tag = "3:mail"           }},
+    { rule = { class = "Geary"                      },  properties = { tag = "3:mail"           }},
 
-    { rule = { class = "Microsoft Teams - Preview"  },  properties = { tag = "msg"              }},
-    { rule = { class = "Slack"                      },  properties = { tag = "msg"              }},
-    { rule = { class = "Skype"                      },  properties = { tag = "msg"              }},
-    { rule = { class = "TelegramDesktop"            },  properties = { tag = "msg"              }},
-    { rule = { class = "Org.gnome.Polari"           },  properties = { tag = "msg"              }},
-    { rule = { class = "Empathy"                    },  properties = { tag = "msg"              }},
-    { rule = { class = "Pidgin"                     },  properties = { tag = "msg"              }},
-    { rule = { class = "yakyak"                     },  properties = { tag = "msg"              }},
+    { rule = { class = "Microsoft Teams - Preview"  },  properties = { tag = "4:msg"            }},
+    { rule = { class = "Slack"                      },  properties = { tag = "4:msg"            }},
+    { rule = { class = "Skype"                      },  properties = { tag = "4:msg"            }},
+    { rule = { class = "TelegramDesktop"            },  properties = { tag = "4:msg"            }},
+    { rule = { class = "Org.gnome.Polari"           },  properties = { tag = "4:msg"            }},
+    { rule = { class = "Empathy"                    },  properties = { tag = "4:msg"            }},
+    { rule = { class = "Pidgin"                     },  properties = { tag = "4:msg"            }},
+    { rule = { class = "yakyak"                     },  properties = { tag = "4:msg"            }},
 
-    { rule = { class = "Thunderbird"                },  properties = { tag = "msg"              }},
-    { rule = { class = "Evolution"                  },  properties = { tag = "msg"              }},
-    { rule = { class = "Geary"                      },  properties = { tag = "msg"              }}
 
     -- { rule = { class = "Pac"                     },  properties = { screen = 1, tag = "PAC"  }},
     -- { rule = { class = "libreoffice"             },  properties = { tag = "Work"             }}

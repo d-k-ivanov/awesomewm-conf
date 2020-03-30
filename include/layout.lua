@@ -29,26 +29,26 @@ layouts = {
 --{{---| Tags |-------------------------------------------------------------------------------------------------------------
 tags    = {
 -- names = { "Main", "Web", "Files", "MSG", "Deploy", "Term", "Remote", "Dev", "Win", "DB", "Android", "Games"},
-  names = { "main",     -- 1 -- "Main"
-            "web",      -- 2 -- "Web"
-            "msg",      -- 3 -- "Messages"
-            "files",    -- 4 -- "Files"
-            "work",     -- 5 -- "Work"
-            "dev",      -- 6 -- "Dev"
-            "data",     -- 7 -- "DataBase"
-            "term",     -- 8 -- "Term"
-            "win",      -- 9 -- "Windows"
+  names = { "1:main",       -- 1 -- "Main"
+            "2:web",        -- 2 -- "Web"
+            "3:mail",       -- 3 -- "Email"
+            "4:msg",        -- 4 -- "Messages"
+            "5:files",      -- 5 -- "Files"
+            "6:work",       -- 6 -- "Work"
+            "7:dev",        -- 7 -- "Dev"
+            "8:system",     -- 8 -- "System"
+            "9:win",        -- 9 -- "Windows"
         },
   layout = {
-            layouts[1], -- 1 -- "Main"
-            layouts[1], -- 2 -- "Web"
-            layouts[1], -- 3 -- "Messages
-            layouts[1], -- 4 -- "Files"
-            layouts[1], -- 5 -- "Work"
-            layouts[1], -- 6 -- "Dev"
-            layouts[1], -- 7 -- "DataBase
-            layouts[1], -- 8 -- "Term"
-            layouts[3]  -- 9 -- "Windows"
+            layouts[1],     -- 1 -- "Main"
+            layouts[1],     -- 2 -- "Web"
+            layouts[1],     -- 3 -- "Email"
+            layouts[1],     -- 4 -- "Messages"
+            layouts[1],     -- 5 -- "Files"
+            layouts[1],     -- 6 -- "Work"
+            layouts[1],     -- 7 -- "Dev"
+            layouts[1],     -- 8 -- "System"
+            layouts[3]      -- 9 -- "Windows"
         }
 }
 
